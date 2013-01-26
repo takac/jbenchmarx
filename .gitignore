@@ -1,0 +1,9 @@
+/target
+/*.ini
+/*.log.*
+/_*.*
+/*.tmp
+*.log
+.classpath
+.project
+.settings
