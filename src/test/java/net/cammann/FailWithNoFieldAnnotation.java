@@ -20,9 +20,9 @@ public class FailWithNoFieldAnnotation {
 	@Test
 	// (expected = BenchmarkException.class)
 	public void test() {
-		Benchmarker bm = new Benchmarker(WithFieldsTest.class);
+		ClassBenchmarker bm = new ClassBenchmarker(WithFieldsTest.class);
 		bm.execute();
-		BenchmarkUtil.printResults(bm);
+		bm.getResult().printResult();
 	}
 
 }

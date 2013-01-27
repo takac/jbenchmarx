@@ -1,16 +1,17 @@
-package net.cammann;
+package results;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-public class Result {
+
+public class MethodResult implements Result {
 
 	private Method method;
 	private Object[] args;
 	private Long time;
 	private Object returned;
 
-	public Result(Method method, Object[] args, long time, Object returned) {
+	public MethodResult(Method method, Object[] args, long time, Object returned) {
 		this.method = method;
 		this.args = args;
 		this.time = time;
@@ -57,5 +58,9 @@ public class Result {
 		}
 		return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + time
 				+ "ms, with arguments: " + Arrays.asList(args) + ", returned: " + returned;
+	}
+
+	public void printResult() {
+		System.out.println(toString());
 	}
 }

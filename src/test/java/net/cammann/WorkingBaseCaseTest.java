@@ -1,8 +1,4 @@
 package net.cammann;
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Map.Entry;
-
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
 
@@ -12,7 +8,7 @@ import org.junit.Test;
 public class WorkingBaseCaseTest {
 
 
-	@Benchmark
+	// @Benchmark
 	public int myMethod(@Fixed("1") int reps) {
 		int total = 10;
 		for (int i = 0; i < reps * 100; i++) {
@@ -21,7 +17,7 @@ public class WorkingBaseCaseTest {
 		return total;
 	}
 
-	@Benchmark(10)
+	// @Benchmark(10)
 	public int otherMethod(@Fixed("10") double reps) {
 		int total = 0;
 		for (int i = 0; i < reps * 1; i++) {
@@ -31,21 +27,21 @@ public class WorkingBaseCaseTest {
 	}
 
 
+	@Fixed("helloString")
+	private String myFavouriteString;
+
+	@Benchmark(10)
+	public double yourMethod(@Fixed("10") double mult) {
+		double total = 0;
+		for (int i = 0; i < 99; i++) {
+			total += mult + i + myFavouriteString.length();
+		}
+		return total;
+	}
+
 	@Test
 	public void testOne() {
-		Benchmarker bm = new Benchmarker(WorkingBaseCaseTest.class);
-
-		bm.execute();
-
-		for (Entry<Method, List<Result>> e : bm.getResults().entrySet()) {
-			long total = 0;
-			for (Result r : e.getValue()) {
-				total += r.getTime();
-				System.out.println(r);
-			}
-			long average = total / e.getValue().size();
-			System.out.println(e.getKey().getName() + " : averaged " + average + "ms");
-		}
+		Benchmarker.run(WorkingBaseCaseTest.class);
 	}
 
 }
