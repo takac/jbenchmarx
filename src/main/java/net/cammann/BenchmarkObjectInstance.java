@@ -3,6 +3,7 @@ package net.cammann;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 import net.cammann.annotations.BenchConstructor;
 import net.cammann.annotations.Fixed;
@@ -20,21 +21,26 @@ public class BenchmarkObjectInstance {
 	public Object newInstance() {
 		try {
 			System.out.println("Creating Instance of " + type.getCanonicalName());
-			boolean defaultConstructor = true;
 			for (Constructor<?> c : type.getConstructors()) {
 				if (c.isAnnotationPresent(BenchConstructor.class)) {
 					setConstructorArgs(c);
-					defaultConstructor = false;
+					System.out.println("Using annotated constructor");
+					instance = c.newInstance(constructorArgs);
 				}
 			}
-			if (defaultConstructor) {
+			if (instance == null) {
 				this.instance = type.newInstance();
+				System.out.println("Using default constructor");
 			}
 			setFields();
 			return instance;
 		} catch (InstantiationException e) {
 			throw new BenchmarkException(e);
 		} catch (IllegalAccessException e) {
+			throw new BenchmarkException(e);
+		} catch (IllegalArgumentException e) {
+			throw new BenchmarkException(e);
+		} catch (InvocationTargetException e) {
 			throw new BenchmarkException(e);
 		}
 	}

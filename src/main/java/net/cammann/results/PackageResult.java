@@ -34,7 +34,7 @@ public class PackageResult implements Result, Saveable {
 		}
 	}
 
-	public void save(Format format, File file) {
+	public File save(Format format, File file) {
 		switch (format) {
 			case CSV :
 				CVSExport csv = new CVSExport(this);
@@ -43,10 +43,13 @@ public class PackageResult implements Result, Saveable {
 			default :
 				throw new BenchmarkException("Not implemented");
 		}
+		return file;
 	}
 
-	public void save(Format format, String file) {
-		save(format, new File(file));
+	public File save(Format format, String filepath) {
+		File file = new File(filepath);
+		save(format, file);
+		return file;
 	}
 
 	public List<Method> getMethodsTested() {

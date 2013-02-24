@@ -1,6 +1,8 @@
 package net.cammann.working;
 
-import java.io.IOException;
+import static org.junit.Assert.assertEquals;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,6 +14,8 @@ import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
 import net.cammann.annotations.NoReturn;
 import net.cammann.export.Format;
+
+import org.junit.Test;
 
 public class StringJoinExample {
 
@@ -68,8 +72,9 @@ public class StringJoinExample {
 		return sb.toString();
 	}
 
-	public static void main(String[] args) throws IOException {
-		Benchmarker.run(StringJoinExample.class).save(Format.CSV, "stirngJoin.csv");
-//		Benchmarker.run(StringJoinExample.class.getPackage()).save(Format.CSV, "stringJoin.csv");
+	@Test
+	public void test() {
+		File f = Benchmarker.run(StringJoinExample.class).save(Format.CSV, "stirngJoin.csv");
+		assertEquals(new File("stringJoin.csv"), f);
 	}
 }

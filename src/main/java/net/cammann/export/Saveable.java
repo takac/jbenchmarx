@@ -4,6 +4,6 @@ import java.io.File;
 
 public interface Saveable {
 
-	void save(Format format, File file);
-	void save(Format format, String file);
+	File save(Format format, File file);
+	File save(Format format, String file);
 }

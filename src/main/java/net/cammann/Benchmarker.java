@@ -1,9 +1,13 @@
 package net.cammann;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import net.cammann.results.ClassResult;
 import net.cammann.results.PackageResult;
 
 import org.reflections.Reflections;
@@ -26,6 +30,43 @@ public class Benchmarker {
 		return pkg;
 	}
 
+	private static Method lookupMethod(Class<?> cls, String methodName) {
+		Method method = null;
+		for (Method m : cls.getDeclaredMethods()) {
+			if(m.getName().equals(methodName)) {
+				if(method == null) {
+					method = m;
+				} else {
+					throw new BenchmarkException("Multiple methods named: " + methodName);
+				}
+			}
+		}
+		if (method == null) {
+			throw new BenchmarkException("No method name: " +  methodName);
+		}
+
+		return method;
+	}
+
+	public static ClassResult run(Class<?> cls, String... methodNames) {
+		ClassBenchmarker bm =  new ClassBenchmarker(cls);
+		List<Method> realMethods = new ArrayList<Method>();
+		for (String name : methodNames) {
+			realMethods.add(lookupMethod(cls, name));
+		}
+		bm.overwriteMethodsToBenchmark(realMethods);
+		bm.execute();
+		return bm.getResult();
+	}
+
+	public static ClassResult run(Class<?> cls, Method... methods) {
+		ClassBenchmarker bm = new ClassBenchmarker(cls);
+		bm.overwriteMethodsToBenchmark(Arrays.asList(methods));
+		bm.execute();
+
+		return bm.getResult();
+	}
+
 	public static PackageResult run(Package pkg) {
 		PackageResult packResult = new PackageResult();
 		System.out.println(pkg.getName());
@@ -40,7 +81,7 @@ public class Benchmarker {
 		configBuilder.filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix(pkg.getName())));
 
 		Reflections reflections = new Reflections(configBuilder);
-					
+
 		Set<Class<? extends Object>> allClasses = reflections.getSubTypesOf(Object.class);
 		for (Class<? extends Object> cls : allClasses) {
 			System.out.println(cls.getName());
@@ -52,5 +93,5 @@ public class Benchmarker {
 		return packResult;
 
 	}
-	
+
 }

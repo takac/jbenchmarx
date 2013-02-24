@@ -53,7 +53,7 @@ public class MethodResult implements Result {
 		return method;
 	}
 
-	public Object getReturned() {
+	public Optional<Object> getReturned() {
 		return returned;
 	}
 

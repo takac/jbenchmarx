@@ -20,6 +20,7 @@ public class ClassBenchmarker {
 	private Object arguments[];
 	private Object returned;
 	private final BenchmarkObjectInstance instance;
+	private List<Method> methodsToTest = null;
 
 	public ClassBenchmarker(Class<?> clazz) {
 		this.clazz = clazz;
@@ -28,7 +29,14 @@ public class ClassBenchmarker {
 	}
 
 	public void execute() {
-		findBenchmarkMethods();
+		if (methodsToTest == null) {
+			findBenchmarkMethods();
+		} else {
+			methods.clear();
+			for (Method i : methodsToTest) {
+				methods.add(new BenchmarkMethodInstance(i));
+			}
+		}
 		if (methods.size() == 0) {
 			return;
 		}
@@ -37,7 +45,8 @@ public class ClassBenchmarker {
 	}
 
 	private void findBenchmarkMethods() {
-		for (Method i : clazz.getMethods()) {
+		methods.clear();
+		for (Method i : clazz.getDeclaredMethods()) {
 			if (i.isAnnotationPresent(Benchmark.class)) {
 				methods.add(new BenchmarkMethodInstance(i));
 			}
@@ -66,6 +75,10 @@ public class ClassBenchmarker {
 		}
 		System.out.println(r);
 		results.add(r);
+	}
+
+	public void overwriteMethodsToBenchmark(List<Method> methods) {
+		this.methodsToTest = methods;
 	}
 
 	public ClassResult getResult() {
