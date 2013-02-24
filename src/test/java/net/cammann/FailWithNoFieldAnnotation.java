@@ -1,6 +1,7 @@
 package net.cammann;
 
 import net.cammann.annotations.Benchmark;
+import net.cammann.working.WithFieldsTest;
 
 import org.junit.Test;
 
