@@ -5,14 +5,12 @@ import net.cammann.annotations.Fixed;
 
 import org.junit.Test;
 
-
 public class WorkingBaseCaseTest {
-
 
 	// @Benchmark
 	public int myMethod(@Fixed("1") int reps) {
 		int total = 10;
-		for (int i = 0; i < reps * 100; i++) {
+		for (int i = 0; i < (reps * 100); i++) {
 			total += i;
 		}
 
@@ -22,12 +20,11 @@ public class WorkingBaseCaseTest {
 	// @Benchmark(10)
 	public int otherMethod(@Fixed("10") double reps) {
 		int total = 0;
-		for (int i = 0; i < reps * 1; i++) {
+		for (int i = 0; i < (reps * 1); i++) {
 			total += i;
 		}
 		return total;
 	}
-
 
 	@Fixed("helloString")
 	private String myFavouriteString;

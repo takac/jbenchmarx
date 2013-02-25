@@ -14,7 +14,6 @@ import net.cammann.results.PackageResult;
 
 import org.junit.Test;
 
-
 public class WithFieldsTest {
 
 	@Fixed("99")
@@ -22,7 +21,7 @@ public class WithFieldsTest {
 
 	@Fixed("golfing")
 	public String string;
-	
+
 	@Benchmark(500)
 	public int intMethod() {
 		return field;

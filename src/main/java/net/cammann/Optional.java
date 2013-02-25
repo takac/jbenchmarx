@@ -1,7 +1,7 @@
 package net.cammann;
 
 public class Optional<T> {
-	
+
 	private T object;
 	private boolean set = false;
 
@@ -11,9 +11,9 @@ public class Optional<T> {
 	}
 
 	public Optional() {
-		
+
 	}
-	
+
 	public boolean isPresent() {
 		return set;
 	}

@@ -51,3 +51,8 @@ used for many classes.
 	your.package.YourClass.yourMethod : averaged 3ms
 
 Check out the test packages for more info on how to use JBenchmarx
+
+You can also save the results of your benchmark -
+
+	Benchmarker.run(YourClassToBenchmark.class).save(Format.CSV, "yourfile.csv");
+    

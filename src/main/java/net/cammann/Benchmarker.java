@@ -33,8 +33,8 @@ public class Benchmarker {
 	private static Method lookupMethod(Class<?> cls, String methodName) {
 		Method method = null;
 		for (Method m : cls.getDeclaredMethods()) {
-			if(m.getName().equals(methodName)) {
-				if(method == null) {
+			if (m.getName().equals(methodName)) {
+				if (method == null) {
 					method = m;
 				} else {
 					throw new BenchmarkException("Multiple methods named: " + methodName);
@@ -42,14 +42,14 @@ public class Benchmarker {
 			}
 		}
 		if (method == null) {
-			throw new BenchmarkException("No method name: " +  methodName);
+			throw new BenchmarkException("No method name: " + methodName);
 		}
 
 		return method;
 	}
 
 	public static ClassResult run(Class<?> cls, String... methodNames) {
-		ClassBenchmarker bm =  new ClassBenchmarker(cls);
+		ClassBenchmarker bm = new ClassBenchmarker(cls);
 		List<Method> realMethods = new ArrayList<Method>();
 		for (String name : methodNames) {
 			realMethods.add(lookupMethod(cls, name));

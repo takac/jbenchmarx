@@ -14,7 +14,7 @@ import net.cammann.results.MethodResult;
 
 import org.junit.Test;
 
-public class ChooserTest{
+public class ChooserTest {
 
 	@Test
 	public void test() {
@@ -30,6 +30,5 @@ public class ChooserTest{
 		System.out.println(result);
 		assertEquals(33, result);
 	}
-
 
 }

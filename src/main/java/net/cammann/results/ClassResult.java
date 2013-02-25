@@ -2,11 +2,13 @@ package net.cammann.results;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.cammann.Arguments;
 import net.cammann.BenchmarkException;
 import net.cammann.export.CVSExport;
 import net.cammann.export.Format;
@@ -14,7 +16,7 @@ import net.cammann.export.Saveable;
 
 public class ClassResult implements Result, Saveable {
 
-	Map<Method, List<MethodResult>> resultMap = new HashMap<Method, List<MethodResult>>();
+	Map<Method, MethodRangeResult> resultRange = new HashMap<Method, MethodRangeResult>();
 
 	public final Class<?> classTested;
 
@@ -22,68 +24,87 @@ public class ClassResult implements Result, Saveable {
 		this.classTested = cls;
 	}
 
-	public void add(MethodResult result) {
-		List<MethodResult> resultList = resultMap.get(result.getMethod());
-		if(resultList == null) {
-			resultList = new ArrayList<MethodResult>();
-			resultMap.put(result.getMethod(), resultList);
-		}
-		resultList.add(result);
-
+	public void add(MethodRangeResult result) {
+		resultRange.put(result.getMethod(), result);
 	}
 
+	@Override
 	public List<Method> getMethodsTested() {
-		return new ArrayList<Method>(resultMap.keySet());
+		List<Method> methods = new ArrayList<Method>();
+		for (MethodRangeResult result : resultRange.values()) {
+			methods.add(result.getMethod());
+		}
+		return methods;
 	}
 
-	public List<MethodResult> getMethodResults(Method m) {
-		return resultMap.get(m);
+	@Override
+	public List<MethodRangeResult> getMethodResults(Method m) {
+		List<MethodRangeResult> methods = new ArrayList<MethodRangeResult>();
+		for (MethodRangeResult r : resultRange.values()) {
+			if (r.getMethod().equals(m)) {
+				methods.add(r);
+			}
+		}
+		return methods;
 	}
 
-	public Long getMethodAverage(Method m) {
+	public long getMethodAverageNano(Arguments args) {
 		long average = 0;
-		for(MethodResult i : resultMap.get(m)) {
+		List<MethodResult> resultSet = resultRange.get(args.getMethod()).getResults(args);
+		for (MethodResult i : resultSet) {
 			average += i.getTime();
 		}
-		return average /= resultMap.get(m).size();
+		return average /= resultSet.size();
 	}
 
-	public Map<Method, List<MethodResult>> getMethodResults() {
-		Map<Method, List<MethodResult>> results = new HashMap<Method, List<MethodResult>>();
-		for(Method m : getMethodsTested()) {
-			results.put(m, getMethodResults(m));
+	@Override
+	public Map<Arguments, List<MethodResult>> getMethodResults() {
+		Map<Arguments, List<MethodResult>> results = new HashMap<Arguments, List<MethodResult>>();
+		for (MethodRangeResult m : resultRange.values()) {
+			for (Arguments i : m.getArguments()) {
+				results.put(i, m.getResults(i));
+			}
 		}
 		return results;
 	}
 
+	@Override
 	public void printResult() {
-		for (Method m : getMethodsTested()) {
-			System.out.println(getClassTested().getName() + "." + m.getName() + " - averaged: "
-					+ getMethodAverage(m) + "ns after " + getMethodResults(m).size()
-					+ " iterations");
+		for (MethodRangeResult range : resultRange.values()) {
+			for (Arguments args : range.getArguments()) {
+				System.out.println(getClassTested().getName() + "." + args.getMethod().getName() + " - averaged: "
+						+ getAverageTime(args) + " over " + range.getResults(args).size() + " iterations");
+			}
 		}
+
+	}
+
+	private String getAverageTime(Arguments a) {
+		long ns = getMethodAverageNano(a);
+		return NumberFormat.getInstance().format(ns) + " ns";
 	}
 
 	public Class<?> getClassTested() {
 		return classTested;
 	}
 
-
+	@Override
 	public File save(Format format, File file) {
-		switch(format) {
+		switch (format) {
 			case CSV :
 				CVSExport csv = new CVSExport(this);
 				csv.save(file);
 				break;
-			default:
+			default :
 				throw new BenchmarkException("Not implemented");
 		}
 		return file;
 	}
 
+	@Override
 	public File save(Format format, String filepath) {
 		File file = new File(filepath);
-		save(format,file);
+		save(format, file);
 		return file;
 	}
 

@@ -37,27 +37,26 @@ public class CVSExport {
 				for (Method m : result.getMethodsTested()) {
 					// System.out.println(m.getName());
 					List<MethodResult> methodResults = result.getMethodResults(m);
-						if (methodResults.size() > i) {
-							fout.write(String.valueOf(methodResults.get(i).getTime()).getBytes());
-							if (methodResults.size() == (i + 1)) {
-								check++;
-							}
-						} else {
+					if (methodResults.size() > i) {
+						fout.write(String.valueOf(methodResults.get(i).getTime()).getBytes());
+						if (methodResults.size() == (i + 1)) {
 							check++;
 						}
-						fout.write(", ".getBytes());
+					} else {
+						check++;
 					}
-					fout.write("\n".getBytes());
-					if (check == result.getMethodResults().size()) {
-						break;
-					}
+					fout.write(", ".getBytes());
 				}
+				fout.write("\n".getBytes());
+				if (check == result.getMethodResults().size()) {
+					break;
+				}
+			}
 			fout.close();
 		} catch (IOException e) {
 			throw new BenchmarkException(e);
 		}
 	}
-
 
 	public void setResult(Result result) {
 		this.result = result;

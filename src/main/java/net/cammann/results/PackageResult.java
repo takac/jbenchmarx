@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.cammann.Arguments;
 import net.cammann.BenchmarkException;
 import net.cammann.export.CVSExport;
 import net.cammann.export.Format;
@@ -28,12 +29,14 @@ public class PackageResult implements Result, Saveable {
 		return new ArrayList<ClassResult>(classResults.values());
 	}
 
+	@Override
 	public void printResult() {
 		for (ClassResult cls : classResults.values()) {
 			cls.printResult();
 		}
 	}
 
+	@Override
 	public File save(Format format, File file) {
 		switch (format) {
 			case CSV :
@@ -46,12 +49,14 @@ public class PackageResult implements Result, Saveable {
 		return file;
 	}
 
+	@Override
 	public File save(Format format, String filepath) {
 		File file = new File(filepath);
 		save(format, file);
 		return file;
 	}
 
+	@Override
 	public List<Method> getMethodsTested() {
 		List<Method> list = new ArrayList<Method>();
 		for (ClassResult cls : getClassResults()) {
@@ -60,15 +65,17 @@ public class PackageResult implements Result, Saveable {
 		return list;
 	}
 
-	public Map<Method, List<MethodResult>> getMethodResults() {
-		Map<Method, List<MethodResult>> results = new HashMap<Method, List<MethodResult>>();
+	@Override
+	public Map<Arguments, List<MethodResult>> getMethodResults() {
+		Map<Arguments, List<MethodResult>> results = new HashMap<Arguments, List<MethodResult>>();
 		for (ClassResult cls : classResults.values()) {
 			results.putAll(cls.getMethodResults());
 		}
 		return results;
 	}
 
-	public List<MethodResult> getMethodResults(Method m) {
+	@Override
+	public List<MethodRangeResult> getMethodResults(Method m) {
 		for (ClassResult cls : classResults.values()) {
 			List<MethodResult> results = cls.getMethodResults(m);
 			if (results != null) {

@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.cammann.annotations.Benchmark;
-import net.cammann.annotations.NoReturn;
 import net.cammann.results.ClassResult;
-import net.cammann.results.MethodResult;
-
 
 public class ClassBenchmarker {
 
@@ -17,8 +14,6 @@ public class ClassBenchmarker {
 	private final Class<?> clazz;
 	private final List<BenchmarkMethodInstance> methods = new ArrayList<BenchmarkMethodInstance>();
 	private final ClassResult results;
-	private Object arguments[];
-	private Object returned;
 	private final BenchmarkObjectInstance instance;
 	private List<Method> methodsToTest = null;
 
@@ -55,26 +50,9 @@ public class ClassBenchmarker {
 
 	private void runBenchmarkMethods() {
 		for (BenchmarkMethodInstance m : methods) {
-			instance.setFields();
-			m.setMethodArguments();
-			for (int run = 0; run < m.executions(); run++) {
-				for (int i = 0; i < NUM_RUNS; i++) {
-					returned = m.invokeMethod(instance.getInstance());
-				}
-				recordResult(m);
-			}
+			m.executeMethodBenchmark(instance);
+			m.getResults();
 		}
-	}
-
-	private void recordResult(BenchmarkMethodInstance method) {
-		MethodResult r;
-		if (method.hasAnnotation(NoReturn.class)) {
-			r = new MethodResult(method.getMethod(), arguments, method.getMethodRuntime());
-		} else {
-			r = new MethodResult(method.getMethod(), arguments, method.getMethodRuntime(), returned);
-		}
-		System.out.println(r);
-		results.add(r);
 	}
 
 	public void overwriteMethodsToBenchmark(List<Method> methods) {
