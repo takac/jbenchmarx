@@ -11,6 +11,7 @@ import net.cammann.annotations.Fixed;
 import net.cammann.annotations.Lookup;
 import net.cammann.annotations.NoReturn;
 import net.cammann.annotations.Range;
+import net.cammann.callback.CallbackHandler;
 import net.cammann.results.MethodRangeResult;
 
 public class BenchmarkMethodInstance {
@@ -51,7 +52,7 @@ public class BenchmarkMethodInstance {
 			Object returned = method.invoke(instance, arguments);
 			long endTime = System.nanoTime();
 
-			if (hasAnnotation(NoReturn.class)) {
+			if (doesReturn()) {
 				results.recordResult(arguments, startTime, endTime);
 			} else {
 				results.recordResult(arguments, startTime, endTime, returned);
@@ -61,8 +62,12 @@ public class BenchmarkMethodInstance {
 		} catch (IllegalAccessException e) {
 			throw new BenchmarkException(e);
 		} catch (InvocationTargetException e) {
-			throw new BenchmarkException(e);
+			throw new BenchmarkException(e.getCause());
 		}
+	}
+
+	private boolean doesReturn() {
+		return hasAnnotation(NoReturn.class) || method.getReturnType().equals(void.class);
 	}
 
 	public int executions() {

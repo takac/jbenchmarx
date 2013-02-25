@@ -75,9 +75,8 @@ The `@Lookup` annoation allows you to set the value of a field or parameter at r
 	}
 	
 	public static void main(String[] args) {
-		Map<String, Object> lookupTable = new HashMap<String, Object>();
-		lookupTable.put("value_key", 3);
-		lookupTable.put("x_key", 8);
+		Benchmarker.addLookup("value_key", 3);
+		Benchmarker.addLookup("x_key", 8);
 		Benchmarker.run(YourClassToBenchmark.class, lookupTable);
 	}
 
@@ -85,6 +84,44 @@ This will produce -
 
 	your.package.YourClass.method took: 1200ns, with arguments: { 8 }, returned: 24
 
+A new feature of JBenchmarx is `@Callback`, which allows you to programmatically set your parameters and fields.
+
+	public class Example {
+
+		@Callback("callback_one")
+		private int callback;
+
+		@Benchmark(15)
+		public int exampleMethod(@Callback("callback_key") int x) {
+			return x;
+		}
+
+		public static void main(String[] args) {
+			Benchmarker.addCallback("callback_key", new CallbackListener<Integer>() {
+				@Override
+				public Integer callback(CallbackEvent event) {
+					return event.getRun() * 5;
+				}
+			});
+
+			Benchmarker.run(Example.class);
+		}
+	}
+
+This will programmatically set the parameter `x` of the method `exampleMethod()`
+to **5 * the execution number of the run**. During this example the parameter
+will be set to 5 for for the first execution, 10 for the second, all the way up to 
+`15 * 5` which is the number of runs we have told JBenchmarx to execute.
+
+Example output:-
+
+	Example.exampleMethod Took: 2,000 ns, Arguments: { 5 }, Returned: 5
+	Example.exampleMethod Took: 2,000 ns, Arguments: { 10 }, Returned: 10
+	Example.exampleMethod Took: 2,000 ns, Arguments: { 15 }, Returned: 15
+	.
+	.
+	.
+	Example.exampleMethod Took: 2,000 ns, Arguments: { 75 }, Returned: 75
 
 You can also save the results of your benchmark -
 

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.cammann.callback.CallbackHandler;
+import net.cammann.callback.CallbackListener;
 import net.cammann.results.ClassResult;
 import net.cammann.results.PackageResult;
 
@@ -80,6 +82,9 @@ public class Benchmarker {
 		bm.setLookupTable(lookupTable);
 		bm.setCallbackHandler(callbackHandler);
 		bm.execute();
+		PackageResult pkg = new PackageResult();
+		pkg.add(bm.getResult());
+		pkg.printResult();
 		return bm.getResult();
 	}
 

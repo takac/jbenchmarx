@@ -2,6 +2,7 @@ package net.cammann.working;
 import net.cammann.Benchmarker;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
+import net.cammann.classesToTest.StringJoinExample;
 
 import org.junit.Test;
 
@@ -41,6 +42,7 @@ public class WorkingBaseCaseTest {
 	@Test
 	public void testOne() {
 		Benchmarker.run(WorkingBaseCaseTest.class);
+		Benchmarker.run(StringJoinExample.class);
 	}
 
 }

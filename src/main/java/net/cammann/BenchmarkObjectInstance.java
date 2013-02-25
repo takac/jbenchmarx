@@ -11,6 +11,7 @@ import net.cammann.annotations.Callback;
 import net.cammann.annotations.Fixed;
 import net.cammann.annotations.Lookup;
 import net.cammann.annotations.Range;
+import net.cammann.callback.CallbackHandler;
 
 public class BenchmarkObjectInstance {
 

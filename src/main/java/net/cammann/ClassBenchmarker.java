@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.cammann.annotations.Benchmark;
+import net.cammann.callback.CallbackHandler;
 import net.cammann.results.ClassResult;
 
 public class ClassBenchmarker {

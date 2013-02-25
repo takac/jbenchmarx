@@ -1,4 +1,4 @@
-package net.cammann;
+package net.cammann.callback;
 
 public interface CallbackListener<T> {
 	

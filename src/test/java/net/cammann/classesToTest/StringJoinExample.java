@@ -14,28 +14,27 @@ public class StringJoinExample {
 
 	private final List<String> stringList;
 	private final Set<String> stringSet;
-	private static int NUM_STRINGS;
 
 	public StringJoinExample() {
 		stringList = new ArrayList<String>();
 		stringSet = new HashSet<String>();
-		for (int i = 0; i < NUM_STRINGS; i++) {
+		for (int i = 0; i < 1000; i++) {
 			stringList.add(String.valueOf(i));
 			stringSet.add(String.valueOf(i));
 		}
 	}
 
 	@BenchConstructor
-	public StringJoinExample(@Fixed("10000000") int num) {
+	public StringJoinExample(@Fixed("100") int num) {
 		stringList = new ArrayList<String>();
 		stringSet = new HashSet<String>();
-		for (int i = 0; i < NUM_STRINGS; i++) {
+		for (int i = 0; i < num; i++) {
 			stringList.add(String.valueOf(i));
 			stringSet.add(String.valueOf(i));
 		}
 	}
 
-	@Benchmark(10)
+	@Benchmark(1000)
 	@NoReturn
 	public String concatList() {
 		String out = "";
@@ -45,7 +44,7 @@ public class StringJoinExample {
 		return out;
 	}
 
-	@Benchmark(25)
+	@Benchmark(1500)
 	@NoReturn
 	public String stringBuildJoinList() {
 		StringBuilder sb = new StringBuilder();
@@ -55,7 +54,7 @@ public class StringJoinExample {
 		return sb.toString();
 	}
 
-	@Benchmark(30)
+	@Benchmark(2000)
 	@NoReturn
 	public String stringBufferJoinList() {
 		StringBuffer sb = new StringBuffer();

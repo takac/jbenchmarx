@@ -7,6 +7,8 @@ import java.util.List;
 
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Callback;
+import net.cammann.callback.CallbackEvent;
+import net.cammann.callback.CallbackListener;
 import net.cammann.results.ClassResult;
 import net.cammann.results.MethodResult;
 
@@ -33,7 +35,6 @@ public class CallbackTest {
 			@Override
 			public Integer callback(CallbackEvent event) {
 				Integer out = event.getRun();
-				System.out.println("callback - run: " + event.getRun() + " giving: " + out);
 				return out;
 			}
 		});

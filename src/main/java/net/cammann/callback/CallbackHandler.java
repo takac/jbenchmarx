@@ -1,9 +1,11 @@
-package net.cammann;
+package net.cammann.callback;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+
+import net.cammann.BenchmarkException;
 
 public class CallbackHandler {
 

@@ -85,7 +85,7 @@ public class MethodResult implements Result {
 		if(returned.isAbsent()) {
 			returnedString = "";
 		} else {
-			returnedString = ", Returned: " + returned.get().toString();
+			returnedString = ", Returned: " + (returned.get() == null ? "null" : returned.get().toString());
 		}
 		
 		return fullQualifieClassName + "." + methodName + " Took: " + timeTaken + ", Arguments: " + arguments

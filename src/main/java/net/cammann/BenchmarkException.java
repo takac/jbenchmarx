@@ -2,8 +2,8 @@ package net.cammann;
 
 public class BenchmarkException extends RuntimeException {
 
-	public BenchmarkException(Exception e) {
-		super(e);
+	public BenchmarkException(Throwable t) {
+		super(t);
 	}
 
 	public BenchmarkException() {

@@ -1,4 +1,4 @@
-package net.cammann;
+package net.cammann.callback;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
