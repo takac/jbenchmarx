@@ -8,64 +8,60 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.cammann.Arguments;
 import net.cammann.Optional;
+import net.cammann.ParameterisedMethod;
 
 public class MethodResult implements Result {
 
-	private Method method;
-	private Arguments args;
-	private Long time;
+	private ParameterisedMethod parameterisedMethod;
+	private final long startTime;
+	private final long endTime;
+	private final long runtime;
 	private final Optional<Object> returned = new Optional<Object>();
 
-	public MethodResult(Method method, Arguments args, long time, Object returned) {
-		this(method, args, time);
+	public MethodResult(ParameterisedMethod args, long startNanoSeconds, long endNanoSeconds, Object returned) {
+		this(args, startNanoSeconds, endNanoSeconds);
 		this.returned.set(returned);
 	}
 
-	public MethodResult(Method method, Arguments args, long time) {
-		this.method = method;
-		this.args = args;
-		this.time = time;
+	public MethodResult(ParameterisedMethod args, long startNanoSeconds, long endNanoSeconds) {
+		this.parameterisedMethod = args;
+		this.startTime = startNanoSeconds;
+		this.endTime = endNanoSeconds;
+		this.runtime = endTime - startTime;
 	}
 
-	public MethodResult(Method method, Object[] args, long time, Object returned) {
-		this(method, args, time);
-		this.returned.set(returned);
+	public MethodResult(Method method, Object[] args, long startNanoSeconds, long endNanoSeconds, Object returned) {
+		this(new ParameterisedMethod(method, args), startNanoSeconds, endNanoSeconds, returned);
 	}
 
-	public MethodResult(Method method, Object[] args, long time) {
-		this.method = method;
-		this.args = new Arguments(method, args);
-		this.time = time;
+	public MethodResult(Method method, Object[] args, long startNanoSeconds, long endNanoSeconds) {
+		this(new ParameterisedMethod(method, args), startNanoSeconds, endNanoSeconds);
 	}
 
-	public void setArguments(Object[] args) {
-		this.args = new Arguments(method, args);
+	public void setParameterisedMethod(Method method, Object[] args) {
+		this.parameterisedMethod = new ParameterisedMethod(method, args);
 	}
 
-	public void setArguments(Arguments arguments) {
-		this.args = arguments;
+	public void setParameterisedMethod(ParameterisedMethod pm) {
+		this.parameterisedMethod = pm;
 	}
 
-	public Arguments getArguments() {
-		return args;
+	public ParameterisedMethod getParameterisedMethod() {
+		return parameterisedMethod;
 	}
 
-	public void setTime(long time) {
-		this.time = time;
-	}
-
-	public long getTime() {
-		return time;
+	public long getRuntime() {
+		return runtime;
 	}
 
 	public void setMethod(Method method) {
-		this.method = method;
+		ParameterisedMethod newArguments = new ParameterisedMethod(method, parameterisedMethod.getParameters());
+		this.parameterisedMethod = newArguments;
 	}
 
 	public Method getMethod() {
-		return method;
+		return parameterisedMethod.getMethod();
 	}
 
 	public Optional<Object> getReturned() {
@@ -78,19 +74,23 @@ public class MethodResult implements Result {
 
 	@Override
 	public String toString() {
-		String timeTaken = NumberFormat.getInstance().format(time) + " ns";
-		if ((args.getArguments() == null) && returned.isAbsent()) {
-			return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + timeTaken
-					+ ", with no args";
-		} else if (args.getArguments() == null) {
-			return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + timeTaken
-					+ ", with no args, returned: " + returned.get();
-		} else if (returned.isAbsent()) {
-			return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + timeTaken
-					+ ", with arguments: " + args;
+		String timeTaken = NumberFormat.getInstance().format(runtime) + " ns";
+		String fullQualifieClassName = parameterisedMethod.getMethod().getDeclaringClass().getName();
+		String methodName = parameterisedMethod.getMethod().getName();
+		String arguments = parameterisedMethod.getParameters() == null ? "{ }": parameterisedMethod
+				.toString();
+
+		String returnedString = null;
+
+		if(returned.isAbsent()) {
+			returnedString = "";
+		} else {
+			returnedString = ", Returned: " + returned.get().toString();
 		}
-		return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + timeTaken
-				+ ", with arguments: " + args + ", returned: " + returned.get();
+		
+		return fullQualifieClassName + "." + methodName + " Took: " + timeTaken + ", Arguments: " + arguments
+				+ returnedString;
+
 	}
 
 	@Override
@@ -99,32 +99,32 @@ public class MethodResult implements Result {
 	}
 
 	@Override
-	public List<Arguments> getMethodsTested() {
-		return new ArrayList<Arguments>() {
+	public List<ParameterisedMethod> getMethodsTested() {
+		return new ArrayList<ParameterisedMethod>() {
 			{
-				add(args);
+				add(parameterisedMethod);
 			}
 		};
 	}
 
 	@Override
-	public Map<Arguments, List<MethodResult>> getMethodResults() {
+	public Map<ParameterisedMethod, List<MethodResult>> getMethodResults() {
 		final List<MethodResult> result = new ArrayList<MethodResult>();
-		return new HashMap<Arguments, List<MethodResult>>() {
+		return new HashMap<ParameterisedMethod, List<MethodResult>>() {
 			{
-				put(args, result);
+				put(parameterisedMethod, result);
 			}
 		};
 	}
 
 	@Override
 	public List<MethodRangeResult> getMethodResults(Method m) {
-		if (m.equals(method)) {
+		if (m.equals(parameterisedMethod.getMethod())) {
 			MethodRangeResult rr = new MethodRangeResult(m);
 			if (returned.isPresent()) {
-				rr.recordResult(args, time, returned.get());
+				rr.recordResult(parameterisedMethod, startTime, endTime, returned.get());
 			} else {
-				rr.recordResult(args, time);
+				rr.recordResult(parameterisedMethod, startTime, endTime);
 			}
 			List<MethodRangeResult> result = new ArrayList<MethodRangeResult>();
 			result.add(rr);
@@ -134,12 +134,20 @@ public class MethodResult implements Result {
 	}
 
 	@Override
-	public List<MethodResult> getMethodResults(Arguments a) {
-		if(a.getArguments().equals(args) && a.getMethod().equals(method)) {
+	public List<MethodResult> getMethodResults(ParameterisedMethod a) {
+		if (a.equals(parameterisedMethod)) {
 			List<MethodResult> list = new ArrayList<MethodResult>();
 			list.add(this);
 			return list;
 		}
 		return Collections.emptyList();
+	}
+
+	public long getEndTime() {
+		return endTime;
+	}
+
+	public long getStartTime() {
+		return startTime;
 	}
 }

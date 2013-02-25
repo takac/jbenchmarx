@@ -16,7 +16,6 @@ public class BenchmarkMethodInstance {
 
 	private final Method method;
 	private Object[] arguments;
-	private long methodRuntime;
 	private static final int NUM_RUNS = 1;
 	private int rangeSize = 1;
 	private final MethodRangeResult results;
@@ -50,12 +49,12 @@ public class BenchmarkMethodInstance {
 		try {
 			long startTime = System.nanoTime();
 			Object returned = method.invoke(instance, arguments);
-			methodRuntime = System.nanoTime() - startTime;
+			long endTime = System.nanoTime();
 
 			if (hasAnnotation(NoReturn.class)) {
-				results.recordResult(arguments, methodRuntime);
+				results.recordResult(arguments, startTime, endTime);
 			} else {
-				results.recordResult(arguments, methodRuntime, returned);
+				results.recordResult(arguments, startTime, endTime, returned);
 			}
 		} catch (IllegalArgumentException e) {
 			throw new BenchmarkException(e);
@@ -64,10 +63,6 @@ public class BenchmarkMethodInstance {
 		} catch (InvocationTargetException e) {
 			throw new BenchmarkException(e);
 		}
-	}
-
-	public long getMethodRuntime() {
-		return methodRuntime;
 	}
 
 	public int executions() {

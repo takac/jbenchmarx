@@ -25,14 +25,14 @@ public class RangeTest {
 	public void test() {
 		PackageResult pkg = Benchmarker.run(RangeTest.class);
 
-		Map<Arguments, List<MethodResult>> results = pkg.getMethodResults();
+		Map<ParameterisedMethod, List<MethodResult>> results = pkg.getMethodResults();
 		for (List<MethodResult> methods : results.values()) {
 			assertEquals(10, methods.size());
 		}
-		Iterator<Arguments> args = results.keySet().iterator();
-		int one = (Integer) args.next().getArguments()[0];
-		int two = (Integer) args.next().getArguments()[0];
-		int three = (Integer) args.next().getArguments()[0];
+		Iterator<ParameterisedMethod> args = results.keySet().iterator();
+		int one = (Integer) args.next().getParameters()[0];
+		int two = (Integer) args.next().getParameters()[0];
+		int three = (Integer) args.next().getParameters()[0];
 		if(one == 1) {
 			if(two == 5) {
 				assertEquals(30, three);

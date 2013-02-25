@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import net.cammann.Arguments;
+import net.cammann.ParameterisedMethod;
 
 public class MethodRangeResult {
 
-	private final Map<Arguments, List<MethodResult>> results = new HashMap<Arguments, List<MethodResult>>();
+	private final Map<ParameterisedMethod, List<MethodResult>> results = new HashMap<ParameterisedMethod, List<MethodResult>>();
 	private final Method method;
 
 	public MethodRangeResult(Method method) {
@@ -22,36 +22,38 @@ public class MethodRangeResult {
 		return method;
 	}
 
-	public Set<Arguments> getArguments() {
+	public Set<ParameterisedMethod> getParameterisedMethodsTested() {
 		return results.keySet();
 	}
 
 	private void saveResult(MethodResult r) {
-		List<MethodResult> resultList = results.get(r.getArguments());
+		List<MethodResult> resultList = results.get(r.getParameterisedMethod());
 		if (resultList == null) {
 			resultList = new ArrayList<MethodResult>();
-			results.put(r.getArguments(), resultList);
+			results.put(r.getParameterisedMethod(), resultList);
 		}
 		resultList.add(r);
 
 	}
 
-	public void recordResult(Object[] args, long runtime, Object returned) {
-		recordResult(new Arguments(method, args), runtime, returned);
+	public void recordResult(Object[] args, long startNanoSeconds, long endNanoSeconds, Object returned) {
+		recordResult(new ParameterisedMethod(method, args), startNanoSeconds, endNanoSeconds, returned);
 	}
 
-	public void recordResult(Arguments args, long runtime) {
-		MethodResult r = new MethodResult(method, args, runtime);
+	public void recordResult(Object[] args, long startNanoSeconds, long endNanoSeconds) {
+		recordResult(new ParameterisedMethod(method, args), startNanoSeconds, endNanoSeconds);
+	}
+
+
+	public void recordResult(ParameterisedMethod args, long startNanoSecs, long endNanoSecs) {
+		MethodResult r = new MethodResult(args, startNanoSecs, endNanoSecs);
 		saveResult(r);
 		System.out.println(r);
 	}
 
-	public void recordResult(Object[] args, long runtime) {
-		recordResult(new Arguments(method, args), runtime);
-	}
 
-	public void recordResult(Arguments args, long runtime, Object returned) {
-		MethodResult r = new MethodResult(method, args, runtime, returned);
+	public void recordResult(ParameterisedMethod args, long startNanoSecs, long endNanoSeconds, Object returned) {
+		MethodResult r = new MethodResult(args, startNanoSecs, endNanoSeconds, returned);
 		saveResult(r);
 		System.out.println(r);
 	}
@@ -60,7 +62,7 @@ public class MethodRangeResult {
 		results.clear();
 	}
 
-	public List<MethodResult> getResults(Arguments args) {
+	public List<MethodResult> getResults(ParameterisedMethod args) {
 		return results.get(args);
 	}
 

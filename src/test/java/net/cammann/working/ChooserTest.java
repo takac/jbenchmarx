@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Map;
 
-import net.cammann.Arguments;
+import net.cammann.ParameterisedMethod;
 import net.cammann.BenchmarkException;
 import net.cammann.Benchmarker;
 import net.cammann.classesToTest.ChooseConstructorTest;
@@ -18,7 +18,7 @@ public class ChooserTest {
 
 	@Test
 	public void test() {
-		Map<Arguments, List<MethodResult>> results = Benchmarker.run(ChooseConstructorTest.class).getMethodResults();
+		Map<ParameterisedMethod, List<MethodResult>> results = Benchmarker.run(ChooseConstructorTest.class).getMethodResults();
 		Object result = results.values().iterator().next().get(0).getReturned().get();
 		System.out.println(result);
 		assertEquals(19, result);

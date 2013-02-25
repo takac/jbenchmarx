@@ -4,14 +4,14 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
-import net.cammann.Arguments;
+import net.cammann.ParameterisedMethod;
 
 public interface Result {
 
 	void printResult();
-	List<Arguments> getMethodsTested();
+	List<ParameterisedMethod> getMethodsTested();
 	List<MethodRangeResult> getMethodResults(Method m);
-	List<MethodResult> getMethodResults(Arguments a);
-	Map<Arguments, List<MethodResult>> getMethodResults();
+	List<MethodResult> getMethodResults(ParameterisedMethod a);
+	Map<ParameterisedMethod, List<MethodResult>> getMethodResults();
 
 }

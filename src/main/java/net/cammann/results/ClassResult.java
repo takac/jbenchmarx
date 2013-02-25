@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.cammann.Arguments;
 import net.cammann.BenchmarkException;
+import net.cammann.ParameterisedMethod;
 import net.cammann.export.CVSExport;
 import net.cammann.export.Format;
 import net.cammann.export.Saveable;
@@ -30,10 +30,10 @@ public class ClassResult implements Result, Saveable {
 	}
 
 	@Override
-	public List<Arguments> getMethodsTested() {
-		List<Arguments> methods = new ArrayList<Arguments>();
+	public List<ParameterisedMethod> getMethodsTested() {
+		List<ParameterisedMethod> methods = new ArrayList<ParameterisedMethod>();
 		for (MethodRangeResult result : resultRange.values()) {
-			methods.addAll(result.getArguments());
+			methods.addAll(result.getParameterisedMethodsTested());
 		}
 		return methods;
 	}
@@ -49,20 +49,20 @@ public class ClassResult implements Result, Saveable {
 		return methods;
 	}
 
-	public long getMethodAverageNano(Arguments args) {
+	public long getMethodAverageNano(ParameterisedMethod args) {
 		long average = 0;
 		List<MethodResult> resultSet = resultRange.get(args.getMethod()).getResults(args);
 		for (MethodResult i : resultSet) {
-			average += i.getTime();
+			average += i.getRuntime();
 		}
 		return average /= resultSet.size();
 	}
 
 	@Override
-	public Map<Arguments, List<MethodResult>> getMethodResults() {
-		Map<Arguments, List<MethodResult>> results = new HashMap<Arguments, List<MethodResult>>();
+	public Map<ParameterisedMethod, List<MethodResult>> getMethodResults() {
+		Map<ParameterisedMethod, List<MethodResult>> results = new HashMap<ParameterisedMethod, List<MethodResult>>();
 		for (MethodRangeResult m : resultRange.values()) {
-			for (Arguments i : m.getArguments()) {
+			for (ParameterisedMethod i : m.getParameterisedMethodsTested()) {
 				results.put(i, m.getResults(i));
 			}
 		}
@@ -72,23 +72,23 @@ public class ClassResult implements Result, Saveable {
 	@Override
 	public void printResult() {
 		for (MethodRangeResult range : resultRange.values()) {
-			for (Arguments args : range.getArguments()) {
+			for (ParameterisedMethod paramMethod : range.getParameterisedMethodsTested()) {
 				System.out.println(getClassTested().getName() 
 						+ "." 
-						+ args.getMethod().getName() 
+						+ paramMethod.getMethod().getName() 
 						+ " args: "
-						+ args
+						+ paramMethod
 						+ " - averaged: "
-						+ getAverageTime(args) 
+						+ getAverageTime(paramMethod) 
 						+ " over " 
-						+ range.getResults(args).size() 
+						+ range.getResults(paramMethod).size() 
 						+ " iterations");
 			}
 		}
 
 	}
 
-	private String getAverageTime(Arguments a) {
+	private String getAverageTime(ParameterisedMethod a) {
 		long ns = getMethodAverageNano(a);
 		return NumberFormat.getInstance().format(ns) + " ns";
 	}
@@ -118,7 +118,7 @@ public class ClassResult implements Result, Saveable {
 	}
 
 	@Override
-	public List<MethodResult> getMethodResults(Arguments a) {
+	public List<MethodResult> getMethodResults(ParameterisedMethod a) {
 		List<MethodResult> results = resultRange.get(a.getMethod()).getResults(a);
 		if (results == null) {
 			return Collections.emptyList();
