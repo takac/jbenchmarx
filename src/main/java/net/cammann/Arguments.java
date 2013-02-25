@@ -67,4 +67,20 @@ public class Arguments {
 		return n;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("{ ");
+		if (arguments == null) {
+			sb.append("}");
+			return sb.toString();
+		}
+		for (Object i : arguments) {
+			sb.append(i.toString()).append(", ");
+		}
+		sb.delete(sb.length() - 2, sb.length());
+		sb.append(" }");
+		return sb.toString();
+	}
+
 }

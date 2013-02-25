@@ -3,9 +3,11 @@ package net.cammann;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
+import net.cammann.annotations.Lookup;
 import net.cammann.annotations.NoReturn;
 import net.cammann.annotations.Range;
 import net.cammann.results.MethodRangeResult;
@@ -18,6 +20,7 @@ public class BenchmarkMethodInstance {
 	private static final int NUM_RUNS = 1;
 	private int rangeSize = 1;
 	private final MethodRangeResult results;
+	private Map<String, Object> lookup;
 
 	public BenchmarkMethodInstance(Method method) {
 		if (!method.isAnnotationPresent(Benchmark.class)) {
@@ -98,6 +101,11 @@ public class BenchmarkMethodInstance {
 					int n = rangeSpec % rangeVals.length;
 					arguments[count] = BenchmarkUtil.createObjectFromString(rangeVals[n], type);
 					set = true;
+				} else if (a.annotationType().equals(Lookup.class)) {
+					Lookup lookupAnnotation = (Lookup) a;
+					String key = lookupAnnotation.value();
+					arguments[count] = lookup.get(key);
+					set = true;
 				}
 			}
 			if (!set) {
@@ -138,6 +146,14 @@ public class BenchmarkMethodInstance {
 
 	public Method getMethod() {
 		return method;
+	}
+
+	public void setLookup(Map<String, Object> lookup) {
+		this.lookup = lookup;
+	}
+
+	public Map<String, Object> getLookup() {
+		return lookup;
 	}
 
 }

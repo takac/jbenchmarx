@@ -73,8 +73,16 @@ public class ClassResult implements Result, Saveable {
 	public void printResult() {
 		for (MethodRangeResult range : resultRange.values()) {
 			for (Arguments args : range.getArguments()) {
-				System.out.println(getClassTested().getName() + "." + args.getMethod().getName() + " - averaged: "
-						+ getAverageTime(args) + " over " + range.getResults(args).size() + " iterations");
+				System.out.println(getClassTested().getName() 
+						+ "." 
+						+ args.getMethod().getName() 
+						+ " args: "
+						+ args
+						+ " - averaged: "
+						+ getAverageTime(args) 
+						+ " over " 
+						+ range.getResults(args).size() 
+						+ " iterations");
 			}
 		}
 

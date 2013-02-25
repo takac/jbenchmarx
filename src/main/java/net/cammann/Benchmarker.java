@@ -2,9 +2,9 @@ package net.cammann;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import net.cammann.results.ClassResult;
@@ -59,11 +59,22 @@ public class Benchmarker {
 		return bm.getResult();
 	}
 
-	public static ClassResult run(Class<?> cls, Method... methods) {
+	public static ClassResult run(Class<?> cls, Map<String, Object> lookup, String... methodNames) {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
-		bm.overwriteMethodsToBenchmark(Arrays.asList(methods));
+		bm.setLookup(lookup);
+		List<Method> realMethods = new ArrayList<Method>();
+		for (String name : methodNames) {
+			realMethods.add(lookupMethod(cls, name));
+		}
+		bm.overwriteMethodsToBenchmark(realMethods);
 		bm.execute();
+		return bm.getResult();
+	}
 
+	public static ClassResult run(Class<?> cls, Map<String, Object> lookup) {
+		ClassBenchmarker bm = new ClassBenchmarker(cls);
+		bm.setLookup(lookup);
+		bm.execute();
 		return bm.getResult();
 	}
 

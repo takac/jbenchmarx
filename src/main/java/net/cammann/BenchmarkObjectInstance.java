@@ -4,15 +4,18 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
 import net.cammann.annotations.BenchConstructor;
 import net.cammann.annotations.Fixed;
+import net.cammann.annotations.Lookup;
 
 public class BenchmarkObjectInstance {
 
 	private final Class<?> type;
 	private Object instance;
 	private Object constructorArgs[];
+	private Map<String, Object> lookup;
 
 	public BenchmarkObjectInstance(Class<?> type) {
 		this.type = type;
@@ -54,8 +57,13 @@ public class BenchmarkObjectInstance {
 				if (a.annotationType().equals(Fixed.class)) {
 					Fixed fixed = (Fixed) a;
 					String var = fixed.value();
-					Class<?> type = c.getParameterTypes()[count];
-					constructorArgs[count] = BenchmarkUtil.createObjectFromString(var, type);
+					Class<?> paramType = c.getParameterTypes()[count];
+					constructorArgs[count] = BenchmarkUtil.createObjectFromString(var, paramType);
+					set = true;
+				} else if (a.annotationType().equals(Lookup.class)) {
+					Lookup lookupAnnotation = (Lookup) a;
+					String key = lookupAnnotation.value();
+					constructorArgs[count] = lookup.get(key);
 					set = true;
 				}
 			}
@@ -75,8 +83,11 @@ public class BenchmarkObjectInstance {
 					Fixed f = field.getAnnotation(Fixed.class);
 					Object value = BenchmarkUtil.createObjectFromString(f.value(), field.getType());
 					field.set(instance, value);
+				} else if (field.getAnnotation(Lookup.class) != null) {
+					Lookup lookupAnnotation = field.getAnnotation(Lookup.class);
+					String key = lookupAnnotation.value();
+					field.set(instance, lookup.get(key));
 				}
-
 			}
 		} catch (IllegalArgumentException e) {
 			throw new BenchmarkException(e);
@@ -88,5 +99,14 @@ public class BenchmarkObjectInstance {
 	public Object getInstance() {
 		return instance;
 	}
+
+	public void setLookup(Map<String, Object> lookup) {
+		this.lookup = lookup;
+	}
+
+	public Map<String, Object> getLookup() {
+		return lookup;
+	}
+
 
 }

@@ -3,7 +3,6 @@ package net.cammann.results;
 import java.lang.reflect.Method;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -80,18 +79,18 @@ public class MethodResult implements Result {
 	@Override
 	public String toString() {
 		String timeTaken = NumberFormat.getInstance().format(time) + " ns";
-		if ((args == null) && returned.isAbsent()) {
+		if ((args.getArguments() == null) && returned.isAbsent()) {
 			return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + timeTaken
 					+ ", with no args";
-		} else if (args == null) {
+		} else if (args.getArguments() == null) {
 			return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + timeTaken
 					+ ", with no args, returned: " + returned.get();
 		} else if (returned.isAbsent()) {
 			return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + timeTaken
-					+ ", with arguments: " + Arrays.asList(args);
+					+ ", with arguments: " + args;
 		}
 		return method.getDeclaringClass().getName() + "." + method.getName() + " took: " + timeTaken
-				+ ", with arguments: " + Arrays.asList(args) + ", returned: " + returned.get();
+				+ ", with arguments: " + args + ", returned: " + returned.get();
 	}
 
 	@Override
