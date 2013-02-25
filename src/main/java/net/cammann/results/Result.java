@@ -9,8 +9,9 @@ import net.cammann.Arguments;
 public interface Result {
 
 	void printResult();
-	List<Method> getMethodsTested();
+	List<Arguments> getMethodsTested();
 	List<MethodRangeResult> getMethodResults(Method m);
+	List<MethodResult> getMethodResults(Arguments a);
 	Map<Arguments, List<MethodResult>> getMethodResults();
 
 }

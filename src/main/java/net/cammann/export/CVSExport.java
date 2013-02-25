@@ -3,9 +3,9 @@ package net.cammann.export;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.List;
 
+import net.cammann.Arguments;
 import net.cammann.BenchmarkException;
 import net.cammann.results.MethodResult;
 import net.cammann.results.Result;
@@ -20,8 +20,8 @@ public class CVSExport {
 	}
 
 	private void writeHeader() throws IOException {
-		for (Method method : result.getMethodsTested()) {
-			fout.write((method.getName() + ", ").getBytes());
+		for (Arguments method : result.getMethodsTested()) {
+			fout.write((method + ", ").getBytes());
 		}
 	}
 
@@ -34,9 +34,9 @@ public class CVSExport {
 			fout.write("\n".getBytes());
 			for (int i = 0;; i++) {
 				int check = 0;
-				for (Method m : result.getMethodsTested()) {
+				for (Arguments a : result.getMethodsTested()) {
 					// System.out.println(m.getName());
-					List<MethodResult> methodResults = result.getMethodResults(m);
+					List<MethodResult> methodResults = result.getMethodResults(a);
 					if (methodResults.size() > i) {
 						fout.write(String.valueOf(methodResults.get(i).getTime()).getBytes());
 						if (methodResults.size() == (i + 1)) {

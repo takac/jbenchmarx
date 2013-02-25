@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class WorkingBaseCaseTest {
 
-	// @Benchmark
+	@Benchmark
 	public int myMethod(@Fixed("1") int reps) {
 		int total = 10;
 		for (int i = 0; i < (reps * 100); i++) {
@@ -17,7 +17,7 @@ public class WorkingBaseCaseTest {
 		return total;
 	}
 
-	// @Benchmark(10)
+	@Benchmark(10)
 	public int otherMethod(@Fixed("10") double reps) {
 		int total = 0;
 		for (int i = 0; i < (reps * 1); i++) {

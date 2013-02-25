@@ -15,7 +15,7 @@ public class BenchmarkMethodInstance {
 	private final Method method;
 	private Object[] arguments;
 	private long methodRuntime;
-	private static final int NUM_RUNS = 10;
+	private static final int NUM_RUNS = 1;
 	private int rangeSize = 1;
 	private final MethodRangeResult results;
 
@@ -90,7 +90,6 @@ public class BenchmarkMethodInstance {
 				if (a.annotationType().equals(Fixed.class)) {
 					Fixed fixed = (Fixed) a;
 					String var = fixed.value();
-
 					arguments[count] = BenchmarkUtil.createObjectFromString(var, type);
 					set = true;
 				} else if (a.annotationType().equals(Range.class)) {

@@ -4,6 +4,7 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +17,9 @@ import net.cammann.export.Saveable;
 
 public class ClassResult implements Result, Saveable {
 
-	Map<Method, MethodRangeResult> resultRange = new HashMap<Method, MethodRangeResult>();
+	private final Map<Method, MethodRangeResult> resultRange = new HashMap<Method, MethodRangeResult>();
 
-	public final Class<?> classTested;
+	private final Class<?> classTested;
 
 	public ClassResult(Class<?> cls) {
 		this.classTested = cls;
@@ -29,10 +30,10 @@ public class ClassResult implements Result, Saveable {
 	}
 
 	@Override
-	public List<Method> getMethodsTested() {
-		List<Method> methods = new ArrayList<Method>();
+	public List<Arguments> getMethodsTested() {
+		List<Arguments> methods = new ArrayList<Arguments>();
 		for (MethodRangeResult result : resultRange.values()) {
-			methods.add(result.getMethod());
+			methods.addAll(result.getArguments());
 		}
 		return methods;
 	}
@@ -106,6 +107,15 @@ public class ClassResult implements Result, Saveable {
 		File file = new File(filepath);
 		save(format, file);
 		return file;
+	}
+
+	@Override
+	public List<MethodResult> getMethodResults(Arguments a) {
+		List<MethodResult> results = resultRange.get(a.getMethod()).getResults(a);
+		if (results == null) {
+			return Collections.emptyList();
+		}
+		return results;
 	}
 
 }

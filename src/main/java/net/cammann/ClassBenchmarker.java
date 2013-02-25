@@ -9,8 +9,6 @@ import net.cammann.results.ClassResult;
 
 public class ClassBenchmarker {
 
-	public static final int NUM_RUNS = 10;
-
 	private final Class<?> clazz;
 	private final List<BenchmarkMethodInstance> methods = new ArrayList<BenchmarkMethodInstance>();
 	private final ClassResult results;
@@ -51,7 +49,7 @@ public class ClassBenchmarker {
 	private void runBenchmarkMethods() {
 		for (BenchmarkMethodInstance m : methods) {
 			m.executeMethodBenchmark(instance);
-			m.getResults();
+			results.add(m.getResults());
 		}
 	}
 

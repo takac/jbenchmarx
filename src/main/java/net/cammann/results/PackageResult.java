@@ -3,6 +3,7 @@ package net.cammann.results;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,8 +58,8 @@ public class PackageResult implements Result, Saveable {
 	}
 
 	@Override
-	public List<Method> getMethodsTested() {
-		List<Method> list = new ArrayList<Method>();
+	public List<Arguments> getMethodsTested() {
+		List<Arguments> list = new ArrayList<Arguments>();
 		for (ClassResult cls : getClassResults()) {
 			list.addAll(cls.getMethodsTested());
 		}
@@ -77,12 +78,19 @@ public class PackageResult implements Result, Saveable {
 	@Override
 	public List<MethodRangeResult> getMethodResults(Method m) {
 		for (ClassResult cls : classResults.values()) {
-			List<MethodResult> results = cls.getMethodResults(m);
-			if (results != null) {
-				return results;
-			}
+			List<MethodRangeResult> results = cls.getMethodResults(m);
+			return results;
 		}
-		return null;
+		return Collections.emptyList();
+	}
+
+	@Override
+	public List<MethodResult> getMethodResults(Arguments a) {
+		List<MethodResult> list = new ArrayList<MethodResult>();
+		for (ClassResult cr : classResults.values()) {
+			list.addAll(cr.getMethodResults(a));
+		}
+		return list;
 	}
 
 }

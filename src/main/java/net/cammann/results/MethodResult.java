@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,10 +100,10 @@ public class MethodResult implements Result {
 	}
 
 	@Override
-	public List<Method> getMethodsTested() {
-		return new ArrayList<Method>() {
+	public List<Arguments> getMethodsTested() {
+		return new ArrayList<Arguments>() {
 			{
-				add(method);
+				add(args);
 			}
 		};
 	}
@@ -130,6 +131,16 @@ public class MethodResult implements Result {
 			result.add(rr);
 			return result;
 		}
-		return null;
+		return Collections.emptyList();
+	}
+
+	@Override
+	public List<MethodResult> getMethodResults(Arguments a) {
+		if(a.getArguments().equals(args) && a.getMethod().equals(method)) {
+			List<MethodResult> list = new ArrayList<MethodResult>();
+			list.add(this);
+			return list;
+		}
+		return Collections.emptyList();
 	}
 }
