@@ -4,9 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import net.cammann.Benchmarker;
 import net.cammann.annotations.Benchmark;
@@ -37,10 +35,9 @@ public class LookupFieldTest {
 
 	@Test
 	public void testSetField() {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("k1", 91.2f);
-		map.put("k2", "bobsled");
-		ClassResult pkg = Benchmarker.run(LookupFieldTest.class, map);
+		Benchmarker.addLookup("k1", 91.2f);
+		Benchmarker.addLookup("k2", "bobsled");
+		ClassResult pkg = Benchmarker.run(LookupFieldTest.class);
 
 		List<List<MethodResult>> results = new ArrayList<List<MethodResult>>(pkg.getMethodResults().values());
 		List<MethodResult> resultsOne = results.get(0);

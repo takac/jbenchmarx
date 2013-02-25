@@ -9,8 +9,8 @@ import java.util.List;
 import net.cammann.Benchmarker;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
+import net.cammann.results.ClassResult;
 import net.cammann.results.MethodResult;
-import net.cammann.results.PackageResult;
 
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ public class WithFieldsTest {
 
 	@Test
 	public void test() {
-		PackageResult pkg = Benchmarker.run(WithFieldsTest.class);
+		ClassResult pkg = Benchmarker.run(WithFieldsTest.class);
 		List<List<MethodResult>> results = new ArrayList<List<MethodResult>>(pkg.getMethodResults().values());
 		List<MethodResult> resultsOne = results.get(0);
 		List<MethodResult> resultsTwo = results.get(1);

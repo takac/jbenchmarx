@@ -72,7 +72,7 @@ public class ClassBenchmarker {
 		return results;
 	}
 
-	public void setLookup(Map<String, Object> lookup) {
+	public void setLookupTable(Map<String, Object> lookup) {
 		this.lookup = lookup;
 	}
 

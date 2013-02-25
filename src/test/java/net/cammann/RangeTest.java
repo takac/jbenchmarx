@@ -10,7 +10,7 @@ import java.util.Map;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Range;
 import net.cammann.results.MethodResult;
-import net.cammann.results.PackageResult;
+import net.cammann.results.Result;
 
 import org.junit.Test;
 
@@ -23,7 +23,7 @@ public class RangeTest {
 
 	@Test
 	public void test() {
-		PackageResult pkg = Benchmarker.run(RangeTest.class);
+		Result pkg = Benchmarker.run(RangeTest.class);
 
 		Map<ParameterisedMethod, List<MethodResult>> results = pkg.getMethodResults();
 		for (List<MethodResult> methods : results.values()) {

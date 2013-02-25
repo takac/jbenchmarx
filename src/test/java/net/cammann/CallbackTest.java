@@ -7,8 +7,8 @@ import java.util.List;
 
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Callback;
+import net.cammann.results.ClassResult;
 import net.cammann.results.MethodResult;
-import net.cammann.results.PackageResult;
 
 import org.junit.Test;
 
@@ -47,7 +47,7 @@ public class CallbackTest {
 			}
 		});
 
-		PackageResult result = Benchmarker.run(CallbackTest.class);
+		ClassResult result = Benchmarker.run(CallbackTest.class);
 		ParameterisedMethod pmOne = result.getMethodsTested().get(0);
 		ParameterisedMethod pmTwo = result.getMethodsTested().get(1);
 		if(pmOne.getMethod().getName().equals("getParamCallback")) {
@@ -69,10 +69,11 @@ public class CallbackTest {
 			}
 
 
-			for (int i = 0; i < 10; i++) {
-				resultList = result.getMethodResults(new ParameterisedMethod(pmTwo.getMethod(), new Object[] { i }));
+			for (int i = 1; i < 11; i++) {
+				String ans = String.valueOf(i * 5);
+				resultList = result.getMethodResults(new ParameterisedMethod(pmTwo.getMethod(), new Object[]{ans}));
 				String r = (String) resultList.get(0).getReturned().get();
-				System.out.println(r);
+				assertEquals(ans, r);
 			}
 
 

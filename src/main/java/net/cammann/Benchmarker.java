@@ -2,6 +2,7 @@ package net.cammann;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -20,15 +21,21 @@ import org.reflections.util.FilterBuilder;
 public class Benchmarker {
 
 	private static CallbackHandler callbackHandler = new CallbackHandler();
+	private static Map<String, Object> lookupTable = new HashMap<String, Object>();
 
 	public static void addCallback(String key, CallbackListener<?> listener) {
 		callbackHandler.addCallbackListener(key, listener);
+	}
+
+	public static void addLookup(String key, Object value) {
+		lookupTable.put(key, value);
 	}
 
 	public static PackageResult run(Class<?>... classes) {
 		PackageResult pkg = new PackageResult();
 		for (Class<?> cls : classes) {
 			ClassBenchmarker bm = new ClassBenchmarker(cls);
+			bm.setLookupTable(lookupTable);
 			bm.setCallbackHandler(callbackHandler);
 			bm.execute();
 			pkg.add(bm.getResult());
@@ -57,19 +64,7 @@ public class Benchmarker {
 
 	public static ClassResult run(Class<?> cls, String... methodNames) {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
-		List<Method> realMethods = new ArrayList<Method>();
-		for (String name : methodNames) {
-			realMethods.add(lookupMethod(cls, name));
-		}
-		bm.setCallbackHandler(callbackHandler);
-		bm.overwriteMethodsToBenchmark(realMethods);
-		bm.execute();
-		return bm.getResult();
-	}
-
-	public static ClassResult run(Class<?> cls, Map<String, Object> lookup, String... methodNames) {
-		ClassBenchmarker bm = new ClassBenchmarker(cls);
-		bm.setLookup(lookup);
+		bm.setLookupTable(lookupTable);
 		bm.setCallbackHandler(callbackHandler);
 		List<Method> realMethods = new ArrayList<Method>();
 		for (String name : methodNames) {
@@ -80,9 +75,9 @@ public class Benchmarker {
 		return bm.getResult();
 	}
 
-	public static ClassResult run(Class<?> cls, Map<String, Object> lookup) {
+	public static ClassResult run(Class<?> cls) {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
-		bm.setLookup(lookup);
+		bm.setLookupTable(lookupTable);
 		bm.setCallbackHandler(callbackHandler);
 		bm.execute();
 		return bm.getResult();

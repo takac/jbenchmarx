@@ -17,11 +17,12 @@ This will return you a simple output similar too:
 You can run tell JBenchmarx how many times to run the method by just adding
 a number inside the annotation `@Benchmark(5)`.
 
-	your.package.YourClass.yourMethod took: 4ns, with no args, returned: 45
-	your.package.YourClass.yourMethod took: 4ns, with no args, returned: 45
-	your.package.YourClass.yourMethod took: 3ns, with no args, returned: 45
-	your.package.YourClass.yourMethod took: 3ns, with no args, returned: 45
-	yourMethod : averaged 14ns
+	your.package.YourClass.yourMethod took: 5,000ns, with no args, returned: 45
+	your.package.YourClass.yourMethod took: 5,000ns, with no args, returned: 45
+	your.package.YourClass.yourMethod took: 5,000ns, with no args, returned: 45
+	your.package.YourClass.yourMethod took: 3,000ns, with no args, returned: 45
+	your.package.YourClass.yourMethod took: 2,000ns, with no args, returned: 45
+	yourMethod : averaged 4,000 ns
 
 You can specify parameters and fields for your methods:
 
@@ -88,6 +89,5 @@ This will produce -
 You can also save the results of your benchmark -
 
 	Benchmarker.run(YourClassToBenchmark.class).save(Format.CSV, "yourfile.csv");
-    
 
 Check out the test packages for more info on how to use JBenchmarx
