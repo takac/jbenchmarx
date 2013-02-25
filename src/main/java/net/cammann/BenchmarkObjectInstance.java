@@ -7,8 +7,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import net.cammann.annotations.BenchConstructor;
+import net.cammann.annotations.Callback;
 import net.cammann.annotations.Fixed;
 import net.cammann.annotations.Lookup;
+import net.cammann.annotations.Range;
 
 public class BenchmarkObjectInstance {
 
@@ -16,6 +18,7 @@ public class BenchmarkObjectInstance {
 	private Object instance;
 	private Object constructorArgs[];
 	private Map<String, Object> lookup;
+	private CallbackHandler handler;
 
 	public BenchmarkObjectInstance(Class<?> type) {
 		this.type = type;
@@ -35,7 +38,7 @@ public class BenchmarkObjectInstance {
 				this.instance = type.newInstance();
 				System.out.println("Using default constructor");
 			}
-			setFields();
+			setFields(0);
 			return instance;
 		} catch (InstantiationException e) {
 			throw new BenchmarkException(e);
@@ -65,6 +68,10 @@ public class BenchmarkObjectInstance {
 					String key = lookupAnnotation.value();
 					constructorArgs[count] = lookup.get(key);
 					set = true;
+				} else if (a.annotationType().equals(Callback.class)) {
+					throw new BenchmarkException("Cannot use callback for constructor");
+				} else if (a.annotationType().equals(Range.class)) {
+					throw new BenchmarkException("Cannot use range for constructor");
 				}
 			}
 			if (!set) {
@@ -75,7 +82,12 @@ public class BenchmarkObjectInstance {
 		}
 	}
 
-	public void setFields() {
+	/**
+	 * 
+	 * @param runNumber
+	 *            0 for after construtor, > 0 during testing
+	 */
+	public void setFields(int runNumber) {
 		try {
 			for (Field field : type.getDeclaredFields()) {
 				field.setAccessible(true);
@@ -87,6 +99,10 @@ public class BenchmarkObjectInstance {
 					Lookup lookupAnnotation = field.getAnnotation(Lookup.class);
 					String key = lookupAnnotation.value();
 					field.set(instance, lookup.get(key));
+				} else if (field.getAnnotation(Callback.class) != null) {
+					Callback callback = field.getAnnotation(Callback.class);
+					String key = callback.value();
+					field.set(instance, handler.call(key, field, runNumber));
 				}
 			}
 		} catch (IllegalArgumentException e) {
@@ -106,6 +122,14 @@ public class BenchmarkObjectInstance {
 
 	public Map<String, Object> getLookup() {
 		return lookup;
+	}
+
+	public CallbackHandler getHandler() {
+		return handler;
+	}
+
+	public void setHandler(CallbackHandler handler) {
+		this.handler = handler;
 	}
 
 

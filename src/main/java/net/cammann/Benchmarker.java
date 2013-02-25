@@ -19,10 +19,17 @@ import org.reflections.util.FilterBuilder;
 
 public class Benchmarker {
 
+	private static CallbackHandler callbackHandler = new CallbackHandler();
+
+	public static void addCallback(String key, CallbackListener<?> listener) {
+		callbackHandler.addCallbackListener(key, listener);
+	}
+
 	public static PackageResult run(Class<?>... classes) {
 		PackageResult pkg = new PackageResult();
 		for (Class<?> cls : classes) {
 			ClassBenchmarker bm = new ClassBenchmarker(cls);
+			bm.setCallbackHandler(callbackHandler);
 			bm.execute();
 			pkg.add(bm.getResult());
 		}
@@ -54,6 +61,7 @@ public class Benchmarker {
 		for (String name : methodNames) {
 			realMethods.add(lookupMethod(cls, name));
 		}
+		bm.setCallbackHandler(callbackHandler);
 		bm.overwriteMethodsToBenchmark(realMethods);
 		bm.execute();
 		return bm.getResult();
@@ -62,6 +70,7 @@ public class Benchmarker {
 	public static ClassResult run(Class<?> cls, Map<String, Object> lookup, String... methodNames) {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
 		bm.setLookup(lookup);
+		bm.setCallbackHandler(callbackHandler);
 		List<Method> realMethods = new ArrayList<Method>();
 		for (String name : methodNames) {
 			realMethods.add(lookupMethod(cls, name));
@@ -74,6 +83,7 @@ public class Benchmarker {
 	public static ClassResult run(Class<?> cls, Map<String, Object> lookup) {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
 		bm.setLookup(lookup);
+		bm.setCallbackHandler(callbackHandler);
 		bm.execute();
 		return bm.getResult();
 	}
@@ -97,6 +107,7 @@ public class Benchmarker {
 		for (Class<? extends Object> cls : allClasses) {
 			System.out.println(cls.getName());
 			ClassBenchmarker bm = new ClassBenchmarker(cls);
+			bm.setCallbackHandler(callbackHandler);
 			bm.execute();
 			packResult.add(bm.getResult());
 		}

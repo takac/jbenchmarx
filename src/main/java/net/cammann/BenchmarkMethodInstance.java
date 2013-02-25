@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 import net.cammann.annotations.Benchmark;
+import net.cammann.annotations.Callback;
 import net.cammann.annotations.Fixed;
 import net.cammann.annotations.Lookup;
 import net.cammann.annotations.NoReturn;
@@ -20,6 +21,7 @@ public class BenchmarkMethodInstance {
 	private int rangeSize = 1;
 	private final MethodRangeResult results;
 	private Map<String, Object> lookup;
+	private CallbackHandler callbackHandler;
 
 	public BenchmarkMethodInstance(Method method) {
 		if (!method.isAnnotationPresent(Benchmark.class)) {
@@ -32,14 +34,12 @@ public class BenchmarkMethodInstance {
 	}
 
 	public MethodRangeResult executeMethodBenchmark(BenchmarkObjectInstance instance) {
-		instance.setFields();
 		results.clear();
 		for (int k = 0; k < rangeSize; k++) {
-			setMethodArguments(k);
 			for (int run = 0; run < executions(); run++) {
-				for (int i = 0; i < NUM_RUNS; i++) {
-					invokeMethod(instance.getInstance());
-				}
+				instance.setFields(run + 1);
+				setMethodArguments(k, run + 1);
+				invokeMethod(instance.getInstance());
 			}
 		}
 		return results;
@@ -69,7 +69,7 @@ public class BenchmarkMethodInstance {
 		return method.getAnnotation(Benchmark.class).value();
 	}
 
-	public void setMethodArguments(int rangeSpec) {
+	public void setMethodArguments(int rangeSpec, int runNumber) {
 		if (method.getParameterTypes().length == 0) {
 			arguments = null;
 			return;
@@ -100,6 +100,11 @@ public class BenchmarkMethodInstance {
 					Lookup lookupAnnotation = (Lookup) a;
 					String key = lookupAnnotation.value();
 					arguments[count] = lookup.get(key);
+					set = true;
+				} else if (a.annotationType().equals(Callback.class)) {
+					Callback callback = (Callback) a;
+					String key = callback.value();
+					arguments[count] = callbackHandler.call(key, method, runNumber);
 					set = true;
 				}
 			}
@@ -151,4 +156,11 @@ public class BenchmarkMethodInstance {
 		return lookup;
 	}
 
+	public CallbackHandler getCallbackHandler() {
+		return callbackHandler;
+	}
+
+	public void setCallbackHandler(CallbackHandler callbackHandler) {
+		this.callbackHandler = callbackHandler;
+	}
 }

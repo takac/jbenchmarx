@@ -16,6 +16,7 @@ public class ClassBenchmarker {
 	private final BenchmarkObjectInstance instance;
 	private List<Method> methodsToTest = null;
 	private Map<String, Object> lookup;
+	private CallbackHandler callbackHandler;
 
 	public ClassBenchmarker(Class<?> clazz) {
 		this.clazz = clazz;
@@ -25,12 +26,16 @@ public class ClassBenchmarker {
 
 	public void execute() {
 		instance.setLookup(lookup);
+		instance.setHandler(callbackHandler);
 		if (methodsToTest == null) {
 			findBenchmarkMethods();
 		} else {
 			methods.clear();
 			for (Method i : methodsToTest) {
-				methods.add(new BenchmarkMethodInstance(i));
+				BenchmarkMethodInstance inst = new BenchmarkMethodInstance(i);
+				inst.setLookup(lookup);
+				inst.setCallbackHandler(callbackHandler);
+				methods.add(inst);
 			}
 		}
 		if (methods.size() == 0) {
@@ -46,6 +51,7 @@ public class ClassBenchmarker {
 			if (i.isAnnotationPresent(Benchmark.class)) {
 				BenchmarkMethodInstance inst = new BenchmarkMethodInstance(i);
 				inst.setLookup(lookup);
+				inst.setCallbackHandler(callbackHandler);
 				methods.add(inst);
 			}
 		}
@@ -58,8 +64,8 @@ public class ClassBenchmarker {
 		}
 	}
 
-	public void overwriteMethodsToBenchmark(List<Method> methods) {
-		this.methodsToTest = methods;
+	public void overwriteMethodsToBenchmark(List<Method> listMethodsToTest) {
+		this.methodsToTest = listMethodsToTest;
 	}
 
 	public ClassResult getResult() {
@@ -72,6 +78,14 @@ public class ClassBenchmarker {
 
 	public Map<String, Object> getLookup() {
 		return lookup;
+	}
+
+	public CallbackHandler getCallbackHandler() {
+		return callbackHandler;
+	}
+
+	public void setCallbackHandler(CallbackHandler callbackHandler) {
+		this.callbackHandler = callbackHandler;
 	}
 
 }
