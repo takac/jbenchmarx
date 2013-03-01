@@ -104,7 +104,8 @@ public class Benchmarker {
 
 		ConfigurationBuilder configBuilder = new ConfigurationBuilder();
 		configBuilder.setScanners(new SubTypesScanner(false), new ResourcesScanner());
-		configBuilder.setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])));
+		configBuilder.setUrls(ClasspathHelper.
+				forClassLoader(classLoadersList.toArray(new ClassLoader[classLoadersList.size()])));
 		configBuilder.filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix(pkg.getName())));
 
 		Reflections reflections = new Reflections(configBuilder);

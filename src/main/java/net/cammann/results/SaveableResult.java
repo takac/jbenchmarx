@@ -1,6 +1,7 @@
 package net.cammann.results;
 
 import java.io.File;
+import java.util.Locale;
 
 import net.cammann.export.CSVExport;
 import net.cammann.export.Exporter;
@@ -28,6 +29,6 @@ public abstract class SaveableResult implements Result {
 	}
 
 	public File save(String format, String filename) {
-		return save(Format.valueOf(format.toUpperCase()), filename);
+		return save(Format.valueOf(format.toUpperCase(Locale.UK)), filename);
 	}
 }

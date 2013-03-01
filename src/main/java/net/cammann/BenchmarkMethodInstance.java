@@ -18,10 +18,12 @@ public class BenchmarkMethodInstance {
 
 	private final Method method;
 	private Object[] arguments;
-	private int rangeSize = 1;
+	private int largestRange = 1;
 	private final MethodResultStore results;
 	private Map<String, Object> lookup;
 	private CallbackHandler callbackHandler;
+	private int runNumber = 0;
+	private int rangeRound = 0;
 
 	public BenchmarkMethodInstance(Method method) {
 		if (!method.isAnnotationPresent(Benchmark.class)) {
@@ -30,15 +32,17 @@ public class BenchmarkMethodInstance {
 		results = new MethodResultStore(method);
 		method.setAccessible(true);
 		this.method = method;
-		assessRange();
+		checkMaxRange();
 	}
 
 	public MethodResultStore executeMethodBenchmark(BenchmarkObjectInstance instance) {
 		results.clear();
-		for (int k = 0; k < rangeSize; k++) {
+		for (int k = 0; k < largestRange; k++) {
 			for (int run = 0; run < executions(); run++) {
-				instance.setFields(run + 1);
-				setMethodArguments(k, run + 1);
+				runNumber = run + 1;
+				rangeRound = k;
+				instance.setFields(runNumber);
+				setMethodArguments();
 				invokeMethod(instance.getInstance());
 			}
 		}
@@ -73,62 +77,79 @@ public class BenchmarkMethodInstance {
 		return method.getAnnotation(Benchmark.class).value();
 	}
 
-	public void setMethodArguments(int rangeSpec, int runNumber) {
+	public void setMethodArguments() {
 		if (method.getParameterTypes().length == 0) {
-			arguments = null;
+			arguments = new Object[]{};
 			return;
 		}
 
 		arguments = new Object[method.getParameterTypes().length];
 		int count = 0;
-		boolean set = false;
 		for (Annotation[] array : method.getParameterAnnotations()) {
 			if (array.length == 0) {
-				throw new BenchmarkException("Argument needs to be set for: " + method.getName() + " in "
+				throw new BenchmarkException("Annotation for parameter needs to be set: " + method.getName()
+						+ " in "
 						+ method.getDeclaringClass().getName());
 			}
-			for (Annotation a : array) {
-				Class<?> type = method.getParameterTypes()[count];
-				if (a.annotationType().equals(Fixed.class)) {
-					Fixed fixed = (Fixed) a;
-					String var = fixed.value();
-					arguments[count] = BenchmarkUtil.createObjectFromString(var, type);
-					set = true;
-				} else if (a.annotationType().equals(Range.class)) {
-					Range range = (Range) a;
-					String[] rangeVals = range.value();
-					int n = rangeSpec % rangeVals.length;
-					arguments[count] = BenchmarkUtil.createObjectFromString(rangeVals[n], type);
-					set = true;
-				} else if (a.annotationType().equals(Lookup.class)) {
-					Lookup lookupAnnotation = (Lookup) a;
-					String key = lookupAnnotation.value();
-					arguments[count] = lookup.get(key);
-					set = true;
-				} else if (a.annotationType().equals(Callback.class)) {
-					Callback callback = (Callback) a;
-					String key = callback.value();
-					arguments[count] = callbackHandler.call(key, method, runNumber);
-					set = true;
-				}
-			}
-			if (!set) {
-				throw new BenchmarkException("Argument needs to be set for: " + method.getName() + " in "
+			Class<?> type = method.getParameterTypes()[count];
+			Object obj = extractObject(array, type);
+			if (obj == null) {
+				throw new BenchmarkException("Argument for benchmark cannot be null: " + method.getName() + " in "
 						+ method.getDeclaringClass().getName());
 			}
+			arguments[count] = obj;
 			count++;
 		}
 
 	}
 
-	private void assessRange() {
+	// TODO
+	// Create method to check for more than one benchmark annotaiton
+	private Object extractObject(Annotation[] array, Class<?> type) {
+		Object obj = null;
+		for (Annotation a : array) {
+			if (a.annotationType().equals(Fixed.class)) {
+				if (obj != null) {
+					throw new BenchmarkException("Can only set one annotation for this field/parameter");
+				}
+				Fixed fixed = (Fixed) a;
+				String var = fixed.value();
+				obj = BenchmarkUtil.createObjectFromString(var, type);
+			} else if (a.annotationType().equals(Range.class)) {
+				if (obj != null) {
+					throw new BenchmarkException("Can only set one annotation for this field/parameter");
+				}
+				Range range = (Range) a;
+				String[] rangeVals = range.value();
+				int n = rangeRound % rangeVals.length;
+				obj = BenchmarkUtil.createObjectFromString(rangeVals[n], type);
+			} else if (a.annotationType().equals(Lookup.class)) {
+				if (obj != null) {
+					throw new BenchmarkException("Can only set one annotation for this field/parameter");
+				}
+				Lookup lookupAnnotation = (Lookup) a;
+				String key = lookupAnnotation.value();
+				obj = lookup.get(key);
+			} else if (a.annotationType().equals(Callback.class)) {
+				if (obj != null) {
+					throw new BenchmarkException("Can only set one annotation for this field/parameter");
+				}
+				Callback callback = (Callback) a;
+				String key = callback.value();
+				obj = callbackHandler.call(key, method, runNumber);
+			}
+		}
+		return obj;
+	}
+
+	private void checkMaxRange() {
 		for (Annotation[] array : method.getParameterAnnotations()) {
 			for (Annotation a : array) {
 				if (a.annotationType().equals(Range.class)) {
 					Range range = (Range) a;
 					int len = range.value().length;
-					if (len > rangeSize) {
-						rangeSize = len;
+					if (len > largestRange) {
+						largestRange = len;
 					}
 				}
 			}

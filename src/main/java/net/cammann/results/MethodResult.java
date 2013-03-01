@@ -75,8 +75,7 @@ public class MethodResult extends SaveableResult {
 		String timeTaken = NumberFormat.getInstance().format(runtime) + " ns";
 		String fullQualifieClassName = parameterisedMethod.getMethod().getDeclaringClass().getName();
 		String methodName = parameterisedMethod.getMethod().getName();
-		String arguments = parameterisedMethod.getParameters() == null ? "{ }": parameterisedMethod
-				.toString();
+		String arguments = parameterisedMethod.toString();
 
 		String returnedString = null;
 
@@ -98,11 +97,9 @@ public class MethodResult extends SaveableResult {
 
 	@Override
 	public List<ParameterisedMethod> getParameterisedMethodsTested() {
-		return new ArrayList<ParameterisedMethod>() {
-			{
-				add(parameterisedMethod);
-			}
-		};
+		List<ParameterisedMethod> params = new ArrayList<ParameterisedMethod>();
+		params.add(parameterisedMethod);
+		return params;
 	}
 
 	@Override

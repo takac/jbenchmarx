@@ -56,7 +56,7 @@ public class ClassResult extends SaveableResult {
 		for (MethodResult i : resultSet) {
 			average += i.getRuntime();
 		}
-		return average /= resultSet.size();
+		return average / resultSet.size();
 	}
 
 	@Override
