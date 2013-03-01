@@ -2,6 +2,7 @@ package net.cammann.results;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,17 +10,27 @@ import java.util.Set;
 
 import net.cammann.ParameterisedMethod;
 
-public class MethodRangeResult {
+public class MethodResultStore {
 
-	private final Map<ParameterisedMethod, List<MethodResult>> results = new HashMap<ParameterisedMethod, List<MethodResult>>();
-	private final Method method;
+	private final Map<ParameterisedMethod, ParameterisedMethodResult> results;
 
-	public MethodRangeResult(Method method) {
+	private Method method;
+
+	public MethodResultStore(Method method) {
+		this();
 		this.method = method;
+	}
+	
+	public MethodResultStore() {
+		results = new HashMap<ParameterisedMethod, ParameterisedMethodResult>();
 	}
 
 	public Method getMethod() {
 		return method;
+	}
+
+	public void setMethod(Method method) {
+		this.method = method;
 	}
 
 	public Set<ParameterisedMethod> getParameterisedMethodsTested() {
@@ -27,13 +38,38 @@ public class MethodRangeResult {
 	}
 
 	private void saveResult(MethodResult r) {
-		List<MethodResult> resultList = results.get(r.getParameterisedMethod());
+		ParameterisedMethodResult resultList = results.get(r.getParameterisedMethod());
 		if (resultList == null) {
-			resultList = new ArrayList<MethodResult>();
+			resultList = new ParameterisedMethodResult();
 			results.put(r.getParameterisedMethod(), resultList);
 		}
-		resultList.add(r);
+		resultList.addResult(r);
+		System.out.println(r);
+	}
 
+	public List<MethodResult> getAllMethodResults() {
+		List<MethodResult> all = new ArrayList<MethodResult>();
+		for (ParameterisedMethodResult i : results.values()) {
+			all.addAll(i.getResults());
+		}
+		return all;
+	}
+
+	public AveragedResult getMethodAverage() {
+		AveragedResult avg = new AveragedResult();
+		List<MethodResult> all = getAllMethodResults();
+
+		avg.setIterations(all.size());
+		avg.setAverageTime(100);
+
+		long total = 0;
+		for (MethodResult m : all) {
+			total += m.getRuntime();
+		}
+		avg.setAverageTime(total / all.size());
+		avg.setParamCombinations(results.size());
+
+		return avg;
 	}
 
 	public void recordResult(Object[] args, long startNanoSeconds, long endNanoSeconds, Object returned) {
@@ -48,14 +84,12 @@ public class MethodRangeResult {
 	public void recordResult(ParameterisedMethod args, long startNanoSecs, long endNanoSecs) {
 		MethodResult r = new MethodResult(args, startNanoSecs, endNanoSecs);
 		saveResult(r);
-		System.out.println(r);
 	}
 
 
 	public void recordResult(ParameterisedMethod args, long startNanoSecs, long endNanoSeconds, Object returned) {
 		MethodResult r = new MethodResult(args, startNanoSecs, endNanoSeconds, returned);
 		saveResult(r);
-		System.out.println(r);
 	}
 
 	public void clear() {
@@ -63,7 +97,11 @@ public class MethodRangeResult {
 	}
 
 	public List<MethodResult> getResults(ParameterisedMethod args) {
-		return results.get(args);
+		ParameterisedMethodResult pmr = results.get(args);
+		if (pmr == null) {
+			return Collections.emptyList();
+		}
+		return pmr.getResults();
 	}
 
 }

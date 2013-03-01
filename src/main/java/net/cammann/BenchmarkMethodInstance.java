@@ -12,15 +12,14 @@ import net.cammann.annotations.Lookup;
 import net.cammann.annotations.NoReturn;
 import net.cammann.annotations.Range;
 import net.cammann.callback.CallbackHandler;
-import net.cammann.results.MethodRangeResult;
+import net.cammann.results.MethodResultStore;
 
 public class BenchmarkMethodInstance {
 
 	private final Method method;
 	private Object[] arguments;
-	private static final int NUM_RUNS = 1;
 	private int rangeSize = 1;
-	private final MethodRangeResult results;
+	private final MethodResultStore results;
 	private Map<String, Object> lookup;
 	private CallbackHandler callbackHandler;
 
@@ -28,13 +27,13 @@ public class BenchmarkMethodInstance {
 		if (!method.isAnnotationPresent(Benchmark.class)) {
 			throw new BenchmarkException("Method does not have benchmark annotation");
 		}
-		results = new MethodRangeResult(method);
+		results = new MethodResultStore(method);
 		method.setAccessible(true);
 		this.method = method;
 		assessRange();
 	}
 
-	public MethodRangeResult executeMethodBenchmark(BenchmarkObjectInstance instance) {
+	public MethodResultStore executeMethodBenchmark(BenchmarkObjectInstance instance) {
 		results.clear();
 		for (int k = 0; k < rangeSize; k++) {
 			for (int run = 0; run < executions(); run++) {
@@ -136,7 +135,7 @@ public class BenchmarkMethodInstance {
 		}
 	}
 
-	public MethodRangeResult getResults() {
+	public MethodResultStore getResults() {
 		return results;
 	}
 

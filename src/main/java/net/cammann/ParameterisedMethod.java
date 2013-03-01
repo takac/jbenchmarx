@@ -71,7 +71,7 @@ public class ParameterisedMethod {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{ ");
-		if (parameters == null) {
+		if (parameters == null || parameters.length == 0) {
 			sb.append("}");
 			return sb.toString();
 		}

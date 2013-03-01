@@ -18,7 +18,7 @@ public class StringJoinExample {
 	public StringJoinExample() {
 		stringList = new ArrayList<String>();
 		stringSet = new HashSet<String>();
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 100; i++) {
 			stringList.add(String.valueOf(i));
 			stringSet.add(String.valueOf(i));
 		}
@@ -34,7 +34,7 @@ public class StringJoinExample {
 		}
 	}
 
-	@Benchmark(1000)
+	@Benchmark(10)
 	@NoReturn
 	public String concatList() {
 		String out = "";
@@ -44,7 +44,7 @@ public class StringJoinExample {
 		return out;
 	}
 
-	@Benchmark(1500)
+	@Benchmark(10)
 	@NoReturn
 	public String stringBuildJoinList() {
 		StringBuilder sb = new StringBuilder();
@@ -54,7 +54,7 @@ public class StringJoinExample {
 		return sb.toString();
 	}
 
-	@Benchmark(2000)
+	@Benchmark(20)
 	@NoReturn
 	public String stringBufferJoinList() {
 		StringBuffer sb = new StringBuffer();

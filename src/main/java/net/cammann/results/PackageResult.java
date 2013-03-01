@@ -1,6 +1,5 @@
 package net.cammann.results;
 
-import java.io.File;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,13 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.cammann.BenchmarkException;
 import net.cammann.ParameterisedMethod;
-import net.cammann.export.CVSExport;
-import net.cammann.export.Format;
-import net.cammann.export.Saveable;
 
-public class PackageResult implements Result, Saveable {
+public class PackageResult extends SaveableResult {
 
 	Map<Class<?>, ClassResult> classResults = new HashMap<Class<?>, ClassResult>();
 
@@ -38,30 +33,10 @@ public class PackageResult implements Result, Saveable {
 	}
 
 	@Override
-	public File save(Format format, File file) {
-		switch (format) {
-			case CSV :
-				CVSExport csv = new CVSExport(this);
-				csv.save(file);
-				break;
-			default :
-				throw new BenchmarkException("Not implemented");
-		}
-		return file;
-	}
-
-	@Override
-	public File save(Format format, String filepath) {
-		File file = new File(filepath);
-		save(format, file);
-		return file;
-	}
-
-	@Override
-	public List<ParameterisedMethod> getMethodsTested() {
+	public List<ParameterisedMethod> getParameterisedMethodsTested() {
 		List<ParameterisedMethod> list = new ArrayList<ParameterisedMethod>();
 		for (ClassResult cls : getClassResults()) {
-			list.addAll(cls.getMethodsTested());
+			list.addAll(cls.getParameterisedMethodsTested());
 		}
 		return list;
 	}
@@ -76,9 +51,9 @@ public class PackageResult implements Result, Saveable {
 	}
 
 	@Override
-	public List<MethodRangeResult> getMethodResults(Method m) {
+	public List<MethodResultStore> getMethodResults(Method m) {
 		for (ClassResult cls : classResults.values()) {
-			List<MethodRangeResult> results = cls.getMethodResults(m);
+			List<MethodResultStore> results = cls.getMethodResults(m);
 			return results;
 		}
 		return Collections.emptyList();

@@ -11,7 +11,7 @@ import java.util.Map;
 import net.cammann.Optional;
 import net.cammann.ParameterisedMethod;
 
-public class MethodResult implements Result {
+public class MethodResult extends SaveableResult {
 
 	private ParameterisedMethod parameterisedMethod;
 	private final long startTime;
@@ -99,7 +99,7 @@ public class MethodResult implements Result {
 	}
 
 	@Override
-	public List<ParameterisedMethod> getMethodsTested() {
+	public List<ParameterisedMethod> getParameterisedMethodsTested() {
 		return new ArrayList<ParameterisedMethod>() {
 			{
 				add(parameterisedMethod);
@@ -118,15 +118,15 @@ public class MethodResult implements Result {
 	}
 
 	@Override
-	public List<MethodRangeResult> getMethodResults(Method m) {
+	public List<MethodResultStore> getMethodResults(Method m) {
 		if (m.equals(parameterisedMethod.getMethod())) {
-			MethodRangeResult rr = new MethodRangeResult(m);
+			MethodResultStore rr = new MethodResultStore(m);
 			if (returned.isPresent()) {
 				rr.recordResult(parameterisedMethod, startTime, endTime, returned.get());
 			} else {
 				rr.recordResult(parameterisedMethod, startTime, endTime);
 			}
-			List<MethodRangeResult> result = new ArrayList<MethodRangeResult>();
+			List<MethodResultStore> result = new ArrayList<MethodResultStore>();
 			result.add(rr);
 			return result;
 		}

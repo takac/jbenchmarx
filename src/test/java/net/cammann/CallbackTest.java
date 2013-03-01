@@ -49,8 +49,8 @@ public class CallbackTest {
 		});
 
 		ClassResult result = Benchmarker.run(CallbackTest.class);
-		ParameterisedMethod pmOne = result.getMethodsTested().get(0);
-		ParameterisedMethod pmTwo = result.getMethodsTested().get(1);
+		ParameterisedMethod pmOne = result.getParameterisedMethodsTested().get(0);
+		ParameterisedMethod pmTwo = result.getParameterisedMethodsTested().get(1);
 		if(pmOne.getMethod().getName().equals("getParamCallback")) {
 			List<MethodResult> reusltList = result.getMethodResults(pmOne);
 			for (int i = 0; i < 10; i++) {
