@@ -15,6 +15,7 @@ public class TestAnnotationFail {
 		return alpha;
 	}
 
+
 	@Test(expected = BenchmarkException.class)
 	public void testFail() {
 		Benchmarker.run(TestAnnotationFail.class, "benchMe");

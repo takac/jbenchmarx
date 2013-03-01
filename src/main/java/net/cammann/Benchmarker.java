@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.cammann.annotations.Benchmark;
 import net.cammann.callback.CallbackHandler;
 import net.cammann.callback.CallbackListener;
-import net.cammann.results.ClassResult;
 import net.cammann.results.PackageResult;
+import net.cammann.results.SaveableResult;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.ResourcesScanner;
@@ -56,18 +57,20 @@ public class Benchmarker {
 				if (method == null) {
 					method = m;
 				} else {
-					throw new BenchmarkException("Multiple methods named: " + methodName);
+					throw new BenchmarkException("Ambigious method name, multiple methods named: " + methodName);
 				}
 			}
 		}
 		if (method == null) {
 			throw new BenchmarkException("No method name: " + methodName);
 		}
-
+		if (method.getAnnotation(Benchmark.class) == null) {
+			throw new BenchmarkException("Method does not have benchmark annotation");
+		}
 		return method;
 	}
 
-	public static ClassResult run(Class<?> cls, String... methodNames) {
+	public static SaveableResult run(Class<?> cls, String... methodNames) {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
 		bm.setLookupTable(lookupTable);
 		bm.setCallbackHandler(callbackHandler);
@@ -80,7 +83,7 @@ public class Benchmarker {
 		return bm.getResult();
 	}
 
-	public static ClassResult run(Class<?> cls) {
+	public static SaveableResult run(Class<?> cls) {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
 		bm.setLookupTable(lookupTable);
 		bm.setCallbackHandler(callbackHandler);
@@ -91,7 +94,7 @@ public class Benchmarker {
 		return bm.getResult();
 	}
 
-	public static PackageResult run(Package pkg) {
+	public static SaveableResult run(Package pkg) {
 		PackageResult packResult = new PackageResult();
 		System.out.println(pkg.getName());
 

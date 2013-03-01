@@ -7,8 +7,8 @@ import java.util.List;
 
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Lookup;
-import net.cammann.results.ClassResult;
 import net.cammann.results.MethodResult;
+import net.cammann.results.Result;
 
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ public class LookupParameterTest {
 	public void test() {
 		Benchmarker.addLookup("key", 464);
 		Benchmarker.addLookup("key2", "Villa");
-		ClassResult pkg = Benchmarker.run(LookupParameterTest.class);
+		Result pkg = Benchmarker.run(LookupParameterTest.class);
 
 
 		ParameterisedMethod m1 = pkg.getParameterisedMethodsTested().get(0);

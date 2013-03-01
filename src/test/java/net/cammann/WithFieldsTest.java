@@ -7,8 +7,8 @@ import java.util.List;
 
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
-import net.cammann.results.ClassResult;
 import net.cammann.results.MethodResult;
+import net.cammann.results.Result;
 
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ public class WithFieldsTest {
 
 	@Test
 	public void test() {
-		ClassResult pkg = Benchmarker.run(WithFieldsTest.class);
+		Result pkg = Benchmarker.run(WithFieldsTest.class);
 
 		ParameterisedMethod m1 = pkg.getParameterisedMethodsTested().get(0);
 		ParameterisedMethod m2 = pkg.getParameterisedMethodsTested().get(1);
