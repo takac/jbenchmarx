@@ -42,15 +42,6 @@ public class PackageResult extends SaveableResult {
 	}
 
 	@Override
-	public Map<ParameterisedMethod, List<MethodResult>> getMethodResults() {
-		Map<ParameterisedMethod, List<MethodResult>> results = new HashMap<ParameterisedMethod, List<MethodResult>>();
-		for (ClassResult cls : classResults.values()) {
-			results.putAll(cls.getMethodResults());
-		}
-		return results;
-	}
-
-	@Override
 	public List<MethodResultStore> getMethodResults(Method m) {
 		for (ClassResult cls : classResults.values()) {
 			List<MethodResultStore> results = cls.getMethodResults(m);
@@ -68,5 +59,13 @@ public class PackageResult extends SaveableResult {
 		return list;
 	}
 
+	@Override
+	public List<MethodResult> getMethodResults() {
+		List<MethodResult> all = new ArrayList<MethodResult>();
+		for (ClassResult c : classResults.values()) {
+			all.addAll(c.getMethodResults());
+		}
+		return all;
+	}
 
 }

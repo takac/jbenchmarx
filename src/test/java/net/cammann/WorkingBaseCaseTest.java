@@ -1,7 +1,7 @@
-package net.cammann.working;
-import net.cammann.Benchmarker;
+package net.cammann;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
+import net.cammann.annotations.Range;
 import net.cammann.classesToTest.StringJoinExample;
 
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class WorkingBaseCaseTest {
 	}
 
 	@Benchmark(10)
-	public int otherMethod(@Fixed("10") double reps) {
+	public int otherMethod(@Range({"10", "2", "99.992"}) double reps) {
 		int total = 0;
 		for (int i = 0; i < (reps * 1); i++) {
 			total += i;
@@ -39,6 +39,7 @@ public class WorkingBaseCaseTest {
 		return total;
 	}
 
+	// Test normal functionality
 	@Test
 	public void testOne() {
 		Benchmarker.run(WorkingBaseCaseTest.class);

@@ -3,9 +3,7 @@ package net.cammann;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Range;
@@ -25,14 +23,16 @@ public class RangeTest {
 	public void test() {
 		Result pkg = Benchmarker.run(RangeTest.class);
 
-		Map<ParameterisedMethod, List<MethodResult>> results = pkg.getMethodResults();
-		for (List<MethodResult> methods : results.values()) {
+		List<ParameterisedMethod> tested = pkg.getParameterisedMethodsTested();
+
+		for (int i = 0; i < tested.size(); i++) {
+			List<MethodResult> methods = pkg.getMethodResults(tested.get(i));
 			assertEquals(10, methods.size());
 		}
-		Iterator<ParameterisedMethod> args = results.keySet().iterator();
-		int one = (Integer) args.next().getParameters()[0];
-		int two = (Integer) args.next().getParameters()[0];
-		int three = (Integer) args.next().getParameters()[0];
+
+		int one = (Integer) tested.get(0).getParameters()[0];
+		int two = (Integer) tested.get(1).getParameters()[0];
+		int three = (Integer) tested.get(2).getParameters()[0];
 		if(one == 1) {
 			if(two == 5) {
 				assertEquals(30, three);

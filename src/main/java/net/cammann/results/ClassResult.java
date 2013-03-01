@@ -60,17 +60,6 @@ public class ClassResult extends SaveableResult {
 	}
 
 	@Override
-	public Map<ParameterisedMethod, List<MethodResult>> getMethodResults() {
-		Map<ParameterisedMethod, List<MethodResult>> results = new HashMap<ParameterisedMethod, List<MethodResult>>();
-		for (MethodResultStore m : methodToResultMap.values()) {
-			for (ParameterisedMethod i : m.getParameterisedMethodsTested()) {
-				results.put(i, m.getResults(i));
-			}
-		}
-		return results;
-	}
-
-	@Override
 	public void printResult() {
 		for (MethodResultStore range : methodToResultMap.values()) {
 			for (ParameterisedMethod paramMethod : range.getParameterisedMethodsTested()) {
@@ -131,6 +120,15 @@ public class ClassResult extends SaveableResult {
 
 	public void setClassTested(Class<?> cls) {
 		this.classTested = cls;
+	}
+
+	@Override
+	public List<MethodResult> getMethodResults() {
+		List<MethodResult> all = new ArrayList<MethodResult>();
+		for (MethodResultStore m : methodToResultMap.values()) {
+			all.addAll(m.getMethodResults());
+		}
+		return all;
 	}
 
 }

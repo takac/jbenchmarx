@@ -99,7 +99,11 @@ public class BenchmarkObjectInstance {
 				} else if (field.getAnnotation(Lookup.class) != null) {
 					Lookup lookupAnnotation = field.getAnnotation(Lookup.class);
 					String key = lookupAnnotation.value();
-					field.set(instance, lookup.get(key));
+					Object value = lookup.get(key);
+					if (value == null) {
+						throw new LookupException("value does not exist");
+					}
+					field.set(instance, value);
 				} else if (field.getAnnotation(Callback.class) != null) {
 					Callback callback = field.getAnnotation(Callback.class);
 					String key = callback.value();

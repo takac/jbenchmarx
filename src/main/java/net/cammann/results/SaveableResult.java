@@ -26,4 +26,8 @@ public abstract class SaveableResult implements Result {
 	public File save(Format format, String filename) {
 		return save(format, new File(filename));
 	}
+
+	public File save(String format, String filename) {
+		return save(Format.valueOf(format.toUpperCase()), filename);
+	}
 }

@@ -24,7 +24,7 @@ public class CSVExport implements Exporter {
 
 	private void writeHeader() throws IOException {
 		for (ParameterisedMethod method : result.getParameterisedMethodsTested()) {
-			fout.write((method + ", ").getBytes());
+			fout.write((method.getMethod().getName() + ", ").getBytes());
 		}
 	}
 
@@ -52,7 +52,7 @@ public class CSVExport implements Exporter {
 					fout.write(", ".getBytes());
 				}
 				fout.write("\n".getBytes());
-				if (check == result.getMethodResults().size()) {
+				if (check == result.getParameterisedMethodsTested().size()) {
 					break;
 				}
 			}

@@ -6,11 +6,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import net.cammann.ParameterisedMethod;
 
-public class MethodResultStore {
+public class MethodResultStore extends SaveableResult {
 
 	private final Map<ParameterisedMethod, ParameterisedMethodResult> results;
 
@@ -20,7 +19,7 @@ public class MethodResultStore {
 		this();
 		this.method = method;
 	}
-	
+
 	public MethodResultStore() {
 		results = new HashMap<ParameterisedMethod, ParameterisedMethodResult>();
 	}
@@ -33,21 +32,8 @@ public class MethodResultStore {
 		this.method = method;
 	}
 
-	public Set<ParameterisedMethod> getParameterisedMethodsTested() {
-		return results.keySet();
-	}
-
-	private void saveResult(MethodResult r) {
-		ParameterisedMethodResult resultList = results.get(r.getParameterisedMethod());
-		if (resultList == null) {
-			resultList = new ParameterisedMethodResult();
-			results.put(r.getParameterisedMethod(), resultList);
-		}
-		resultList.addResult(r);
-		System.out.println(r);
-	}
-
-	public List<MethodResult> getAllMethodResults() {
+	@Override
+	public List<MethodResult> getMethodResults() {
 		List<MethodResult> all = new ArrayList<MethodResult>();
 		for (ParameterisedMethodResult i : results.values()) {
 			all.addAll(i.getResults());
@@ -57,7 +43,7 @@ public class MethodResultStore {
 
 	public AveragedResult getMethodAverage() {
 		AveragedResult avg = new AveragedResult();
-		List<MethodResult> all = getAllMethodResults();
+		List<MethodResult> all = getMethodResults();
 
 		avg.setIterations(all.size());
 		avg.setAverageTime(100);
@@ -72,6 +58,12 @@ public class MethodResultStore {
 		return avg;
 	}
 
+
+	public void clear() {
+		results.clear();
+	}
+
+
 	public void recordResult(Object[] args, long startNanoSeconds, long endNanoSeconds, Object returned) {
 		recordResult(new ParameterisedMethod(method, args), startNanoSeconds, endNanoSeconds, returned);
 	}
@@ -80,20 +72,24 @@ public class MethodResultStore {
 		recordResult(new ParameterisedMethod(method, args), startNanoSeconds, endNanoSeconds);
 	}
 
-
 	public void recordResult(ParameterisedMethod args, long startNanoSecs, long endNanoSecs) {
 		MethodResult r = new MethodResult(args, startNanoSecs, endNanoSecs);
 		saveResult(r);
 	}
-
 
 	public void recordResult(ParameterisedMethod args, long startNanoSecs, long endNanoSeconds, Object returned) {
 		MethodResult r = new MethodResult(args, startNanoSecs, endNanoSeconds, returned);
 		saveResult(r);
 	}
 
-	public void clear() {
-		results.clear();
+	private void saveResult(MethodResult r) {
+		ParameterisedMethodResult resultList = results.get(r.getParameterisedMethod());
+		if (resultList == null) {
+			resultList = new ParameterisedMethodResult();
+			results.put(r.getParameterisedMethod(), resultList);
+		}
+		resultList.addResult(r);
+		System.out.println(r);
 	}
 
 	public List<MethodResult> getResults(ParameterisedMethod args) {
@@ -102,6 +98,32 @@ public class MethodResultStore {
 			return Collections.emptyList();
 		}
 		return pmr.getResults();
+	}
+
+	@Override
+	public void printResult() {
+		throw new IllegalStateException();
+	}
+
+	@Override
+	public List<MethodResultStore> getMethodResults(Method m) {
+		List<MethodResultStore> single = new ArrayList<MethodResultStore>();
+		single.add(this);
+		return single;
+	}
+
+	@Override
+	public List<MethodResult> getMethodResults(ParameterisedMethod a) {
+		ParameterisedMethodResult res = results.get(a);
+		if (res == null) {
+			return Collections.emptyList();
+		}
+		return res.getResults();
+	}
+
+	@Override
+	public List<ParameterisedMethod> getParameterisedMethodsTested() {
+		return new ArrayList<ParameterisedMethod>(results.keySet());
 	}
 
 }

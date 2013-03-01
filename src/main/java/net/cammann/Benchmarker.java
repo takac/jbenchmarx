@@ -30,6 +30,9 @@ public class Benchmarker {
 	}
 
 	public static void addLookup(String key, Object value) {
+		if(value == null || key == null) {
+			throw new NullPointerException("Cannot set null key/value lookup");
+		}
 		lookupTable.put(key, value);
 	}
 

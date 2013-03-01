@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.cammann.Benchmarker;
 import net.cammann.annotations.BenchConstructor;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
@@ -62,6 +63,10 @@ public class StringJoinExample {
 			sb.append(i);
 		}
 		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+		Benchmarker.run(StringJoinExample.class).save("csv", "stringjoin.csv");
 	}
 
 }

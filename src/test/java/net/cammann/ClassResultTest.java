@@ -67,8 +67,8 @@ public class ClassResultTest {
 		assertEquals(2, classResult.getParameterisedMethodsTested().size());
 		MethodResultStore returned = classResult.getMethodResults(testMethodOne).get(0);
 		assertEquals(methodRangeResultOne, returned);
-		assertEquals(1, returned.getAllMethodResults().size());
-		assertEquals(90, returned.getAllMethodResults().get(0).getRuntime());
+		assertEquals(1, returned.getMethodResults().size());
+		assertEquals(90, returned.getMethodResults().get(0).getRuntime());
 	}
 
 	@Test
@@ -104,7 +104,7 @@ public class ClassResultTest {
 		classResult.add(methodResult);
 		assertEquals(1, classResult.getParameterisedMethodsTested().size());
 		assertEquals(1, classResult.getMethodResults().size());
-		assertEquals(5, classResult.getMethodResults().values().iterator().next().get(0).getRuntime());
+		assertEquals(5, classResult.getMethodResults().get(0).getRuntime());
 	}
 
 	// +getMethodResults(ParameterisedMethod a)
