@@ -6,12 +6,12 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 import net.cammann.annotations.Benchmark;
-import net.cammann.annotations.Callback;
-import net.cammann.annotations.Fixed;
-import net.cammann.annotations.Lookup;
 import net.cammann.annotations.NoReturn;
 import net.cammann.annotations.Range;
 import net.cammann.callback.CallbackHandler;
+import net.cammann.objectbuilder.AnnotationObjectBuilderFactory;
+import net.cammann.objectbuilder.BuildContextImpl;
+import net.cammann.objectbuilder.ObjectBuilder;
 import net.cammann.results.MethodResultStore;
 
 public class BenchmarkMethodInstance {
@@ -20,10 +20,7 @@ public class BenchmarkMethodInstance {
 	private Object[] arguments;
 	private int largestRange = 1;
 	private final MethodResultStore results;
-	private Map<String, Object> lookup;
-	private CallbackHandler callbackHandler;
-	private int runNumber = 0;
-	private int rangeRound = 0;
+	private final BuildContextImpl bctx = new BuildContextImpl();
 
 	public BenchmarkMethodInstance(Method method) {
 		if (!method.isAnnotationPresent(Benchmark.class)) {
@@ -39,9 +36,9 @@ public class BenchmarkMethodInstance {
 		results.clear();
 		for (int k = 0; k < largestRange; k++) {
 			for (int run = 0; run < executions(); run++) {
-				runNumber = run + 1;
-				rangeRound = k;
-				instance.setFields(runNumber);
+				bctx.setRangeRound(k);
+				bctx.setRunNumber(run + 1);
+				instance.setFields(run + 1);
 				setMethodArguments();
 				invokeMethod(instance.getInstance());
 			}
@@ -103,42 +100,21 @@ public class BenchmarkMethodInstance {
 
 	}
 
-	// TODO
-	// Create method to check for more than one benchmark annotaiton
 	private Object extractObject(Annotation[] array, Class<?> type) {
 		Object obj = null;
+
+		AnnotationObjectBuilderFactory factory = new AnnotationObjectBuilderFactory();
 		for (Annotation a : array) {
-			if (a.annotationType().equals(Fixed.class)) {
-				if (obj != null) {
-					throw new BenchmarkException("Can only set one annotation for this field/parameter");
-				}
-				Fixed fixed = (Fixed) a;
-				String var = fixed.value();
-				obj = BenchmarkUtil.createObjectFromString(var, type);
-			} else if (a.annotationType().equals(Range.class)) {
-				if (obj != null) {
-					throw new BenchmarkException("Can only set one annotation for this field/parameter");
-				}
-				Range range = (Range) a;
-				String[] rangeVals = range.value();
-				int n = rangeRound % rangeVals.length;
-				obj = BenchmarkUtil.createObjectFromString(rangeVals[n], type);
-			} else if (a.annotationType().equals(Lookup.class)) {
-				if (obj != null) {
-					throw new BenchmarkException("Can only set one annotation for this field/parameter");
-				}
-				Lookup lookupAnnotation = (Lookup) a;
-				String key = lookupAnnotation.value();
-				obj = lookup.get(key);
-			} else if (a.annotationType().equals(Callback.class)) {
-				if (obj != null) {
-					throw new BenchmarkException("Can only set one annotation for this field/parameter");
-				}
-				Callback callback = (Callback) a;
-				String key = callback.value();
-				obj = callbackHandler.call(key, method, runNumber);
+			ObjectBuilder builder = factory.getBuilder(a, bctx);
+			if (builder == null) {
+				continue;
 			}
+			if (obj != null) {
+				throw new BenchmarkException("Can only set one annotation for this field/parameter");
+			}
+			obj = builder.get(type);
 		}
+
 		return obj;
 	}
 
@@ -174,18 +150,18 @@ public class BenchmarkMethodInstance {
 	}
 
 	public void setLookup(Map<String, Object> lookup) {
-		this.lookup = lookup;
+		bctx.setLookupMap(lookup);
 	}
 
 	public Map<String, Object> getLookup() {
-		return lookup;
+		return bctx.getLookupMap();
 	}
 
 	public CallbackHandler getCallbackHandler() {
-		return callbackHandler;
+		return bctx.getCallbackHandler();
 	}
 
 	public void setCallbackHandler(CallbackHandler callbackHandler) {
-		this.callbackHandler = callbackHandler;
+		bctx.setCallbackHandler(callbackHandler);
 	}
 }
