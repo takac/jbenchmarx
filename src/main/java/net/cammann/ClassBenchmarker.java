@@ -3,64 +3,56 @@ package net.cammann;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import net.cammann.annotations.Benchmark;
-import net.cammann.callback.CallbackHandler;
 import net.cammann.results.ClassResult;
 
 public class ClassBenchmarker {
 
 	private final Class<?> clazz;
-	private final List<BenchmarkMethodInstance> methods = new ArrayList<BenchmarkMethodInstance>();
+	private final List<BenchmarkMethodInstance> bnchmarkMethodsInstances = new ArrayList<BenchmarkMethodInstance>();
 	private final ClassResult results;
-	private final BenchmarkObjectInstance instance;
+	private final BenchmarkClassInstance classInstance;
+	private final ParameterResolver parameterResolver;
 	private List<Method> methodsToTest = null;
-	private Map<String, Object> lookup;
-	private CallbackHandler callbackHandler;
 
-	public ClassBenchmarker(Class<?> clazz) {
+	public ClassBenchmarker(Class<?> clazz, ParameterResolver parameterResolver) {
 		this.clazz = clazz;
 		results = new ClassResult(clazz);
-		instance = new BenchmarkObjectInstance(clazz);
+		this.parameterResolver = parameterResolver;
+		classInstance = new BenchmarkClassInstance(clazz, parameterResolver);
 	}
 
 	public void run() {
-		instance.setLookup(lookup);
-		instance.setHandler(callbackHandler);
 		if (methodsToTest == null) {
 			findBenchmarkMethods();
 		} else {
-			methods.clear();
+			bnchmarkMethodsInstances.clear();
 			for (Method i : methodsToTest) {
-				BenchmarkMethodInstance inst = new BenchmarkMethodInstance(i);
-				inst.setLookup(lookup);
-				inst.setCallbackHandler(callbackHandler);
-				methods.add(inst);
+				BenchmarkMethodInstance inst = new BenchmarkMethodInstance(i, parameterResolver);
+				bnchmarkMethodsInstances.add(inst);
 			}
 		}
-		if (methods.size() == 0) {
+		if (bnchmarkMethodsInstances.size() == 0) {
 			return;
 		}
-		instance.newInstance();
+		classInstance.newInstance();
 		runBenchmarkMethods();
 	}
 
 	private void findBenchmarkMethods() {
-		methods.clear();
+		bnchmarkMethodsInstances.clear();
 		for (Method i : clazz.getDeclaredMethods()) {
 			if (i.isAnnotationPresent(Benchmark.class)) {
-				BenchmarkMethodInstance inst = new BenchmarkMethodInstance(i);
-				inst.setLookup(lookup);
-				inst.setCallbackHandler(callbackHandler);
-				methods.add(inst);
+				BenchmarkMethodInstance inst = new BenchmarkMethodInstance(i, parameterResolver);
+				bnchmarkMethodsInstances.add(inst);
 			}
 		}
 	}
 
 	private void runBenchmarkMethods() {
-		for (BenchmarkMethodInstance m : methods) {
-			m.executeMethodBenchmark(instance);
+		for (BenchmarkMethodInstance m : bnchmarkMethodsInstances) {
+			m.executeMethodBenchmark(classInstance);
 			results.add(m.getResults());
 		}
 	}
@@ -73,20 +65,7 @@ public class ClassBenchmarker {
 		return results;
 	}
 
-	public void setLookupTable(Map<String, Object> lookup) {
-		this.lookup = lookup;
+	public ParameterResolver getParameterResolver() {
+		return parameterResolver;
 	}
-
-	public Map<String, Object> getLookup() {
-		return lookup;
-	}
-
-	public CallbackHandler getCallbackHandler() {
-		return callbackHandler;
-	}
-
-	public void setCallbackHandler(CallbackHandler callbackHandler) {
-		this.callbackHandler = callbackHandler;
-	}
-
 }

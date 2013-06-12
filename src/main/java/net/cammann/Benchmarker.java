@@ -2,14 +2,11 @@ package net.cammann;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import net.cammann.annotations.Benchmark;
-import net.cammann.callback.CallbackHandler;
 import net.cammann.callback.CallbackListener;
 import net.cammann.results.PackageResult;
 import net.cammann.results.SaveableResult;
@@ -23,21 +20,17 @@ import org.reflections.util.FilterBuilder;
 
 public class Benchmarker {
 
-	private static CallbackHandler callbackHandler = new CallbackHandler();
-	private static Map<String, Object> lookupTable = new HashMap<String, Object>();
+	private static final ParameterResolver parameterResolver = new ParameterResolver();
 
 	public static void addCallback(String key, CallbackListener<?> listener) {
-		callbackHandler.addCallbackListener(key, listener);
+		parameterResolver.addCallback(key, listener);
 	}
 
 	public static void addLookup(String key, Object value) {
-		if(value == null || key == null) {
-			throw new NullPointerException("Cannot set null key/value lookup");
-		}
-		lookupTable.put(key, value);
+		parameterResolver.addLookup(key, value);
 	}
 
-	public static PackageResult run(Class<?>... classes) {
+	public static SaveableResult run(Class<?>... classes) {
 
 		if (classes.length == 0) {
 			try {
@@ -52,9 +45,7 @@ public class Benchmarker {
 
 		PackageResult pkg = new PackageResult();
 		for (Class<?> cls : classes) {
-			ClassBenchmarker bm = new ClassBenchmarker(cls);
-			bm.setLookupTable(lookupTable);
-			bm.setCallbackHandler(callbackHandler);
+			ClassBenchmarker bm = new ClassBenchmarker(cls, parameterResolver);
 			bm.run();
 			pkg.add(bm.getResult());
 		}
@@ -83,26 +74,13 @@ public class Benchmarker {
 	}
 
 	public static SaveableResult run(Class<?> cls, String... methodNames) {
-		ClassBenchmarker bm = new ClassBenchmarker(cls);
-		bm.setLookupTable(lookupTable);
-		bm.setCallbackHandler(callbackHandler);
+		ClassBenchmarker bm = new ClassBenchmarker(cls, parameterResolver);
 		List<Method> realMethods = new ArrayList<Method>();
 		for (String name : methodNames) {
 			realMethods.add(lookupMethod(cls, name));
 		}
 		bm.overwriteMethodsToBenchmark(realMethods);
 		bm.run();
-		return bm.getResult();
-	}
-
-	public static SaveableResult run(Class<?> cls) {
-		ClassBenchmarker bm = new ClassBenchmarker(cls);
-		bm.setLookupTable(lookupTable);
-		bm.setCallbackHandler(callbackHandler);
-		bm.run();
-		PackageResult pkg = new PackageResult();
-		pkg.add(bm.getResult());
-		pkg.printResult();
 		return bm.getResult();
 	}
 
@@ -125,8 +103,7 @@ public class Benchmarker {
 		Set<Class<? extends Object>> allClasses = reflections.getSubTypesOf(Object.class);
 		for (Class<? extends Object> cls : allClasses) {
 			System.out.println(cls.getName());
-			ClassBenchmarker bm = new ClassBenchmarker(cls);
-			bm.setCallbackHandler(callbackHandler);
+			ClassBenchmarker bm = new ClassBenchmarker(cls, parameterResolver);
 			bm.run();
 			packResult.add(bm.getResult());
 		}
@@ -134,5 +111,7 @@ public class Benchmarker {
 		return packResult;
 
 	}
+
+	// TODO run all annotations
 
 }

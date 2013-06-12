@@ -3,12 +3,10 @@ package net.cammann;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.NoReturn;
 import net.cammann.annotations.Range;
-import net.cammann.callback.CallbackHandler;
 import net.cammann.objectbuilder.AnnotationObjectBuilderFactory;
 import net.cammann.objectbuilder.BuildContextImpl;
 import net.cammann.objectbuilder.ObjectBuilder;
@@ -20,19 +18,20 @@ public class BenchmarkMethodInstance {
 	private Object[] arguments;
 	private int largestRange = 1;
 	private final MethodResultStore results;
-	private final BuildContextImpl bctx = new BuildContextImpl();
+	private final BuildContextImpl bctx;
 
-	public BenchmarkMethodInstance(Method method) {
+	public BenchmarkMethodInstance(Method method, ParameterResolver resolver) {
 		if (!method.isAnnotationPresent(Benchmark.class)) {
 			throw new BenchmarkException("Method does not have benchmark annotation");
 		}
 		results = new MethodResultStore(method);
 		method.setAccessible(true);
 		this.method = method;
+		this.bctx = new BuildContextImpl(resolver);
 		checkMaxRange();
 	}
 
-	public MethodResultStore executeMethodBenchmark(BenchmarkObjectInstance instance) {
+	public MethodResultStore executeMethodBenchmark(BenchmarkClassInstance instance) {
 		results.clear();
 		for (int k = 0; k < largestRange; k++) {
 			for (int run = 0; run < executions(); run++) {
@@ -149,19 +148,4 @@ public class BenchmarkMethodInstance {
 		return method;
 	}
 
-	public void setLookup(Map<String, Object> lookup) {
-		bctx.setLookupMap(lookup);
-	}
-
-	public Map<String, Object> getLookup() {
-		return bctx.getLookupMap();
-	}
-
-	public CallbackHandler getCallbackHandler() {
-		return bctx.getCallbackHandler();
-	}
-
-	public void setCallbackHandler(CallbackHandler callbackHandler) {
-		bctx.setCallbackHandler(callbackHandler);
-	}
 }

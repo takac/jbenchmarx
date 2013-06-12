@@ -34,6 +34,7 @@ public class LookupFieldTest {
 	public void testSetField() {
 		Benchmarker.addLookup("k1", 91.2f);
 		Benchmarker.addLookup("k2", "bobsled");
+		// TODO test set null object
 		Result pkg = Benchmarker.run(LookupFieldTest.class);
 
 		ParameterisedMethod m1 = pkg.getParameterisedMethodsTested().get(0);
@@ -60,7 +61,7 @@ public class LookupFieldTest {
 		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void testSetNullLookup() {
 		Benchmarker.addLookup("key", null);
 	}

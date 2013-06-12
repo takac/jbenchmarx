@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import net.cammann.Benchmarker;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
-import net.cammann.results.PackageResult;
+import net.cammann.results.SaveableResult;
 
 public class ReverseStringFixed {
 
@@ -45,7 +45,7 @@ public class ReverseStringFixed {
 	}
 
 	public static void main(String[] args) {
-		PackageResult run = Benchmarker.run();
+		SaveableResult run = Benchmarker.run();
 		Method method = run.getMethodsTested().iterator().next();
 		System.out.println(run.getMethodResult(method).get(0));
 	}

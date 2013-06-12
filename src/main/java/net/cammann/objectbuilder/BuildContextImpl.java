@@ -2,19 +2,21 @@ package net.cammann.objectbuilder;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Map;
 
+import net.cammann.ParameterResolver;
 import net.cammann.callback.CallbackEvent;
-import net.cammann.callback.CallbackHandler;
 
 public class BuildContextImpl implements BuildContext {
 
 	private int runNumber;
 	private int rangeRound;
-	private CallbackHandler callbackHandler;
-	private Map<String, Object> lookupMap;
 	private Method method;
 	private Field field;
+	private final ParameterResolver resolver;
+
+	public BuildContextImpl(ParameterResolver resolver) {
+		this.resolver = resolver;
+	}
 
 	public void setRunNumber(int runNumber) {
 		this.runNumber = runNumber;
@@ -52,22 +54,6 @@ public class BuildContextImpl implements BuildContext {
 		this.rangeRound = rangeRound;
 	}
 
-	public void setLookupMap(Map<String, Object> lookupMap) {
-		this.lookupMap = lookupMap;
-	}
-
-	public Map<String, Object> getLookupMap() {
-		return lookupMap;
-	}
-
-	public void setCallbackHandler(CallbackHandler callbackHandler) {
-		this.callbackHandler = callbackHandler;
-	}
-
-	public CallbackHandler getCallbackHandler() {
-		return callbackHandler;
-	}
-
 	private CallbackEvent createEvent() {
 		CallbackEvent event = new CallbackEvent();
 		event.setRun(runNumber);
@@ -81,12 +67,12 @@ public class BuildContextImpl implements BuildContext {
 
 	@Override
 	public Object callback(String key) {
-		return callbackHandler.call(key, createEvent());
+		return resolver.call(key, createEvent());
 	}
 
 	@Override
 	public Object lookup(String key) {
-		return lookupMap.get(key);
+		return resolver.lookup(key);
 	}
 
 }

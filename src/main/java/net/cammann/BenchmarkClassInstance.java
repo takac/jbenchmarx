@@ -4,25 +4,23 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
 
 import net.cammann.annotations.BenchConstructor;
 import net.cammann.annotations.Callback;
 import net.cammann.annotations.Fixed;
 import net.cammann.annotations.Lookup;
 import net.cammann.annotations.Range;
-import net.cammann.callback.CallbackHandler;
 
-public class BenchmarkObjectInstance {
+public class BenchmarkClassInstance {
 
 	private final Class<?> type;
 	private Object instance;
 	private Object constructorArgs[];
-	private Map<String, Object> lookup;
-	private CallbackHandler handler;
+	private final ParameterResolver parameterResolver;
 
-	public BenchmarkObjectInstance(Class<?> type) {
+	public BenchmarkClassInstance(Class<?> type, ParameterResolver parameterResolver) {
 		this.type = type;
+		this.parameterResolver = parameterResolver;
 	}
 
 	public Object newInstance() {
@@ -53,9 +51,6 @@ public class BenchmarkObjectInstance {
 	}
 
 	private void setConstructorArgs(Constructor<?> c) {
-		if (handler == null || lookup == null) {
-			throw new NullPointerException("Lookup or Callback handler has not been set");
-		}
 		int count = 0;
 		constructorArgs = new Object[c.getParameterTypes().length];
 		for (Annotation[] array : c.getParameterAnnotations()) {
@@ -70,7 +65,7 @@ public class BenchmarkObjectInstance {
 				} else if (a.annotationType().equals(Lookup.class)) {
 					Lookup lookupAnnotation = (Lookup) a;
 					String key = lookupAnnotation.value();
-					constructorArgs[count] = lookup.get(key);
+					constructorArgs[count] = parameterResolver.lookup(key);
 					set = true;
 				} else if (a.annotationType().equals(Callback.class)) {
 					throw new BenchmarkException("Cannot use callback for constructor");
@@ -92,9 +87,6 @@ public class BenchmarkObjectInstance {
 	 *            0 for after construtor, > 0 during testing
 	 */
 	public void setFields(int run) {
-		if (handler == null || lookup == null) {
-			throw new NullPointerException("Lookup or Callback handler has not been set");
-		}
 		try {
 			for (Field field : type.getDeclaredFields()) {
 				field.setAccessible(true);
@@ -105,7 +97,7 @@ public class BenchmarkObjectInstance {
 				} else if (field.getAnnotation(Lookup.class) != null) {
 					Lookup lookupAnnotation = field.getAnnotation(Lookup.class);
 					String key = lookupAnnotation.value();
-					Object value = lookup.get(key);
+					Object value = parameterResolver.lookup(key);
 					if (value == null) {
 						throw new LookupException("value does not exist");
 					}
@@ -113,7 +105,7 @@ public class BenchmarkObjectInstance {
 				} else if (field.getAnnotation(Callback.class) != null) {
 					Callback callback = field.getAnnotation(Callback.class);
 					String key = callback.value();
-					field.set(instance, handler.call(key, field, run));
+					field.set(instance, parameterResolver.call(key, field, run));
 				}
 			}
 		} catch (IllegalArgumentException e) {
@@ -126,22 +118,5 @@ public class BenchmarkObjectInstance {
 	public Object getInstance() {
 		return instance;
 	}
-
-	public void setLookup(Map<String, Object> lookup) {
-		this.lookup = lookup;
-	}
-
-	public Map<String, Object> getLookup() {
-		return lookup;
-	}
-
-	public CallbackHandler getHandler() {
-		return handler;
-	}
-
-	public void setHandler(CallbackHandler handler) {
-		this.handler = handler;
-	}
-
 
 }
