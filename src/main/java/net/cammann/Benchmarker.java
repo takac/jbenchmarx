@@ -34,6 +34,18 @@ public class Benchmarker {
 	}
 
 	public static PackageResult run(Class<?>... classes) {
+
+		if (classes.length == 0) {
+			try {
+				StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+				Class<?> cls = Class.forName(stackTrace[2].getClassName());
+				classes = new Class[] { cls };
+			} catch (ClassNotFoundException e) {
+				throw new BenchmarkException("Failed to find class", e);
+			}
+
+		}
+
 		PackageResult pkg = new PackageResult();
 		for (Class<?> cls : classes) {
 			ClassBenchmarker bm = new ClassBenchmarker(cls);
@@ -60,11 +72,13 @@ public class Benchmarker {
 		if (method == null) {
 			throw new BenchmarkException("No method name: " + methodName);
 		}
-
+		if (method.getAnnotation(Benchmark.class) == null) {
+			throw new BenchmarkException("Method does not have benchmark annotation");
+		}
 		return method;
 	}
 
-	public static ClassResult run(Class<?> cls, String... methodNames) {
+	public static SaveableResult run(Class<?> cls, String... methodNames) {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
 		bm.setLookupTable(lookupTable);
 		bm.setCallbackHandler(callbackHandler);
