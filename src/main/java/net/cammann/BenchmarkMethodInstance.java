@@ -6,40 +6,40 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 import net.cammann.annotations.Benchmark;
-import net.cammann.annotations.Callback;
-import net.cammann.annotations.Fixed;
-import net.cammann.annotations.Lookup;
 import net.cammann.annotations.NoReturn;
 import net.cammann.annotations.Range;
 import net.cammann.callback.CallbackHandler;
-import net.cammann.results.MethodRangeResult;
+import net.cammann.objectbuilder.AnnotationObjectBuilderFactory;
+import net.cammann.objectbuilder.BuildContextImpl;
+import net.cammann.objectbuilder.ObjectBuilder;
+import net.cammann.results.MethodResultStore;
 
 public class BenchmarkMethodInstance {
 
 	private final Method method;
 	private Object[] arguments;
-	private static final int NUM_RUNS = 1;
-	private int rangeSize = 1;
-	private final MethodRangeResult results;
-	private Map<String, Object> lookup;
-	private CallbackHandler callbackHandler;
+	private int largestRange = 1;
+	private final MethodResultStore results;
+	private final BuildContextImpl bctx = new BuildContextImpl();
 
 	public BenchmarkMethodInstance(Method method) {
 		if (!method.isAnnotationPresent(Benchmark.class)) {
 			throw new BenchmarkException("Method does not have benchmark annotation");
 		}
-		results = new MethodRangeResult(method);
+		results = new MethodResultStore(method);
 		method.setAccessible(true);
 		this.method = method;
-		assessRange();
+		checkMaxRange();
 	}
 
-	public MethodRangeResult executeMethodBenchmark(BenchmarkObjectInstance instance) {
+	public MethodResultStore executeMethodBenchmark(BenchmarkObjectInstance instance) {
 		results.clear();
-		for (int k = 0; k < rangeSize; k++) {
+		for (int k = 0; k < largestRange; k++) {
 			for (int run = 0; run < executions(); run++) {
+				bctx.setRangeRound(k);
+				bctx.setRunNumber(run + 1);
 				instance.setFields(run + 1);
-				setMethodArguments(k, run + 1);
+				setMethodArguments();
 				invokeMethod(instance.getInstance());
 			}
 		}
@@ -74,69 +74,65 @@ public class BenchmarkMethodInstance {
 		return method.getAnnotation(Benchmark.class).value();
 	}
 
-	public void setMethodArguments(int rangeSpec, int runNumber) {
+	public void setMethodArguments() {
 		if (method.getParameterTypes().length == 0) {
-			arguments = null;
+			arguments = new Object[]{};
 			return;
 		}
 
 		arguments = new Object[method.getParameterTypes().length];
 		int count = 0;
-		boolean set = false;
 		for (Annotation[] array : method.getParameterAnnotations()) {
 			if (array.length == 0) {
-				throw new BenchmarkException("Argument needs to be set for: " + method.getName() + " in "
+				throw new BenchmarkException("Annotation for parameter needs to be set: " + method.getName()
+						+ " in "
 						+ method.getDeclaringClass().getName());
 			}
-			for (Annotation a : array) {
-				Class<?> type = method.getParameterTypes()[count];
-				if (a.annotationType().equals(Fixed.class)) {
-					Fixed fixed = (Fixed) a;
-					String var = fixed.value();
-					arguments[count] = BenchmarkUtil.createObjectFromString(var, type);
-					set = true;
-				} else if (a.annotationType().equals(Range.class)) {
-					Range range = (Range) a;
-					String[] rangeVals = range.value();
-					int n = rangeSpec % rangeVals.length;
-					arguments[count] = BenchmarkUtil.createObjectFromString(rangeVals[n], type);
-					set = true;
-				} else if (a.annotationType().equals(Lookup.class)) {
-					Lookup lookupAnnotation = (Lookup) a;
-					String key = lookupAnnotation.value();
-					arguments[count] = lookup.get(key);
-					set = true;
-				} else if (a.annotationType().equals(Callback.class)) {
-					Callback callback = (Callback) a;
-					String key = callback.value();
-					arguments[count] = callbackHandler.call(key, method, runNumber);
-					set = true;
-				}
-			}
-			if (!set) {
-				throw new BenchmarkException("Argument needs to be set for: " + method.getName() + " in "
+			Class<?> type = method.getParameterTypes()[count];
+			Object obj = extractObject(array, type);
+			if (obj == null) {
+				throw new BenchmarkException("Argument for benchmark cannot be null: " + method.getName() + " in "
 						+ method.getDeclaringClass().getName());
 			}
+			arguments[count] = obj;
 			count++;
 		}
 
 	}
 
-	private void assessRange() {
+	private Object extractObject(Annotation[] array, Class<?> type) {
+		Object obj = null;
+
+		AnnotationObjectBuilderFactory factory = new AnnotationObjectBuilderFactory();
+		for (Annotation a : array) {
+			ObjectBuilder builder = factory.getBuilder(a, bctx);
+			if (builder == null) {
+				continue;
+			}
+			if (obj != null) {
+				throw new BenchmarkException("Can only set one annotation for this field/parameter");
+			}
+			obj = builder.get(type);
+		}
+
+		return obj;
+	}
+
+	private void checkMaxRange() {
 		for (Annotation[] array : method.getParameterAnnotations()) {
 			for (Annotation a : array) {
 				if (a.annotationType().equals(Range.class)) {
 					Range range = (Range) a;
 					int len = range.value().length;
-					if (len > rangeSize) {
-						rangeSize = len;
+					if (len > largestRange) {
+						largestRange = len;
 					}
 				}
 			}
 		}
 	}
 
-	public MethodRangeResult getResults() {
+	public MethodResultStore getResults() {
 		return results;
 	}
 
@@ -154,18 +150,18 @@ public class BenchmarkMethodInstance {
 	}
 
 	public void setLookup(Map<String, Object> lookup) {
-		this.lookup = lookup;
+		bctx.setLookupMap(lookup);
 	}
 
 	public Map<String, Object> getLookup() {
-		return lookup;
+		return bctx.getLookupMap();
 	}
 
 	public CallbackHandler getCallbackHandler() {
-		return callbackHandler;
+		return bctx.getCallbackHandler();
 	}
 
 	public void setCallbackHandler(CallbackHandler callbackHandler) {
-		this.callbackHandler = callbackHandler;
+		bctx.setCallbackHandler(callbackHandler);
 	}
 }

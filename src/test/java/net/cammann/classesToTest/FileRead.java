@@ -1,4 +1,4 @@
-package net.cammann;
+package net.cammann.classesToTest;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.CharBuffer;
 
+import net.cammann.Benchmarker;
 import net.cammann.annotations.BeforeBenchmark;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Range;

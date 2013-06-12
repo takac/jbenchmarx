@@ -16,8 +16,7 @@ public class BenchmarkWithoutSetParamTest {
 
 	@Test(expected = BenchmarkException.class)
 	public void testUnsetParam() {
-		ClassBenchmarker bm = new ClassBenchmarker(BenchmarkWithoutSetParamTest.class);
-		bm.execute();
+		Benchmarker.run(BenchmarkWithoutSetParamTest.class);
 	}
 
 }

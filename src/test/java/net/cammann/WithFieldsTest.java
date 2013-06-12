@@ -1,16 +1,14 @@
-package net.cammann.working;
+package net.cammann;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import net.cammann.Benchmarker;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
-import net.cammann.results.ClassResult;
 import net.cammann.results.MethodResult;
+import net.cammann.results.Result;
 
 import org.junit.Test;
 
@@ -34,10 +32,12 @@ public class WithFieldsTest {
 
 	@Test
 	public void test() {
-		ClassResult pkg = Benchmarker.run(WithFieldsTest.class);
-		List<List<MethodResult>> results = new ArrayList<List<MethodResult>>(pkg.getMethodResults().values());
-		List<MethodResult> resultsOne = results.get(0);
-		List<MethodResult> resultsTwo = results.get(1);
+		Result pkg = Benchmarker.run(WithFieldsTest.class);
+
+		ParameterisedMethod m1 = pkg.getParameterisedMethodsTested().get(0);
+		ParameterisedMethod m2 = pkg.getParameterisedMethodsTested().get(1);
+		List<MethodResult> resultsOne = pkg.getMethodResults(m1);
+		List<MethodResult> resultsTwo = pkg.getMethodResults(m2);
 
 		if (resultsOne.size() == 200) {
 			for (MethodResult m : resultsOne) {

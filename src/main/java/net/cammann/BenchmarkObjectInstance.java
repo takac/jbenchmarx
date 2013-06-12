@@ -53,6 +53,9 @@ public class BenchmarkObjectInstance {
 	}
 
 	private void setConstructorArgs(Constructor<?> c) {
+		if (handler == null || lookup == null) {
+			throw new NullPointerException("Lookup or Callback handler has not been set");
+		}
 		int count = 0;
 		constructorArgs = new Object[c.getParameterTypes().length];
 		for (Annotation[] array : c.getParameterAnnotations()) {
@@ -88,7 +91,10 @@ public class BenchmarkObjectInstance {
 	 * @param runNumber
 	 *            0 for after construtor, > 0 during testing
 	 */
-	public void setFields(int runNumber) {
+	public void setFields(int run) {
+		if (handler == null || lookup == null) {
+			throw new NullPointerException("Lookup or Callback handler has not been set");
+		}
 		try {
 			for (Field field : type.getDeclaredFields()) {
 				field.setAccessible(true);
@@ -99,11 +105,15 @@ public class BenchmarkObjectInstance {
 				} else if (field.getAnnotation(Lookup.class) != null) {
 					Lookup lookupAnnotation = field.getAnnotation(Lookup.class);
 					String key = lookupAnnotation.value();
-					field.set(instance, lookup.get(key));
+					Object value = lookup.get(key);
+					if (value == null) {
+						throw new LookupException("value does not exist");
+					}
+					field.set(instance, value);
 				} else if (field.getAnnotation(Callback.class) != null) {
 					Callback callback = field.getAnnotation(Callback.class);
 					String key = callback.value();
-					field.set(instance, handler.call(key, field, runNumber));
+					field.set(instance, handler.call(key, field, run));
 				}
 			}
 		} catch (IllegalArgumentException e) {

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.cammann.Benchmarker;
 import net.cammann.annotations.BenchConstructor;
 import net.cammann.annotations.Benchmark;
 import net.cammann.annotations.Fixed;
@@ -18,7 +19,7 @@ public class StringJoinExample {
 	public StringJoinExample() {
 		stringList = new ArrayList<String>();
 		stringSet = new HashSet<String>();
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 100; i++) {
 			stringList.add(String.valueOf(i));
 			stringSet.add(String.valueOf(i));
 		}
@@ -34,7 +35,7 @@ public class StringJoinExample {
 		}
 	}
 
-	@Benchmark(1000)
+	@Benchmark(10)
 	@NoReturn
 	public String concatList() {
 		String out = "";
@@ -44,7 +45,7 @@ public class StringJoinExample {
 		return out;
 	}
 
-	@Benchmark(1500)
+	@Benchmark(10)
 	@NoReturn
 	public String stringBuildJoinList() {
 		StringBuilder sb = new StringBuilder();
@@ -54,7 +55,7 @@ public class StringJoinExample {
 		return sb.toString();
 	}
 
-	@Benchmark(2000)
+	@Benchmark(20)
 	@NoReturn
 	public String stringBufferJoinList() {
 		StringBuffer sb = new StringBuffer();
@@ -62,6 +63,10 @@ public class StringJoinExample {
 			sb.append(i);
 		}
 		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+		Benchmarker.run(StringJoinExample.class).save("csv", "stringjoin.csv");
 	}
 
 }

@@ -12,6 +12,7 @@ public class GoDeeper {
 		Benchmarker.run(StringJoinExample.class);
 	}
 
+	// Test for no strange failures.
 	@Test
 	public void test() {
 		Benchmarker.run(GoDeeper.class);

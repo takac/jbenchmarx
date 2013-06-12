@@ -1,13 +1,9 @@
-package net.cammann.working;
+package net.cammann;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
-import java.util.Map;
 
-import net.cammann.ParameterisedMethod;
-import net.cammann.BenchmarkException;
-import net.cammann.Benchmarker;
 import net.cammann.classesToTest.ChooseConstructorTest;
 import net.cammann.classesToTest.FailConstructorTest;
 import net.cammann.results.MethodResult;
@@ -18,15 +14,15 @@ public class ChooserTest {
 
 	@Test
 	public void test() {
-		Map<ParameterisedMethod, List<MethodResult>> results = Benchmarker.run(ChooseConstructorTest.class).getMethodResults();
-		Object result = results.values().iterator().next().get(0).getReturned().get();
+		List<MethodResult> results = Benchmarker.run(ChooseConstructorTest.class).getMethodResults();
+		Object result = results.get(0).getReturned().get();
 		System.out.println(result);
 		assertEquals(19, result);
 	}
 
 	@Test(expected = BenchmarkException.class)
 	public void testFailWithNoParameterSet() {
-		Object result = Benchmarker.run(FailConstructorTest.class).getMethodResults().get(0).get(0).getReturned();
+		Object result = Benchmarker.run(FailConstructorTest.class).getMethodResults().get(0);
 		System.out.println(result);
 		assertEquals(33, result);
 	}

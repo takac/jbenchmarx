@@ -4,14 +4,12 @@ import java.lang.reflect.Method;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import net.cammann.Optional;
 import net.cammann.ParameterisedMethod;
 
-public class MethodResult implements Result {
+public class MethodResult extends SaveableResult {
 
 	private ParameterisedMethod parameterisedMethod;
 	private final long startTime;
@@ -77,8 +75,7 @@ public class MethodResult implements Result {
 		String timeTaken = NumberFormat.getInstance().format(runtime) + " ns";
 		String fullQualifieClassName = parameterisedMethod.getMethod().getDeclaringClass().getName();
 		String methodName = parameterisedMethod.getMethod().getName();
-		String arguments = parameterisedMethod.getParameters() == null ? "{ }": parameterisedMethod
-				.toString();
+		String arguments = parameterisedMethod.toString();
 
 		String returnedString = null;
 
@@ -99,34 +96,22 @@ public class MethodResult implements Result {
 	}
 
 	@Override
-	public List<ParameterisedMethod> getMethodsTested() {
-		return new ArrayList<ParameterisedMethod>() {
-			{
-				add(parameterisedMethod);
-			}
-		};
+	public List<ParameterisedMethod> getParameterisedMethodsTested() {
+		List<ParameterisedMethod> params = new ArrayList<ParameterisedMethod>();
+		params.add(parameterisedMethod);
+		return params;
 	}
 
 	@Override
-	public Map<ParameterisedMethod, List<MethodResult>> getMethodResults() {
-		final List<MethodResult> result = new ArrayList<MethodResult>();
-		return new HashMap<ParameterisedMethod, List<MethodResult>>() {
-			{
-				put(parameterisedMethod, result);
-			}
-		};
-	}
-
-	@Override
-	public List<MethodRangeResult> getMethodResults(Method m) {
+	public List<MethodResultStore> getMethodResults(Method m) {
 		if (m.equals(parameterisedMethod.getMethod())) {
-			MethodRangeResult rr = new MethodRangeResult(m);
+			MethodResultStore rr = new MethodResultStore(m);
 			if (returned.isPresent()) {
 				rr.recordResult(parameterisedMethod, startTime, endTime, returned.get());
 			} else {
 				rr.recordResult(parameterisedMethod, startTime, endTime);
 			}
-			List<MethodRangeResult> result = new ArrayList<MethodRangeResult>();
+			List<MethodResultStore> result = new ArrayList<MethodResultStore>();
 			result.add(rr);
 			return result;
 		}
@@ -149,5 +134,11 @@ public class MethodResult implements Result {
 
 	public long getStartTime() {
 		return startTime;
+	}
+
+	@Override
+	public List<MethodResult> getMethodResults() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -9,7 +9,7 @@ public class ParameterisedMethod {
 
 	public ParameterisedMethod(Method method, Object[] parameters) {
 		this.method = method;
-		this.parameters = parameters;
+		setParameters(parameters);
 	}
 
 	public ParameterisedMethod() {
@@ -24,11 +24,15 @@ public class ParameterisedMethod {
 	}
 
 	public void setParameters(Object[] arguments) {
-		this.parameters = arguments;
+		Object[] clone = new Object[arguments.length];
+		System.arraycopy(arguments, 0, clone, 0, arguments.length);
+		this.parameters = clone;
 	}
 
 	public Object[] getParameters() {
-		return parameters;
+		Object[] clone = new Object[parameters.length];
+		System.arraycopy(parameters, 0, clone, 0, parameters.length);
+		return clone;
 	}
 
 	@Override
@@ -36,11 +40,14 @@ public class ParameterisedMethod {
 		if (obj == null) {
 			return false;
 		}
-		if (obj.getClass().equals(ParameterisedMethod.class)) {
+		if (obj.getClass().equals(this.getClass())) {
 			ParameterisedMethod args = (ParameterisedMethod) obj;
 			if (args.method.equals(method)) {
 				if((parameters == null && args.parameters == null)) {
 					return true;
+				}
+				if (parameters == null || args.parameters == null) {
+					return false;
 				}
 				if(args.parameters.length == parameters.length) {
 					for (int i = 0; i < parameters.length; i++) {
@@ -71,7 +78,7 @@ public class ParameterisedMethod {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{ ");
-		if (parameters == null) {
+		if (parameters == null || parameters.length == 0) {
 			sb.append("}");
 			return sb.toString();
 		}
