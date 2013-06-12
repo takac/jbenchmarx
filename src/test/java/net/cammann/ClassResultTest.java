@@ -20,12 +20,6 @@ public class ClassResultTest {
 	}
 
 	@Test
-	public void testSetClass() {
-		classResult.setClassTested(ClassResultTest.class);
-		assertEquals(ClassResultTest.class, classResult.getClassTested());
-	}
-
-	@Test
 	public void testConstructorSetClass() {
 		ClassResult cr = new ClassResult(ClassResultTest.class);
 		assertEquals(ClassResultTest.class, cr.getClassTested());
@@ -47,14 +41,12 @@ public class ClassResultTest {
 
 	@Test
 	public void testAddMethodResultRange() throws SecurityException, NoSuchMethodException {
-		MethodResultStore methodRangeResultOne = new MethodResultStore();
-		MethodResultStore methodRangeResultTwo = new MethodResultStore();
 
 		Method testMethodOne = ClassResultTest.class.getDeclaredMethod("testAddMethodResultRange", new Class[]{});
 		Method testMethodTwo = ClassResultTest.class.getDeclaredMethod("testConstructorSetClass", new Class[]{});
 
-		methodRangeResultOne.setMethod(testMethodOne);
-		methodRangeResultTwo.setMethod(testMethodTwo);
+		MethodResultStore methodRangeResultOne = new MethodResultStore(testMethodOne);
+		MethodResultStore methodRangeResultTwo = new MethodResultStore(testMethodTwo);
 
 		methodRangeResultOne.recordResult(new Object[]{}, 10, 100);
 		methodRangeResultTwo.recordResult(new Object[]{methodRangeResultOne}, 90, 200);
@@ -62,10 +54,10 @@ public class ClassResultTest {
 		classResult.add(methodRangeResultOne);
 		classResult.add(methodRangeResultTwo);
 
-		assertEquals(1, classResult.getMethodResults(testMethodOne).size());
-		assertEquals(1, classResult.getMethodResults(testMethodTwo).size());
+		assertEquals(1, classResult.getMethodResult(testMethodOne).size());
+		assertEquals(1, classResult.getMethodResult(testMethodTwo).size());
 		assertEquals(2, classResult.getParameterisedMethodsTested().size());
-		MethodResultStore returned = classResult.getMethodResults(testMethodOne).get(0);
+		MethodResultStore returned = classResult.getMethodResult(testMethodOne).get(0);
 		assertEquals(methodRangeResultOne, returned);
 		assertEquals(1, returned.getMethodResults().size());
 		assertEquals(90, returned.getMethodResults().get(0).getRuntime());
@@ -73,11 +65,9 @@ public class ClassResultTest {
 
 	@Test
 	public void testGetAverageTime() throws SecurityException, NoSuchMethodException {
-		MethodResultStore methodRangeResult = new MethodResultStore();
-		Method testMethod = ClassResultTest.class.getDeclaredMethod("testGetAverageTime", new Class[]{});
-		methodRangeResult.setMethod(testMethod);
+		Method testMethod = ClassResultTest.class.getDeclaredMethod("testGetAverageTime", new Class[] {});
+		MethodResultStore methodRangeResult = new MethodResultStore(testMethod);
 		classResult.add(methodRangeResult);
-		methodRangeResult.setMethod(testMethod);
 		long total = 0;
 		ParameterisedMethod pm = new ParameterisedMethod(testMethod, new Object[]{});
 		for (int i = 1; i < 11; i++) {

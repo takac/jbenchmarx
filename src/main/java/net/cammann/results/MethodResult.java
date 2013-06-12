@@ -4,7 +4,9 @@ import java.lang.reflect.Method;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import net.cammann.Optional;
 import net.cammann.ParameterisedMethod;
@@ -84,7 +86,7 @@ public class MethodResult extends SaveableResult {
 		} else {
 			returnedString = ", Returned: " + (returned.get() == null ? "null" : returned.get().toString());
 		}
-		
+
 		return fullQualifieClassName + "." + methodName + " Took: " + timeTaken + ", Arguments: " + arguments
 				+ returnedString;
 
@@ -103,7 +105,7 @@ public class MethodResult extends SaveableResult {
 	}
 
 	@Override
-	public List<MethodResultStore> getMethodResults(Method m) {
+	public List<MethodResultStore> getMethodResult(Method m) {
 		if (m.equals(parameterisedMethod.getMethod())) {
 			MethodResultStore rr = new MethodResultStore(m);
 			if (returned.isPresent()) {
@@ -136,9 +138,16 @@ public class MethodResult extends SaveableResult {
 		return startTime;
 	}
 
-	@Override
 	public List<MethodResult> getMethodResults() {
-		// TODO Auto-generated method stub
-		return null;
+		List<MethodResult> results = new ArrayList<MethodResult>();
+		results.add(this);
+		return results;
+	}
+
+	@Override
+	public Set<Method> getMethodsTested() {
+		Set<Method> methods = new HashSet<Method>();
+		methods.add(parameterisedMethod.getMethod());
+		return methods;
 	}
 }

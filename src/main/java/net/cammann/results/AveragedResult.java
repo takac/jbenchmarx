@@ -11,7 +11,7 @@ public class AveragedResult {
 		this.averageTime = averageTime;
 	}
 
-	public long getAverageTime() {
+	public long getAverageTimeInNanoSeconds() {
 		return averageTime;
 	}
 

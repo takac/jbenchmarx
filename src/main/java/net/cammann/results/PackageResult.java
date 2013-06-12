@@ -4,8 +4,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import net.cammann.ParameterisedMethod;
 
@@ -42,9 +44,9 @@ public class PackageResult extends SaveableResult {
 	}
 
 	@Override
-	public List<MethodResultStore> getMethodResults(Method m) {
+	public List<MethodResultStore> getMethodResult(Method m) {
 		for (ClassResult cls : classResults.values()) {
-			List<MethodResultStore> results = cls.getMethodResults(m);
+			List<MethodResultStore> results = cls.getMethodResult(m);
 			return results;
 		}
 		return Collections.emptyList();
@@ -59,13 +61,22 @@ public class PackageResult extends SaveableResult {
 		return list;
 	}
 
-	@Override
 	public List<MethodResult> getMethodResults() {
 		List<MethodResult> all = new ArrayList<MethodResult>();
 		for (ClassResult c : classResults.values()) {
 			all.addAll(c.getMethodResults());
 		}
 		return all;
+	}
+
+	@Override
+	public Set<Method> getMethodsTested() {
+		Set<Method> methodsTested = new HashSet<Method>();
+		for (ClassResult c : classResults.values()) {
+			methodsTested.addAll(c.getMethodsTested());
+		}
+
+		return methodsTested;
 	}
 
 }

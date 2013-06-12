@@ -1,0 +1,724 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+$	.tags	/^ChooseConstructorTest	src\/test\/java\/net\/cammann\/classesToTest\/ChooseConstructorTest.java	\/^public class ChooseConstructorTest {$\/;"	c$/;"	f	class:ChooseConstructorTest
+$	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+$Ã	target/test-classes/net/cammann/CallbackTest.class	/^/;"	typedefs
+ArrayList	target/classes/net/cammann/results/MethodResult$1.class	/^SourceFile/;"	typedefs
+ArrayList	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+B	target/jbenchmarx-0.3.jar	/^/;"	typedefs
+BeforeBenchmark	src/main/java/net/cammann/annotations/BeforeBenchmark.java	/^public @interface BeforeBenchmark {$/;"	i
+BeforeBenchmark	target/test-classes/net/cammann/FileRead.class	/^/;"	typedefs
+BenchConstructor	src/main/java/net/cammann/annotations/BenchConstructor.java	/^public @interface BenchConstructor {$/;"	i
+BenchConstructor	target/test-classes/net/cammann/classesToTest/ChooseConstructorTest.class	/^/;"	typedefs
+BenchConstructor	target/test-classes/net/cammann/classesToTest/FailConstructorTest.class	/^/;"	typedefs
+Benchmark	README.md	/^then create a new class to execute your Benchmark, and call:$/;"	typedefs	typeref:class:your
+Benchmark	src/main/java/net/cammann/annotations/Benchmark.java	/^public @interface Benchmark {$/;"	i
+Benchmark	target/test-classes/net/cammann/FileRead.class	/^Exceptions/;"	typedefs
+Benchmark	target/test-classes/net/cammann/GoDeeper.class	/^/;"	typedefs
+Benchmark	target/test-classes/net/cammann/classesToTest/FailConstructorTest.class	/^/;"	typedefs
+Benchmark	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^concatList/;"	typedefs
+Benchmark	target/test-classes/net/cammann/selfbench/ReverseStringCallback.class	/^/;"	typedefs
+Benchmark	target/test-classes/net/cammann/selfbench/ReverseStringLookup.class	/^/;"	typedefs
+Benchmark	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+Benchmark	target/test-classes/net/cammann/working/LookupParameterTest.class	/^/;"	typedefs
+BenchmarkException	src/main/java/net/cammann/BenchmarkException.java	/^	public BenchmarkException() {$/;"	m	class:BenchmarkException
+BenchmarkException	src/main/java/net/cammann/BenchmarkException.java	/^	public BenchmarkException(String message) {$/;"	m	class:BenchmarkException
+BenchmarkException	src/main/java/net/cammann/BenchmarkException.java	/^	public BenchmarkException(Throwable t) {$/;"	m	class:BenchmarkException
+BenchmarkException	src/main/java/net/cammann/BenchmarkException.java	/^public class BenchmarkException extends RuntimeException {$/;"	c
+BenchmarkException	target/classes/net/cammann/BenchmarkException.class	/^/;"	typedefs
+BenchmarkException.class	.tags	/^Throwable	target\/classes\/net\/cammann\/BenchmarkException.class	\/^\/;"	typedefs$/;"	typedefs
+BenchmarkMethodInstance	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public BenchmarkMethodInstance(Method method) {$/;"	m	class:BenchmarkMethodInstance
+BenchmarkMethodInstance	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^public class BenchmarkMethodInstance {$/;"	c
+BenchmarkObjectInstance	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	public BenchmarkObjectInstance(Class<?> type) {$/;"	m	class:BenchmarkObjectInstance
+BenchmarkObjectInstance	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^public class BenchmarkObjectInstance {$/;"	c
+BenchmarkObjectInstance	target/classes/net/cammann/ClassBenchmarker.class	/^Êþº¾/;"	typedefs
+BenchmarkUtil	src/main/java/net/cammann/BenchmarkUtil.java	/^public class BenchmarkUtil {$/;"	c
+BenchmarkUtil	target/classes/net/cammann/BenchmarkUtil.class	/^/;"	typedefs
+BenchmarkUtil.class	.tags	/^Class	target\/classes\/net\/cammann\/BenchmarkUtil.class	\/^\/;"	typedefs$/;"	typedefs
+BenchmarkUtil.class	.tags	/^Object	target\/classes\/net\/cammann\/BenchmarkUtil.class	\/^\/;"	typedefs$/;"	typedefs
+BenchmarkUtil.class	.tags	/^Object	target\/classes\/net\/cammann\/BenchmarkUtil.class	\/^\/;"	typedefs$/;"	typedefs
+BenchmarkWithoutSetParamTest	src/test/java/net/cammann/BenchmarkWithoutSetParamTest.java	/^public class BenchmarkWithoutSetParamTest {$/;"	c
+Benchmarker	src/main/java/net/cammann/Benchmarker.java	/^public class Benchmarker {$/;"	c
+Benchmarker	target/classes/net/cammann/Benchmarker.class	/^/;"	typedefs
+Benchmarker.run	README.md	/^	Benchmarker.run(YourClassToBenchmark.class);$/;"	m
+BufferedReader	target/test-classes/net/cammann/FileRead.class	/^/;"	typedefs
+CSV	src/main/java/net/cammann/export/Format.java	/^	CSV$/;"	e	enum:Format	file:
+CVSExport	src/main/java/net/cammann/export/CVSExport.java	/^	public CVSExport(Result result) {$/;"	m	class:CVSExport
+CVSExport	src/main/java/net/cammann/export/CVSExport.java	/^public class CVSExport {$/;"	c
+CVSExport	target/classes/net/cammann/export/CVSExport.class	/^/;"	typedefs
+Callback	src/main/java/net/cammann/annotations/Callback.java	/^public @interface Callback {$/;"	i
+Callback	target/test-classes/net/cammann/selfbench/ReverseStringCallback.class	/^/;"	typedefs
+CallbackEvent	src/main/java/net/cammann/callback/CallbackEvent.java	/^	public CallbackEvent() {$/;"	m	class:CallbackEvent
+CallbackEvent	src/main/java/net/cammann/callback/CallbackEvent.java	/^public class CallbackEvent {$/;"	c
+CallbackEvent	target/test-classes/net/cammann/CallbackTest$1.class	/^/;"	typedefs
+CallbackEvent	target/test-classes/net/cammann/CallbackTest$2.class	/^/;"	typedefs
+CallbackEvent	target/test-classes/net/cammann/selfbench/Caller$1.class	/^/;"	typedefs
+CallbackHandler	src/main/java/net/cammann/callback/CallbackHandler.java	/^public class CallbackHandler {$/;"	c
+CallbackHandler	target/classes/net/cammann/Benchmarker.class	/^Êþº¾/;"	typedefs
+CallbackHandler	target/classes/net/cammann/ClassBenchmarker.class	/^Êþº¾/;"	typedefs
+CallbackHandler	target/classes/net/cammann/callback/CallbackHandler.class	/^/;"	typedefs
+CallbackHandler.class	.tags	/^CallbackHandler	target\/classes\/net\/cammann\/callback\/CallbackHandler.class	\/^\/;"	typedefs$/;"	typedefs
+CallbackListener	src/main/java/net/cammann/callback/CallbackListener.java	/^public interface CallbackListener<T> {$/;"	i
+CallbackListener	target/test-classes/net/cammann/CallbackTest$1.class	/^SourceFile/;"	typedefs
+CallbackListener	target/test-classes/net/cammann/CallbackTest$2.class	/^SourceFile/;"	typedefs
+CallbackListener	target/test-classes/net/cammann/selfbench/Caller$1.class	/^SourceFile/;"	typedefs
+CallbackTest	src/test/java/net/cammann/CallbackTest.java	/^public class CallbackTest {$/;"	c
+CallbackTest	target/test-classes/net/cammann/CallbackTest$1.class	/^Êþº¾/;"	typedefs
+CallbackTest	target/test-classes/net/cammann/CallbackTest$2.class	/^Êþº¾/;"	typedefs
+CallbackTest$1	target/test-classes/net/cammann/CallbackTest$1.class	/^/;"	typedefs
+CallbackTest$2	target/test-classes/net/cammann/CallbackTest$2.class	/^/;"	typedefs
+Caller	src/test/java/net/cammann/selfbench/Caller.java	/^public class Caller {$/;"	c
+Caller	target/test-classes/net/cammann/selfbench/Caller.class	/^/;"	typedefs
+Caller$1	target/test-classes/net/cammann/selfbench/Caller$1.class	/^/;"	typedefs
+ChooseConstructorTest	.tags	/^ChooseConstructorTest	src\/test\/java\/net\/cammann\/classesToTest\/ChooseConstructorTest.java	\/^	public ChooseConstructorTest() {$\/;"	m	class:ChooseConstructorTest$/;"	m	class:ChooseConstructorTest
+ChooseConstructorTest	.tags	/^ChooseConstructorTest	src\/test\/java\/net\/cammann\/classesToTest\/ChooseConstructorTest.java	\/^public class ChooseConstructorTest {$\/;"	c$/;"	c
+ChooseConstructorTest	src/test/java/net/cammann/classesToTest/ChooseConstructorTest.java	/^	public ChooseConstructorTest() {$/;"	m	class:ChooseConstructorTest
+ChooseConstructorTest	src/test/java/net/cammann/classesToTest/ChooseConstructorTest.java	/^	public ChooseConstructorTest(@Fixed("19") int x) {$/;"	m	class:ChooseConstructorTest
+ChooseConstructorTest	src/test/java/net/cammann/classesToTest/ChooseConstructorTest.java	/^	public ChooseConstructorTest(float x) {$/;"	m	class:ChooseConstructorTest
+ChooseConstructorTest	src/test/java/net/cammann/classesToTest/ChooseConstructorTest.java	/^public class ChooseConstructorTest {$/;"	c
+ChooseConstructorTest	target/test-classes/net/cammann/classesToTest/ChooseConstructorTest.class	/^/;"	typedefs
+ChooserTest	src/test/java/net/cammann/working/ChooserTest.java	/^public class ChooserTest {$/;"	c
+ChooserTest	target/test-classes/net/cammann/working/ChooserTest.class	/^/;"	typedefs
+Class	target/classes/net/cammann/BenchmarkObjectInstance.class	/^Êþº¾/;"	typedefs
+Class	target/classes/net/cammann/BenchmarkUtil.class	/^/;"	typedefs
+Class	target/classes/net/cammann/BenchmarkUtil.class	/^/;"	typedefs
+Class	target/classes/net/cammann/ClassBenchmarker.class	/^Êþº¾/;"	typedefs
+ClassBenchmarker	src/main/java/net/cammann/ClassBenchmarker.java	/^	public ClassBenchmarker(Class<?> clazz) {$/;"	m	class:ClassBenchmarker
+ClassBenchmarker	src/main/java/net/cammann/ClassBenchmarker.java	/^public class ClassBenchmarker {$/;"	c
+ClassResult	src/main/java/net/cammann/results/ClassResult.java	/^	public ClassResult(Class<?> cls) {$/;"	m	class:ClassResult
+ClassResult	src/main/java/net/cammann/results/ClassResult.java	/^public class ClassResult implements Result, Saveable {$/;"	c
+ClassResult	target/classes/net/cammann/ClassBenchmarker.class	/^Êþº¾/;"	typedefs
+ClassResult	target/test-classes/net/cammann/GoDeeper.class	/^/;"	typedefs
+ClassResult	target/test-classes/net/cammann/working/ChooserTest.class	/^/;"	typedefs
+ClassResult	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+ClassResult	target/test-classes/net/cammann/working/LookupParameterTest.class	/^/;"	typedefs
+ClassResult	target/test-classes/net/cammann/working/TestSaveCSV.class	/^/;"	typedefs
+ClassResult.class	.tags	/^List	target\/classes\/net\/cammann\/results\/ClassResult.class	\/^\/;"	typedefs$/;"	typedefs
+ClassResult.class	.tags	/^Method	target\/classes\/net\/cammann\/results\/ClassResult.class	\/^\/;"	typedefs$/;"	typedefs
+ClassResult.class	.tags	/^MethodRangeResult	target\/classes\/net\/cammann\/results\/ClassResult.class	\/^\/;"	typedefs$/;"	typedefs
+ClassResult.class	.tags	/^Object	target\/classes\/net\/cammann\/results\/ClassResult.class	\/^\/;"	typedefs$/;"	typedefs
+ClassResult.class	.tags	/^getMethodResults	target\/classes\/net\/cammann\/results\/ClassResult.class	\/^\/;"	typedefs$/;"	typedefs
+ClassResult.class	.tags	/^Ã	target\/classes\/net\/cammann\/results\/ClassResult.class	\/^\/;"	typedefs$/;"	typedefs
+Collection	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+Errors	.tags	/^Errors	target\/surefire-reports\/net.cammann.CallbackTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Errors	target\/surefire-reports\/net.cammann.RangeTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.226 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.LookupFieldTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.LookupParameterTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.WithFieldsTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.359 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Failures	target\/surefire-reports\/net.cammann.BenchmarkWithoutSetParamTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.ChooserTest.txt	\/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.TestNumberedBenchmark.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.TestSaveCSV.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.WorkingBaseCaseTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Skipped	target\/surefire-reports\/net.cammann.BenchmarkWithoutSetParamTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.ChooserTest.txt	\/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.TestNumberedBenchmark.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.TestSaveCSV.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$\/;"	typedefs$/;"	typedefs
+Errors	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.WorkingBaseCaseTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$\/;"	typedefs$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.BenchmarkWithoutSetParamTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.CallbackTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.RangeTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.226 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.working.ChooserTest.txt	/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.working.LookupFieldTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.working.LookupParameterTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.working.TestNumberedBenchmark.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.working.TestSaveCSV.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.working.WithFieldsTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.359 sec$/;"	typedefs
+Errors	target/surefire-reports/net.cammann.working.WorkingBaseCaseTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$/;"	typedefs
+Example	README.md	/^	public class Example {$/;"	c
+Exceptions	.tags	/^List	target\/classes\/net\/cammann\/export\/CVSExport.class	\/^Exceptions\/;"	typedefs$/;"	typedefs
+F	target/classes/net/cammann/results/MethodResult$2.class	/^SourceFile/;"	typedefs
+FailConstructorTest	src/test/java/net/cammann/classesToTest/FailConstructorTest.java	/^	public FailConstructorTest() {$/;"	m	class:FailConstructorTest
+FailConstructorTest	src/test/java/net/cammann/classesToTest/FailConstructorTest.java	/^	public FailConstructorTest(int x) {$/;"	m	class:FailConstructorTest
+FailConstructorTest	src/test/java/net/cammann/classesToTest/FailConstructorTest.java	/^public class FailConstructorTest {$/;"	c
+Failures	.tags	/^Errors	target\/surefire-reports\/net.cammann.CallbackTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Errors	target\/surefire-reports\/net.cammann.RangeTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.226 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.LookupFieldTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.LookupParameterTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.WithFieldsTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.359 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Failures	target\/surefire-reports\/net.cammann.BenchmarkWithoutSetParamTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.ChooserTest.txt	\/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.TestNumberedBenchmark.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.TestSaveCSV.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.WorkingBaseCaseTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Skipped	target\/surefire-reports\/net.cammann.BenchmarkWithoutSetParamTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.ChooserTest.txt	\/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.TestNumberedBenchmark.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.TestSaveCSV.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$\/;"	typedefs$/;"	typedefs
+Failures	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.WorkingBaseCaseTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$\/;"	typedefs$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.BenchmarkWithoutSetParamTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.CallbackTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.RangeTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.226 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.working.ChooserTest.txt	/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.working.LookupFieldTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.working.LookupParameterTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.working.TestNumberedBenchmark.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.working.TestSaveCSV.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.working.WithFieldsTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.359 sec$/;"	typedefs
+Failures	target/surefire-reports/net.cammann.working.WorkingBaseCaseTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$/;"	typedefs
+File	target/classes/net/cammann/export/Saveable.class	/^/;"	typedefs
+FileOutputStream	target/classes/net/cammann/export/CVSExport.class	/^Êþº¾/;"	typedefs
+FileRead	src/test/java/net/cammann/FileRead.java	/^public class FileRead {$/;"	c
+FileRead	target/test-classes/net/cammann/FileRead.class	/^/;"	typedefs
+Fixed	src/main/java/net/cammann/annotations/Fixed.java	/^public @interface Fixed {$/;"	i
+Fixed	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^/;"	typedefs
+Fixed.java	.tags	/^RetentionPolicy	target\/classes\/net\/cammann\/annotations\/Fixed.class	\/^Fixed.java\/;"	typedefs$/;"	typedefs
+Format	src/main/java/net/cammann/export/Format.java	/^public enum Format {$/;"	g
+Format	target/classes/net/cammann/export/Format.class	/^Êþº¾/;"	typedefs
+GM	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+GoDeeper	src/test/java/net/cammann/GoDeeper.java	/^public class GoDeeper {$/;"	c
+GoDeeper	target/test-classes/net/cammann/GoDeeper.class	/^/;"	typedefs
+HashMap	target/classes/net/cammann/results/MethodResult$2.class	/^SourceFile/;"	typedefs
+Integer	target/test-classes/net/cammann/CallbackTest$1.class	/^/;"	typedefs
+Integer	target/test-classes/net/cammann/selfbench/Caller$1.class	/^/;"	typedefs
+Integer	target/test-classes/net/cammann/working/LookupParameterTest.class	/^/;"	typedefs
+Iterator	target/classes/net/cammann/results/ClassResult.class	/^/;"	typedefs
+Iterator	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^concatList/;"	typedefs
+Iterator	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+Iterator	target/test-classes/net/cammann/working/LookupParameterTest.class	/^/;"	typedefs
+JÎÈ	target/jbenchmarx-0.3.jar	/^/;"	typedefs
+List	target/classes/net/cammann/ClassBenchmarker.class	/^Êþº¾/;"	typedefs
+List	target/classes/net/cammann/export/CVSExport.class	/^Exceptions/;"	typedefs
+List	target/classes/net/cammann/results/ClassResult.class	/^/;"	typedefs
+List	target/classes/net/cammann/results/ClassResult.class	/^getResults/;"	typedefs
+List	target/classes/net/cammann/results/MethodRangeResult.class	/^getResults/;"	typedefs
+List	target/classes/net/cammann/results/MethodResult$1.class	/^SourceFile/;"	typedefs
+List	target/classes/net/cammann/results/MethodResult$2.class	/^Êþº¾/;"	typedefs
+List	target/classes/net/cammann/results/Result.class	/^Êþº¾/;"	typedefs
+List	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^stringList/;"	typedefs
+List	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+List	target/test-classes/net/cammann/working/LookupParameterTest.class	/^/;"	typedefs
+Lookup	src/main/java/net/cammann/annotations/Lookup.java	/^public @interface Lookup {$/;"	i
+Lookup	target/test-classes/net/cammann/working/LookupFieldTest.class	/^Êþº¾/;"	typedefs
+LookupFieldTest	src/test/java/net/cammann/working/LookupFieldTest.java	/^public class LookupFieldTest {$/;"	c
+LookupFieldTest	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+LookupParameterTest	src/test/java/net/cammann/working/LookupParameterTest.java	/^public class LookupParameterTest {$/;"	c
+LookupParameterTest	target/test-classes/net/cammann/working/LookupParameterTest.class	/^/;"	typedefs
+Map	target/classes/net/cammann/BenchmarkUtil.class	/^Êþº¾/;"	typedefs
+Map	target/classes/net/cammann/Benchmarker.class	/^Êþº¾/;"	typedefs
+Map	target/classes/net/cammann/ClassBenchmarker.class	/^Êþº¾/;"	typedefs
+Map	target/classes/net/cammann/callback/CallbackHandler.class	/^Êþº¾/;"	typedefs
+Map	target/classes/net/cammann/results/MethodRangeResult.class	/^Êþº¾/;"	typedefs
+Map	target/classes/net/cammann/results/MethodResult$2.class	/^SourceFile/;"	typedefs
+Map	target/classes/net/cammann/results/MethodResult.class	/^/;"	typedefs
+Map	target/classes/net/cammann/results/PackageResult.class	/^Êþº¾/;"	typedefs
+Map	target/classes/net/cammann/results/Result.class	/^Êþº¾/;"	typedefs
+Map	target/test-classes/net/cammann/working/ChooserTest.class	/^/;"	typedefs
+Method	target/classes/net/cammann/BenchmarkMethodInstance.class	/^Êþº¾/;"	typedefs
+Method	target/classes/net/cammann/ParameterisedMethod.class	/^Êþº¾/;"	typedefs
+Method	target/classes/net/cammann/results/ClassResult.class	/^/;"	typedefs
+Method	target/classes/net/cammann/results/MethodRangeResult.class	/^Êþº¾/;"	typedefs
+Method	target/classes/net/cammann/results/Result.class	/^Êþº¾/;"	typedefs
+MethodRangeResult	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public MethodRangeResult(Method method) {$/;"	m	class:MethodRangeResult
+MethodRangeResult	src/main/java/net/cammann/results/MethodRangeResult.java	/^public class MethodRangeResult {$/;"	c
+MethodRangeResult	target/classes/net/cammann/results/ClassResult.class	/^/;"	typedefs
+MethodRangeResult.class	.tags	/^Object	target\/classes\/net\/cammann\/results\/MethodRangeResult.class	\/^\/;"	typedefs$/;"	typedefs
+MethodResult	src/main/java/net/cammann/results/MethodResult.java	/^	public MethodResult(Method method, Object[] args, long startNanoSeconds, long endNanoSeconds) {$/;"	m	class:MethodResult
+MethodResult	src/main/java/net/cammann/results/MethodResult.java	/^	public MethodResult(Method method, Object[] args, long startNanoSeconds, long endNanoSeconds, Object returned) {$/;"	m	class:MethodResult
+MethodResult	src/main/java/net/cammann/results/MethodResult.java	/^	public MethodResult(ParameterisedMethod args, long startNanoSeconds, long endNanoSeconds) {$/;"	m	class:MethodResult
+MethodResult	src/main/java/net/cammann/results/MethodResult.java	/^	public MethodResult(ParameterisedMethod args, long startNanoSeconds, long endNanoSeconds, Object returned) {$/;"	m	class:MethodResult
+MethodResult	src/main/java/net/cammann/results/MethodResult.java	/^public class MethodResult implements Result {$/;"	c
+MethodResult	target/classes/net/cammann/results/MethodRangeResult.class	/^/;"	typedefs
+MethodResult	target/classes/net/cammann/results/MethodResult$1.class	/^Êþº¾/;"	typedefs
+MethodResult	target/classes/net/cammann/results/MethodResult$2.class	/^Êþº¾/;"	typedefs
+MethodResult$1	target/classes/net/cammann/results/MethodResult$1.class	/^/;"	typedefs
+MethodResult$1.class	.tags	/^MethodResult$1	target\/classes\/net\/cammann\/results\/MethodResult$1.class	\/^\/;"	typedefs$/;"	typedefs
+MethodResult$2	target/classes/net/cammann/results/MethodResult$2.class	/^/;"	typedefs
+MethodResult$2.class	.tags	/^Object	target\/classes\/net\/cammann\/results\/MethodResult$2.class	\/^\/;"	typedefs$/;"	typedefs
+MethodResult.class	.tags	/^Map	target\/classes\/net\/cammann\/results\/MethodResult.class	\/^\/;"	typedefs$/;"	typedefs
+NUM_RUNS	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private static final int NUM_RUNS = 1;$/;"	f	class:BenchmarkMethodInstance	file:
+NoReturn	src/main/java/net/cammann/annotations/NoReturn.java	/^public @interface NoReturn {$/;"	i
+Object	target/classes/net/cammann/BenchmarkObjectInstance.class	/^Êþº¾/;"	typedefs
+Object	target/classes/net/cammann/BenchmarkUtil.class	/^/;"	typedefs
+Object	target/classes/net/cammann/BenchmarkUtil.class	/^/;"	typedefs
+Object	target/classes/net/cammann/Optional.class	/^	/;"	typedefs
+Object	target/classes/net/cammann/callback/CallbackListener.class	/^Êþº¾/;"	typedefs
+Object	target/classes/net/cammann/results/ClassResult.class	/^/;"	typedefs
+Object	target/classes/net/cammann/results/MethodRangeResult.class	/^/;"	typedefs
+Object	target/classes/net/cammann/results/MethodResult$2.class	/^/;"	typedefs
+Object	target/classes/net/cammann/results/MethodResult.class	/^Êþº¾/;"	typedefs
+Object	target/test-classes/net/cammann/CallbackTest$1.class	/^/;"	typedefs
+Object	target/test-classes/net/cammann/CallbackTest$1.class	/^SourceFile/;"	typedefs
+Object	target/test-classes/net/cammann/CallbackTest$2.class	/^/;"	typedefs
+Object	target/test-classes/net/cammann/CallbackTest$2.class	/^SourceFile/;"	typedefs
+Object	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^concatList/;"	typedefs
+Object	target/test-classes/net/cammann/selfbench/Caller$1.class	/^/;"	typedefs
+Object	target/test-classes/net/cammann/selfbench/Caller$1.class	/^SourceFile/;"	typedefs
+Object	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+Object	target/test-classes/net/cammann/working/LookupParameterTest.class	/^/;"	typedefs
+Optional	src/main/java/net/cammann/Optional.java	/^	public Optional() {$/;"	m	class:Optional
+Optional	src/main/java/net/cammann/Optional.java	/^	public Optional(T object) {$/;"	m	class:Optional
+Optional	src/main/java/net/cammann/Optional.java	/^public class Optional<T> {$/;"	c
+Optional	target/classes/net/cammann/Optional.class	/^	/;"	typedefs
+Optional	target/classes/net/cammann/results/MethodResult.class	/^Êþº¾/;"	typedefs
+Optional	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+Optional	target/test-classes/net/cammann/working/LookupParameterTest.class	/^/;"	typedefs
+Optional.class	.tags	/^Optional	target\/classes\/net\/cammann\/Optional.class	\/^	\/;"	typedefs$/;"	typedefs
+PackageResult	src/main/java/net/cammann/results/PackageResult.java	/^public class PackageResult implements Result, Saveable {$/;"	c
+PackageResult	target/classes/net/cammann/results/PackageResult.class	/^/;"	typedefs
+PackageResult.class	.tags	/^R	target\/classes\/net\/cammann\/results\/PackageResult.class	\/^\/;"	typedefs$/;"	typedefs
+ParameterisedMethod	src/main/java/net/cammann/ParameterisedMethod.java	/^	public ParameterisedMethod() {$/;"	m	class:ParameterisedMethod
+ParameterisedMethod	src/main/java/net/cammann/ParameterisedMethod.java	/^	public ParameterisedMethod(Method method, Object[] parameters) {$/;"	m	class:ParameterisedMethod
+ParameterisedMethod	src/main/java/net/cammann/ParameterisedMethod.java	/^public class ParameterisedMethod {$/;"	c
+ParameterisedMethod	target/classes/net/cammann/results/MethodResult$1.class	/^/;"	typedefs
+ParameterisedMethod	target/classes/net/cammann/results/MethodResult$2.class	/^/;"	typedefs
+ParameterisedMethod	target/classes/net/cammann/results/MethodResult.class	/^Êþº¾/;"	typedefs
+ParameterisedMethod	target/classes/net/cammann/results/Result.class	/^Êþº¾/;"	typedefs
+R	target/classes/net/cammann/results/PackageResult.class	/^/;"	typedefs
+Range	src/main/java/net/cammann/annotations/Range.java	/^public @interface Range {$/;"	i
+RangeTest	src/test/java/net/cammann/RangeTest.java	/^public class RangeTest {$/;"	c
+Result	src/main/java/net/cammann/results/Result.java	/^public interface Result {$/;"	i
+Result	target/classes/net/cammann/export/CVSExport.class	/^Êþº¾/;"	typedefs
+Retention	target/classes/net/cammann/annotations/BeforeBenchmark.class	/^SourceFile/;"	typedefs
+Retention	target/classes/net/cammann/annotations/Benchmark.class	/^SourceFile/;"	typedefs
+Retention	target/classes/net/cammann/annotations/Callback.class	/^SourceFile/;"	typedefs
+Retention	target/classes/net/cammann/annotations/Fixed.class	/^Fixed.java/;"	typedefs
+Retention	target/classes/net/cammann/annotations/Lookup.class	/^SourceFile/;"	typedefs
+Retention	target/classes/net/cammann/annotations/NoReturn.class	/^SourceFile/;"	typedefs
+RetentionPolicy	target/classes/net/cammann/annotations/BeforeBenchmark.class	/^SourceFile/;"	typedefs
+RetentionPolicy	target/classes/net/cammann/annotations/Benchmark.class	/^SourceFile/;"	typedefs
+RetentionPolicy	target/classes/net/cammann/annotations/Callback.class	/^SourceFile/;"	typedefs
+RetentionPolicy	target/classes/net/cammann/annotations/Fixed.class	/^Fixed.java/;"	typedefs
+RetentionPolicy	target/classes/net/cammann/annotations/Lookup.class	/^SourceFile/;"	typedefs
+RetentionPolicy	target/classes/net/cammann/annotations/NoReturn.class	/^SourceFile/;"	typedefs
+ReverseStringCallback	src/test/java/net/cammann/selfbench/ReverseStringCallback.java	/^public class ReverseStringCallback {$/;"	c
+ReverseStringFixed	src/test/java/net/cammann/selfbench/ReverseStringFixed.java	/^public class ReverseStringFixed {$/;"	c
+ReverseStringLookup	src/test/java/net/cammann/selfbench/ReverseStringLookup.java	/^public class ReverseStringLookup {$/;"	c
+ReverseStringLookup	target/test-classes/net/cammann/selfbench/ReverseStringLookup.class	/^/;"	typedefs
+ReverseStringRange	src/test/java/net/cammann/selfbench/ReverseStringRange.java	/^public class ReverseStringRange {$/;"	c
+Saveable	src/main/java/net/cammann/export/Saveable.java	/^public interface Saveable {$/;"	i
+Set	target/classes/net/cammann/results/ClassResult.class	/^/;"	typedefs
+Set	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^stringList/;"	typedefs
+Skipped	.tags	/^Errors	target\/surefire-reports\/net.cammann.CallbackTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Errors	target\/surefire-reports\/net.cammann.RangeTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.226 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.LookupFieldTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.LookupParameterTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Errors	target\/surefire-reports\/net.cammann.working.WithFieldsTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.359 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Failures	target\/surefire-reports\/net.cammann.BenchmarkWithoutSetParamTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.ChooserTest.txt	\/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.TestNumberedBenchmark.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.TestSaveCSV.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.WorkingBaseCaseTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Skipped	target\/surefire-reports\/net.cammann.BenchmarkWithoutSetParamTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.ChooserTest.txt	\/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.TestNumberedBenchmark.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.TestSaveCSV.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$\/;"	typedefs$/;"	typedefs
+Skipped	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.WorkingBaseCaseTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$\/;"	typedefs$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.BenchmarkWithoutSetParamTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.CallbackTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.RangeTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.226 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.working.ChooserTest.txt	/^Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.working.LookupFieldTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.working.LookupParameterTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.working.TestNumberedBenchmark.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.working.TestSaveCSV.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.482 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.working.WithFieldsTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.359 sec$/;"	typedefs
+Skipped	target/surefire-reports/net.cammann.working.WorkingBaseCaseTest.txt	/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.195 sec$/;"	typedefs
+SourceFile	.tags	/^F	target\/classes\/net\/cammann\/results\/MethodResult$2.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+SourceFile	.tags	/^HashMap	target\/classes\/net\/cammann\/results\/MethodResult$2.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+SourceFile	.tags	/^List	target\/classes\/net\/cammann\/results\/MethodResult$1.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+SourceFile	.tags	/^Retention	target\/classes\/net\/cammann\/annotations\/Benchmark.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+SourceFile	.tags	/^RetentionPolicy	target\/classes\/net\/cammann\/annotations\/BeforeBenchmark.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+SourceFile	.tags	/^RetentionPolicy	target\/classes\/net\/cammann\/annotations\/Callback.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+SourceFile	.tags	/^RetentionPolicy	target\/classes\/net\/cammann\/annotations\/Lookup.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+SourceFile	.tags	/^RetentionPolicy	target\/classes\/net\/cammann\/annotations\/NoReturn.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+SourceFile	.tags	/^Target	target\/classes\/net\/cammann\/annotations\/Benchmark.class	\/^SourceFile\/;"	typedefs$/;"	typedefs
+String	target/classes/net/cammann/BenchmarkException.class	/^/;"	typedefs
+String	target/classes/net/cammann/BenchmarkUtil.class	/^/;"	typedefs
+String	target/classes/net/cammann/annotations/Callback.class	/^Êþº¾/;"	typedefs
+String	target/classes/net/cammann/annotations/Fixed.class	/^Êþº¾/;"	typedefs
+String	target/classes/net/cammann/annotations/Lookup.class	/^Êþº¾/;"	typedefs
+String	target/test-classes/net/cammann/CallbackTest$2.class	/^/;"	typedefs
+String	target/test-classes/net/cammann/CallbackTest.class	/^	/;"	typedefs
+String	target/test-classes/net/cammann/FileRead.class	/^Êþº¾/;"	typedefs
+String	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^/;"	typedefs
+String	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^concatList/;"	typedefs
+String	target/test-classes/net/cammann/selfbench/ReverseStringCallback.class	/^/;"	typedefs
+String	target/test-classes/net/cammann/selfbench/ReverseStringLookup.class	/^/;"	typedefs
+String	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+String	target/test-classes/net/cammann/working/LookupFieldTest.class	/^Êþº¾/;"	typedefs
+StringBuilder	target/test-classes/net/cammann/CallbackTest$2.class	/^/;"	typedefs
+StringBuilder	target/test-classes/net/cammann/classesToTest/StringJoinExample.class	/^/;"	typedefs
+StringBuilder	target/test-classes/net/cammann/selfbench/ReverseStringLookup.class	/^/;"	typedefs
+StringJoinExample	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^	public StringJoinExample() {$/;"	m	class:StringJoinExample
+StringJoinExample	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^	public StringJoinExample(@Fixed("100") int num) {$/;"	m	class:StringJoinExample
+StringJoinExample	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^public class StringJoinExample {$/;"	c
+TT	target/classes/net/cammann/Optional.class	/^Êþº¾/;"	typedefs
+Target	target/classes/net/cammann/annotations/BeforeBenchmark.class	/^SourceFile/;"	typedefs
+Target	target/classes/net/cammann/annotations/Benchmark.class	/^SourceFile/;"	typedefs
+Target	target/classes/net/cammann/annotations/Callback.class	/^SourceFile/;"	typedefs
+Target	target/classes/net/cammann/annotations/Fixed.class	/^Fixed.java/;"	typedefs
+Target	target/classes/net/cammann/annotations/Lookup.class	/^SourceFile/;"	typedefs
+Target	target/classes/net/cammann/annotations/NoReturn.class	/^SourceFile/;"	typedefs
+Test	target/test-classes/net/cammann/CallbackTest.class	/^	/;"	typedefs
+Test	target/test-classes/net/cammann/GoDeeper.class	/^/;"	typedefs
+Test	target/test-classes/net/cammann/working/ChooserTest.class	/^/;"	typedefs
+Test	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+Test	target/test-classes/net/cammann/working/TestNumberedBenchmark.class	/^/;"	typedefs
+Test	target/test-classes/net/cammann/working/TestSaveCSV.class	/^/;"	typedefs
+TestNumberedBenchmark	src/test/java/net/cammann/working/TestNumberedBenchmark.java	/^public class TestNumberedBenchmark {$/;"	c
+TestNumberedBenchmark	target/test-classes/net/cammann/working/TestNumberedBenchmark.class	/^/;"	typedefs
+TestSaveCSV	src/test/java/net/cammann/working/TestSaveCSV.java	/^public class TestSaveCSV {$/;"	c
+TestSaveCSV	target/test-classes/net/cammann/working/TestSaveCSV.class	/^/;"	typedefs
+Throwable	target/classes/net/cammann/BenchmarkException.class	/^/;"	typedefs
+Took	README.md	/^	Example.exampleMethod Took: 2,000 ns, Arguments: { 10 }, Returned: 10$/;"	typedefs
+Took	README.md	/^	Example.exampleMethod Took: 2,000 ns, Arguments: { 15 }, Returned: 15$/;"	typedefs
+WithFieldsTest	src/test/java/net/cammann/working/WithFieldsTest.java	/^public class WithFieldsTest {$/;"	c
+WorkingBaseCaseTest	src/test/java/net/cammann/working/WorkingBaseCaseTest.java	/^public class WorkingBaseCaseTest {$/;"	c
+X	target/classes/net/cammann/results/MethodRangeResult.class	/^/;"	typedefs
+Y	target/test-classes/net/cammann/selfbench/ReverseStringCallback.class	/^/;"	typedefs
+Y	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+add	src/main/java/net/cammann/results/ClassResult.java	/^	public void add(MethodRangeResult result) {$/;"	m	class:ClassResult
+add	src/main/java/net/cammann/results/PackageResult.java	/^	public void add(ClassResult result) {$/;"	m	class:PackageResult
+addCallback	src/main/java/net/cammann/Benchmarker.java	/^	public static void addCallback(String key, CallbackListener<?> listener) {$/;"	m	class:Benchmarker
+addCallbackListener	src/main/java/net/cammann/callback/CallbackHandler.java	/^	public void addCallbackListener(String key, CallbackListener<?> cbl) {$/;"	m	class:CallbackHandler
+addLookup	src/main/java/net/cammann/Benchmarker.java	/^	public static void addLookup(String key, Object value) {$/;"	m	class:Benchmarker
+annotation	README.md	/^A new feature in JBenchmarx is the `@Callback` annotation, which allows you to$/;"	typedefs
+annotation	README.md	/^Mark any method you would like to benchmark with a `@Benchmark` annotation,$/;"	typedefs
+arguments	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private Object[] arguments;$/;"	f	class:BenchmarkMethodInstance	file:
+assessRange	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private void assessRange() {$/;"	m	class:BenchmarkMethodInstance	file:
+before	src/test/java/net/cammann/FileRead.java	/^	public void before() {$/;"	m	class:FileRead
+benchmarker	src/test/java/net/cammann/GoDeeper.java	/^	public void benchmarker() {$/;"	m	class:GoDeeper
+bufferedCharReader	src/test/java/net/cammann/FileRead.java	/^	private int bufferedCharReader(@Range({ "256", "1024"}) int capacity) throws IOException {$/;"	m	class:FileRead	file:
+bufferedReader	src/test/java/net/cammann/FileRead.java	/^	private int bufferedReader() throws IOException {$/;"	m	class:FileRead	file:
+call	src/main/java/net/cammann/callback/CallbackHandler.java	/^	public Object call(String key, CallbackEvent event) {$/;"	m	class:CallbackHandler
+call	src/main/java/net/cammann/callback/CallbackHandler.java	/^	public Object call(String key, Field field, int runNumber) {$/;"	m	class:CallbackHandler
+call	src/main/java/net/cammann/callback/CallbackHandler.java	/^	public Object call(String key, Method method, int runNumber) {$/;"	m	class:CallbackHandler
+callback	src/main/java/net/cammann/callback/CallbackListener.java	/^	public T callback(CallbackEvent event);$/;"	m	interface:CallbackListener
+callback	src/test/java/net/cammann/CallbackTest.java	/^	private int callback;$/;"	f	class:CallbackTest	file:
+callback	src/test/java/net/cammann/selfbench/Caller.java	/^	public void callback() {$/;"	m	class:Caller
+callbackHandler	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private CallbackHandler callbackHandler;$/;"	f	class:BenchmarkMethodInstance	file:
+callbackHandler	src/main/java/net/cammann/Benchmarker.java	/^	private static CallbackHandler callbackHandler = new CallbackHandler();$/;"	f	class:Benchmarker	file:
+callbackHandler	src/main/java/net/cammann/ClassBenchmarker.java	/^	private CallbackHandler callbackHandler;$/;"	f	class:ClassBenchmarker	file:
+classResults	src/main/java/net/cammann/results/PackageResult.java	/^	Map<Class<?>, ClassResult> classResults = new HashMap<Class<?>, ClassResult>();$/;"	f	class:PackageResult
+classTested	src/main/java/net/cammann/results/ClassResult.java	/^	private final Class<?> classTested;$/;"	f	class:ClassResult	file:
+clazz	src/main/java/net/cammann/ClassBenchmarker.java	/^	private final Class<?> clazz;$/;"	f	class:ClassBenchmarker	file:
+clear	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public void clear() {$/;"	m	class:MethodRangeResult
+concatList	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^	public String concatList() {$/;"	m	class:StringJoinExample
+constructorArgs	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	private Object constructorArgs[];$/;"	f	class:BenchmarkObjectInstance	file:
+createObjectFromString	src/main/java/net/cammann/BenchmarkUtil.java	/^	public static Object createObjectFromString(String arg, Class<?> type) {$/;"	m	class:BenchmarkUtil
+d	src/main/java/net/cammann/annotations/Benchmark.java	/^	int value() default 1;$/;"	f	interface:Benchmark
+doesReturn	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private boolean doesReturn() {$/;"	m	class:BenchmarkMethodInstance	file:
+endTime	src/main/java/net/cammann/results/MethodResult.java	/^	private final long endTime;$/;"	f	class:MethodResult	file:
+equals	src/main/java/net/cammann/ParameterisedMethod.java	/^	public boolean equals(Object obj) {$/;"	m	class:ParameterisedMethod
+exampleMethod	README.md	/^		public int exampleMethod(@Callback("callback_key") int x) {$/;"	m	class:Example
+execute	src/main/java/net/cammann/ClassBenchmarker.java	/^	public void execute() {$/;"	m	class:ClassBenchmarker
+executeMethodBenchmark	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public MethodRangeResult executeMethodBenchmark(BenchmarkObjectInstance instance) {$/;"	m	class:BenchmarkMethodInstance
+executions	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public int executions() {$/;"	m	class:BenchmarkMethodInstance
+failingMethodBadParam	src/test/java/net/cammann/BenchmarkWithoutSetParamTest.java	/^	public int failingMethodBadParam(double reps) {$/;"	m	class:BenchmarkWithoutSetParamTest
+field	src/main/java/net/cammann/callback/CallbackEvent.java	/^	private Field field;$/;"	f	class:CallbackEvent	file:
+field	src/test/java/net/cammann/classesToTest/ChooseConstructorTest.java	/^	private int field = 20;$/;"	f	class:ChooseConstructorTest	file:
+field	src/test/java/net/cammann/classesToTest/FailConstructorTest.java	/^	private int field = 20;$/;"	f	class:FailConstructorTest	file:
+field	src/test/java/net/cammann/working/WithFieldsTest.java	/^	public int field;$/;"	f	class:WithFieldsTest
+filename	src/test/java/net/cammann/FileRead.java	/^	private static final String filename = "\/Users\/tc191\/bigfile.txt";$/;"	f	class:FileRead	file:
+findBenchmarkMethods	src/main/java/net/cammann/ClassBenchmarker.java	/^	private void findBenchmarkMethods() {$/;"	m	class:ClassBenchmarker	file:
+fixed	src/test/java/net/cammann/selfbench/Caller.java	/^	public void fixed() {$/;"	m	class:Caller
+format	.tags	/^!_TAG_FILE_FORMAT	2	\/extended format; --format=1 will not append ;" to lines\/$/;"	typedefs
+fout	src/main/java/net/cammann/export/CVSExport.java	/^	private FileOutputStream fout;$/;"	f	class:CVSExport	file:
+g	target/jbenchmarx-0.3.jar	/^/;"	typedefs
+get	src/main/java/net/cammann/Optional.java	/^	public T get() {$/;"	m	class:Optional
+getAverageTime	src/main/java/net/cammann/results/ClassResult.java	/^	private String getAverageTime(ParameterisedMethod a) {$/;"	m	class:ClassResult	file:
+getCallbackHandler	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public CallbackHandler getCallbackHandler() {$/;"	m	class:BenchmarkMethodInstance
+getCallbackHandler	src/main/java/net/cammann/ClassBenchmarker.java	/^	public CallbackHandler getCallbackHandler() {$/;"	m	class:ClassBenchmarker
+getClassResult	src/main/java/net/cammann/results/PackageResult.java	/^	public ClassResult getClassResult(Class<?> cls) {$/;"	m	class:PackageResult
+getClassResults	src/main/java/net/cammann/results/PackageResult.java	/^	public List<ClassResult> getClassResults() {$/;"	m	class:PackageResult
+getClassTested	src/main/java/net/cammann/results/ClassResult.java	/^	public Class<?> getClassTested() {$/;"	m	class:ClassResult
+getEndTime	src/main/java/net/cammann/results/MethodResult.java	/^	public long getEndTime() {$/;"	m	class:MethodResult
+getField	src/main/java/net/cammann/callback/CallbackEvent.java	/^	public Field getField() {$/;"	m	class:CallbackEvent
+getFieldCallback	src/test/java/net/cammann/CallbackTest.java	/^	public int getFieldCallback() {$/;"	m	class:CallbackTest
+getHandler	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	public CallbackHandler getHandler() {$/;"	m	class:BenchmarkObjectInstance
+getInstance	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	public Object getInstance() {$/;"	m	class:BenchmarkObjectInstance
+getLookup	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public Map<String, Object> getLookup() {$/;"	m	class:BenchmarkMethodInstance
+getLookup	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	public Map<String, Object> getLookup() {$/;"	m	class:BenchmarkObjectInstance
+getLookup	src/main/java/net/cammann/ClassBenchmarker.java	/^	public Map<String, Object> getLookup() {$/;"	m	class:ClassBenchmarker
+getMethod	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public Method getMethod() {$/;"	m	class:BenchmarkMethodInstance
+getMethod	src/main/java/net/cammann/ParameterisedMethod.java	/^	public Method getMethod() {$/;"	m	class:ParameterisedMethod
+getMethod	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public Method getMethod() {$/;"	m	class:MethodRangeResult
+getMethod	src/main/java/net/cammann/results/MethodResult.java	/^	public Method getMethod() {$/;"	m	class:MethodResult
+getMethodAverageNano	src/main/java/net/cammann/results/ClassResult.java	/^	public long getMethodAverageNano(ParameterisedMethod args) {$/;"	m	class:ClassResult
+getMethodResults	src/main/java/net/cammann/results/ClassResult.java	/^	public List<MethodRangeResult> getMethodResults(Method m) {$/;"	m	class:ClassResult
+getMethodResults	src/main/java/net/cammann/results/ClassResult.java	/^	public List<MethodResult> getMethodResults(ParameterisedMethod a) {$/;"	m	class:ClassResult
+getMethodResults	src/main/java/net/cammann/results/ClassResult.java	/^	public Map<ParameterisedMethod, List<MethodResult>> getMethodResults() {$/;"	m	class:ClassResult
+getMethodResults	src/main/java/net/cammann/results/MethodResult.java	/^	public List<MethodRangeResult> getMethodResults(Method m) {$/;"	m	class:MethodResult
+getMethodResults	src/main/java/net/cammann/results/MethodResult.java	/^	public List<MethodResult> getMethodResults(ParameterisedMethod a) {$/;"	m	class:MethodResult
+getMethodResults	src/main/java/net/cammann/results/MethodResult.java	/^	public Map<ParameterisedMethod, List<MethodResult>> getMethodResults() {$/;"	m	class:MethodResult
+getMethodResults	src/main/java/net/cammann/results/PackageResult.java	/^	public List<MethodRangeResult> getMethodResults(Method m) {$/;"	m	class:PackageResult
+getMethodResults	src/main/java/net/cammann/results/PackageResult.java	/^	public List<MethodResult> getMethodResults(ParameterisedMethod a) {$/;"	m	class:PackageResult
+getMethodResults	src/main/java/net/cammann/results/PackageResult.java	/^	public Map<ParameterisedMethod, List<MethodResult>> getMethodResults() {$/;"	m	class:PackageResult
+getMethodResults	src/main/java/net/cammann/results/Result.java	/^	List<MethodRangeResult> getMethodResults(Method m);$/;"	m	interface:Result
+getMethodResults	src/main/java/net/cammann/results/Result.java	/^	List<MethodResult> getMethodResults(ParameterisedMethod a);$/;"	m	interface:Result
+getMethodResults	src/main/java/net/cammann/results/Result.java	/^	Map<ParameterisedMethod, List<MethodResult>> getMethodResults();$/;"	m	interface:Result
+getMethodResults	target/classes/net/cammann/results/ClassResult.class	/^/;"	typedefs
+getMethodTesting	src/main/java/net/cammann/callback/CallbackEvent.java	/^	public Method getMethodTesting() {$/;"	m	class:CallbackEvent
+getMethodsTested	src/main/java/net/cammann/results/ClassResult.java	/^	public List<ParameterisedMethod> getMethodsTested() {$/;"	m	class:ClassResult
+getMethodsTested	src/main/java/net/cammann/results/MethodResult.java	/^	public List<ParameterisedMethod> getMethodsTested() {$/;"	m	class:MethodResult
+getMethodsTested	src/main/java/net/cammann/results/PackageResult.java	/^	public List<ParameterisedMethod> getMethodsTested() {$/;"	m	class:PackageResult
+getMethodsTested	src/main/java/net/cammann/results/Result.java	/^	List<ParameterisedMethod> getMethodsTested();$/;"	m	interface:Result
+getNonPrimitiveType	src/main/java/net/cammann/BenchmarkUtil.java	/^	public static Class<?> getNonPrimitiveType(Class<?> type) {$/;"	m	class:BenchmarkUtil
+getParamCallback	src/test/java/net/cammann/CallbackTest.java	/^	public String getParamCallback(@Callback("callback_two") String x) {$/;"	m	class:CallbackTest
+getParameterisedMethod	src/main/java/net/cammann/results/MethodResult.java	/^	public ParameterisedMethod getParameterisedMethod() {$/;"	m	class:MethodResult
+getParameterisedMethodsTested	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public Set<ParameterisedMethod> getParameterisedMethodsTested() {$/;"	m	class:MethodRangeResult
+getParameters	src/main/java/net/cammann/ParameterisedMethod.java	/^	public Object[] getParameters() {$/;"	m	class:ParameterisedMethod
+getPrimitiveType	src/main/java/net/cammann/BenchmarkUtil.java	/^	public static Class<?> getPrimitiveType(Class<?> type) {$/;"	m	class:BenchmarkUtil
+getResult	src/main/java/net/cammann/ClassBenchmarker.java	/^	public ClassResult getResult() {$/;"	m	class:ClassBenchmarker
+getResult	src/main/java/net/cammann/export/CVSExport.java	/^	public Result getResult() {$/;"	m	class:CVSExport
+getResults	.tags	/^List	target\/classes\/net\/cammann\/results\/MethodRangeResult.class	\/^getResults\/;"	typedefs$/;"	typedefs
+getResults	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public MethodRangeResult getResults() {$/;"	m	class:BenchmarkMethodInstance
+getResults	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public List<MethodResult> getResults(ParameterisedMethod args) {$/;"	m	class:MethodRangeResult
+getReturned	src/main/java/net/cammann/results/MethodResult.java	/^	public Optional<Object> getReturned() {$/;"	m	class:MethodResult
+getRun	src/main/java/net/cammann/callback/CallbackEvent.java	/^	public int getRun() {$/;"	m	class:CallbackEvent
+getRuntime	src/main/java/net/cammann/results/MethodResult.java	/^	public long getRuntime() {$/;"	m	class:MethodResult
+getStartTime	src/main/java/net/cammann/results/MethodResult.java	/^	public long getStartTime() {$/;"	m	class:MethodResult
+handler	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	private CallbackHandler handler;$/;"	f	class:BenchmarkObjectInstance	file:
+hasAnnotation	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public boolean hasAnnotation(Class<? extends Annotation> type) {$/;"	m	class:BenchmarkMethodInstance
+hashCode	src/main/java/net/cammann/ParameterisedMethod.java	/^	public int hashCode() {$/;"	m	class:ParameterisedMethod
+instance	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	private Object instance;$/;"	f	class:BenchmarkObjectInstance	file:
+instance	src/main/java/net/cammann/ClassBenchmarker.java	/^	private final BenchmarkObjectInstance instance;$/;"	f	class:ClassBenchmarker	file:
+intMethod	src/test/java/net/cammann/working/WithFieldsTest.java	/^	public int intMethod() {$/;"	m	class:WithFieldsTest
+invokeMethod	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public void invokeMethod(Object instance) {$/;"	m	class:BenchmarkMethodInstance
+isAbsent	src/main/java/net/cammann/Optional.java	/^	public boolean isAbsent() {$/;"	m	class:Optional
+isPresent	src/main/java/net/cammann/Optional.java	/^	public boolean isPresent() {$/;"	m	class:Optional
+lookup	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private Map<String, Object> lookup;$/;"	f	class:BenchmarkMethodInstance	file:
+lookup	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	private Map<String, Object> lookup;$/;"	f	class:BenchmarkObjectInstance	file:
+lookup	src/main/java/net/cammann/ClassBenchmarker.java	/^	private Map<String, Object> lookup;$/;"	f	class:ClassBenchmarker	file:
+lookup	src/test/java/net/cammann/selfbench/Caller.java	/^	public void lookup() {$/;"	m	class:Caller
+lookupMethod	src/main/java/net/cammann/Benchmarker.java	/^	private static Method lookupMethod(Class<?> cls, String methodName) {$/;"	m	class:Benchmarker	file:
+lookupTable	src/main/java/net/cammann/Benchmarker.java	/^	private static Map<String, Object> lookupTable = new HashMap<String, Object>();$/;"	f	class:Benchmarker	file:
+main	README.md	/^		public static void main(String[] args) {$/;"	m	class:Example
+main	README.md	/^	public static void main(String[] args) {$/;"	m
+main	src/test/java/net/cammann/FileRead.java	/^	public static void main(String[] args) {$/;"	m	class:FileRead
+main	src/test/java/net/cammann/selfbench/Caller.java	/^	public static void main(String[] args) {$/;"	m	class:Caller
+main	src/test/java/net/cammann/selfbench/ReverseStringCallback.java	/^	public void main(String[] args) {$/;"	m	class:ReverseStringCallback
+main	src/test/java/net/cammann/selfbench/ReverseStringFixed.java	/^	public void main(String[] args) {$/;"	m	class:ReverseStringFixed
+main	src/test/java/net/cammann/selfbench/ReverseStringLookup.java	/^	public void main(String[] args) {$/;"	m	class:ReverseStringLookup
+main	src/test/java/net/cammann/selfbench/ReverseStringRange.java	/^	public void main(String[] args) {$/;"	m	class:ReverseStringRange
+map	src/main/java/net/cammann/callback/CallbackHandler.java	/^	private final Map<String, CallbackListener<?>> map = new HashMap<String, CallbackListener<?>>();$/;"	f	class:CallbackHandler	file:
+method	README.md	/^	public int method(@Lookup("x_key") int x) {$/;"	m
+method	README.md	/^	public int method(@Range({"5", "6", "7"}) int x) {$/;"	m
+method	README.md	/^The `@Fixed` annotation uses the string constructor of the method, so can be$/;"	typedefs
+method	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private final Method method;$/;"	f	class:BenchmarkMethodInstance	file:
+method	src/main/java/net/cammann/ParameterisedMethod.java	/^	private Method method;$/;"	f	class:ParameterisedMethod	file:
+method	src/main/java/net/cammann/callback/CallbackEvent.java	/^	private Method method;$/;"	f	class:CallbackEvent	file:
+method	src/main/java/net/cammann/results/MethodRangeResult.java	/^	private final Method method;$/;"	f	class:MethodRangeResult	file:
+method	src/test/java/net/cammann/RangeTest.java	/^	private int method(@Range({"1", "5", "30"}) int x) {$/;"	m	class:RangeTest	file:
+method	src/test/java/net/cammann/classesToTest/ChooseConstructorTest.java	/^	public int method() {$/;"	m	class:ChooseConstructorTest
+method	src/test/java/net/cammann/classesToTest/FailConstructorTest.java	/^	public int method() {$/;"	m	class:FailConstructorTest
+methodOne	src/test/java/net/cammann/working/LookupFieldTest.java	/^	private String methodOne() {$/;"	m	class:LookupFieldTest	file:
+methodOne	src/test/java/net/cammann/working/LookupParameterTest.java	/^	public int methodOne(@Lookup("key") int value) {$/;"	m	class:LookupParameterTest
+methodTwo	src/test/java/net/cammann/working/LookupFieldTest.java	/^	private float methodTwo() {$/;"	m	class:LookupFieldTest	file:
+methodTwo	src/test/java/net/cammann/working/LookupParameterTest.java	/^	public String methodTwo(@Lookup("key2") String value) {$/;"	m	class:LookupParameterTest
+methods	src/main/java/net/cammann/ClassBenchmarker.java	/^	private final List<BenchmarkMethodInstance> methods = new ArrayList<BenchmarkMethodInstance>();$/;"	f	class:ClassBenchmarker	file:
+methodsToTest	src/main/java/net/cammann/ClassBenchmarker.java	/^	private List<Method> methodsToTest = null;$/;"	f	class:ClassBenchmarker	file:
+myFavouriteString	src/test/java/net/cammann/working/WorkingBaseCaseTest.java	/^	private String myFavouriteString;$/;"	f	class:WorkingBaseCaseTest	file:
+myMethod	src/test/java/net/cammann/working/WorkingBaseCaseTest.java	/^	public int myMethod(@Fixed("1") int reps) {$/;"	m	class:WorkingBaseCaseTest
+net.cammann	src/main/java/net/cammann/BenchmarkException.java	/^package net.cammann;$/;"	p
+net.cammann	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^package net.cammann;$/;"	p
+net.cammann	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^package net.cammann;$/;"	p
+net.cammann	src/main/java/net/cammann/BenchmarkUtil.java	/^package net.cammann;$/;"	p
+net.cammann	src/main/java/net/cammann/Benchmarker.java	/^package net.cammann;$/;"	p
+net.cammann	src/main/java/net/cammann/ClassBenchmarker.java	/^package net.cammann;$/;"	p
+net.cammann	src/main/java/net/cammann/Optional.java	/^package net.cammann;$/;"	p
+net.cammann	src/main/java/net/cammann/ParameterisedMethod.java	/^package net.cammann;$/;"	p
+net.cammann	src/test/java/net/cammann/BenchmarkWithoutSetParamTest.java	/^package net.cammann;$/;"	p
+net.cammann	src/test/java/net/cammann/CallbackTest.java	/^package net.cammann;$/;"	p
+net.cammann	src/test/java/net/cammann/FileRead.java	/^package net.cammann;$/;"	p
+net.cammann	src/test/java/net/cammann/GoDeeper.java	/^package net.cammann;$/;"	p
+net.cammann	src/test/java/net/cammann/RangeTest.java	/^package net.cammann;$/;"	p
+net.cammann.annotations	src/main/java/net/cammann/annotations/BeforeBenchmark.java	/^package net.cammann.annotations;$/;"	p
+net.cammann.annotations	src/main/java/net/cammann/annotations/BenchConstructor.java	/^package net.cammann.annotations;$/;"	p
+net.cammann.annotations	src/main/java/net/cammann/annotations/Benchmark.java	/^package net.cammann.annotations;$/;"	p
+net.cammann.annotations	src/main/java/net/cammann/annotations/Callback.java	/^package net.cammann.annotations;$/;"	p
+net.cammann.annotations	src/main/java/net/cammann/annotations/Fixed.java	/^package net.cammann.annotations;$/;"	p
+net.cammann.annotations	src/main/java/net/cammann/annotations/Lookup.java	/^package net.cammann.annotations;$/;"	p
+net.cammann.annotations	src/main/java/net/cammann/annotations/NoReturn.java	/^package net.cammann.annotations;$/;"	p
+net.cammann.annotations	src/main/java/net/cammann/annotations/Range.java	/^package net.cammann.annotations;$/;"	p
+net.cammann.callback	src/main/java/net/cammann/callback/CallbackEvent.java	/^package net.cammann.callback;$/;"	p
+net.cammann.callback	src/main/java/net/cammann/callback/CallbackHandler.java	/^package net.cammann.callback;$/;"	p
+net.cammann.callback	src/main/java/net/cammann/callback/CallbackListener.java	/^package net.cammann.callback;$/;"	p
+net.cammann.classesToTest	src/test/java/net/cammann/classesToTest/ChooseConstructorTest.java	/^package net.cammann.classesToTest;$/;"	p
+net.cammann.classesToTest	src/test/java/net/cammann/classesToTest/FailConstructorTest.java	/^package net.cammann.classesToTest;$/;"	p
+net.cammann.classesToTest	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^package net.cammann.classesToTest;$/;"	p
+net.cammann.export	src/main/java/net/cammann/export/CVSExport.java	/^package net.cammann.export;$/;"	p
+net.cammann.export	src/main/java/net/cammann/export/Format.java	/^package net.cammann.export;$/;"	p
+net.cammann.export	src/main/java/net/cammann/export/Saveable.java	/^package net.cammann.export;$/;"	p
+net.cammann.results	src/main/java/net/cammann/results/ClassResult.java	/^package net.cammann.results;$/;"	p
+net.cammann.results	src/main/java/net/cammann/results/MethodRangeResult.java	/^package net.cammann.results;$/;"	p
+net.cammann.results	src/main/java/net/cammann/results/MethodResult.java	/^package net.cammann.results;$/;"	p
+net.cammann.results	src/main/java/net/cammann/results/PackageResult.java	/^package net.cammann.results;$/;"	p
+net.cammann.results	src/main/java/net/cammann/results/Result.java	/^package net.cammann.results;$/;"	p
+net.cammann.selfbench	src/test/java/net/cammann/selfbench/Caller.java	/^package net.cammann.selfbench;$/;"	p
+net.cammann.selfbench	src/test/java/net/cammann/selfbench/ReverseStringCallback.java	/^package net.cammann.selfbench;$/;"	p
+net.cammann.selfbench	src/test/java/net/cammann/selfbench/ReverseStringFixed.java	/^package net.cammann.selfbench;$/;"	p
+net.cammann.selfbench	src/test/java/net/cammann/selfbench/ReverseStringLookup.java	/^package net.cammann.selfbench;$/;"	p
+net.cammann.selfbench	src/test/java/net/cammann/selfbench/ReverseStringRange.java	/^package net.cammann.selfbench;$/;"	p
+net.cammann.working	src/test/java/net/cammann/working/ChooserTest.java	/^package net.cammann.working;$/;"	p
+net.cammann.working	src/test/java/net/cammann/working/LookupFieldTest.java	/^package net.cammann.working;$/;"	p
+net.cammann.working	src/test/java/net/cammann/working/LookupParameterTest.java	/^package net.cammann.working;$/;"	p
+net.cammann.working	src/test/java/net/cammann/working/TestNumberedBenchmark.java	/^package net.cammann.working;$/;"	p
+net.cammann.working	src/test/java/net/cammann/working/TestSaveCSV.java	/^package net.cammann.working;$/;"	p
+net.cammann.working	src/test/java/net/cammann/working/WithFieldsTest.java	/^package net.cammann.working;$/;"	p
+net.cammann.working	src/test/java/net/cammann/working/WorkingBaseCaseTest.java	/^package net.cammann.working;$/;"	p
+newInstance	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	public Object newInstance() {$/;"	m	class:BenchmarkObjectInstance
+ns	README.md	/^	Example.exampleMethod Took: 2,000 ns, Arguments: { 10 }, Returned: 10$/;"	typedefs
+ns	README.md	/^	Example.exampleMethod Took: 2,000 ns, Arguments: { 15 }, Returned: 15$/;"	typedefs
+ns	README.md	/^	Example.exampleMethod Took: 2,000 ns, Arguments: { 5 }, Returned: 5$/;"	typedefs
+ns	README.md	/^	Example.exampleMethod Took: 2,000 ns, Arguments: { 75 }, Returned: 75$/;"	typedefs
+ns	README.md	/^	your.package.YourClass.method took: 1,200 ns, Arguments: { 6 }, returned: 30$/;"	typedefs
+ns	README.md	/^	your.package.YourClass.method took: 1,200 ns, Arguments: { 7 }, returned: 35$/;"	typedefs
+ns	README.md	/^	your.package.YourClass.method took: 1,200 ns, Arguments: { 8 }, returned: 24$/;"	typedefs
+ns	README.md	/^	your.package.YourClass.method took: 2,100 ns, Arguments: { 5 }, returned: 25$/;"	typedefs
+ns	README.md	/^	your.package.YourClass.yourMethod took: 12,000 ns, Arguments: { 10.0 }, returned: 6930.0$/;"	typedefs
+ns	README.md	/^	your.package.YourClass.yourMethod took: 2,000 ns, Arguments: { 10.0 }, returned: 6930.0$/;"	typedefs
+ns	README.md	/^	your.package.YourClass.yourMethod took: 3,000 ns, Arguments: { 10.0 }, returned: 6930.0$/;"	typedefs
+ns	README.md	/^	your.package.YourClass.yourMethod took: 6,000 ns, Arguments: { 10.0 }, returned: 6930.0$/;"	typedefs
+object	src/main/java/net/cammann/Optional.java	/^	private T object;$/;"	f	class:Optional	file:
+otherMethod	src/test/java/net/cammann/working/WorkingBaseCaseTest.java	/^	public int otherMethod(@Fixed("10") double reps) {$/;"	m	class:WorkingBaseCaseTest
+overwriteMethodsToBenchmark	src/main/java/net/cammann/ClassBenchmarker.java	/^	public void overwriteMethodsToBenchmark(List<Method> listMethodsToTest) {$/;"	m	class:ClassBenchmarker
+parameterisedMethod	src/main/java/net/cammann/results/MethodResult.java	/^	private ParameterisedMethod parameterisedMethod;$/;"	f	class:MethodResult	file:
+parameters	src/main/java/net/cammann/ParameterisedMethod.java	/^	private Object[] parameters;$/;"	f	class:ParameterisedMethod	file:
+primitiveToObject	src/main/java/net/cammann/BenchmarkUtil.java	/^	private static final Map<Class<?>, Class<?>> primitiveToObject = new HashMap<Class<?>, Class<?>>();$/;"	f	class:BenchmarkUtil	file:
+printResult	src/main/java/net/cammann/results/ClassResult.java	/^	public void printResult() {$/;"	m	class:ClassResult
+printResult	src/main/java/net/cammann/results/MethodResult.java	/^	public void printResult() {$/;"	m	class:MethodResult
+printResult	src/main/java/net/cammann/results/PackageResult.java	/^	public void printResult() {$/;"	m	class:PackageResult
+printResult	src/main/java/net/cammann/results/Result.java	/^	void printResult();$/;"	m	interface:Result
+range	src/test/java/net/cammann/selfbench/Caller.java	/^	public void range() {$/;"	m	class:Caller
+rangeSize	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private int rangeSize = 1;$/;"	f	class:BenchmarkMethodInstance	file:
+rawReadBuffer	src/test/java/net/cammann/FileRead.java	/^	private int rawReadBuffer(@Range({"256", "1024"}) int buffersize) throws IOException {$/;"	m	class:FileRead	file:
+recordResult	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public void recordResult(Object[] args, long startNanoSeconds, long endNanoSeconds) {$/;"	m	class:MethodRangeResult
+recordResult	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public void recordResult(Object[] args, long startNanoSeconds, long endNanoSeconds, Object returned) {$/;"	m	class:MethodRangeResult
+recordResult	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public void recordResult(ParameterisedMethod args, long startNanoSecs, long endNanoSeconds, Object returned) {$/;"	m	class:MethodRangeResult
+recordResult	src/main/java/net/cammann/results/MethodRangeResult.java	/^	public void recordResult(ParameterisedMethod args, long startNanoSecs, long endNanoSecs) {$/;"	m	class:MethodRangeResult
+result	src/main/java/net/cammann/export/CVSExport.java	/^	private Result result;$/;"	f	class:CVSExport	file:
+resultRange	src/main/java/net/cammann/results/ClassResult.java	/^	private final Map<Method, MethodRangeResult> resultRange = new HashMap<Method, MethodRangeResult>();$/;"	f	class:ClassResult	file:
+results	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	private final MethodRangeResult results;$/;"	f	class:BenchmarkMethodInstance	file:
+results	src/main/java/net/cammann/ClassBenchmarker.java	/^	private final ClassResult results;$/;"	f	class:ClassBenchmarker	file:
+results	src/main/java/net/cammann/results/MethodRangeResult.java	/^	private final Map<ParameterisedMethod, List<MethodResult>> results = new HashMap<ParameterisedMethod, List<MethodResult>>();$/;"	f	class:MethodRangeResult	file:
+returned	src/main/java/net/cammann/results/MethodResult.java	/^	private final Optional<Object> returned = new Optional<Object>();$/;"	f	class:MethodResult	file:
+reverse	src/test/java/net/cammann/selfbench/ReverseStringCallback.java	/^	private static String reverse(String in, String out) {$/;"	m	class:ReverseStringCallback	file:
+reverse	src/test/java/net/cammann/selfbench/ReverseStringFixed.java	/^	private static String reverse(String in, String out) {$/;"	m	class:ReverseStringFixed	file:
+reverse	src/test/java/net/cammann/selfbench/ReverseStringLookup.java	/^	private static String reverse(String in, String out) {$/;"	m	class:ReverseStringLookup	file:
+reverse	src/test/java/net/cammann/selfbench/ReverseStringRange.java	/^	private static String reverse(String in, String out) {$/;"	m	class:ReverseStringRange	file:
+reverse_array	src/test/java/net/cammann/selfbench/ReverseStringCallback.java	/^	public int reverse_array(@Callback("n") int n) {$/;"	m	class:ReverseStringCallback
+reverse_array	src/test/java/net/cammann/selfbench/ReverseStringFixed.java	/^	public int reverse_array(@Fixed("42480") int n) {$/;"	m	class:ReverseStringFixed
+reverse_array	src/test/java/net/cammann/selfbench/ReverseStringLookup.java	/^	public int reverse_array(@Lookup("n") int n) {$/;"	m	class:ReverseStringLookup
+reverse_array	src/test/java/net/cammann/selfbench/ReverseStringRange.java	/^	public int reverse_array(@Range({ "42480" }) int n) {$/;"	m	class:ReverseStringRange
+reverse_builder	src/test/java/net/cammann/selfbench/ReverseStringCallback.java	/^	public int reverse_builder(@Callback("n") int n) {$/;"	m	class:ReverseStringCallback
+reverse_builder	src/test/java/net/cammann/selfbench/ReverseStringFixed.java	/^	public int reverse_builder(@Fixed("42480") int n) {$/;"	m	class:ReverseStringFixed
+reverse_builder	src/test/java/net/cammann/selfbench/ReverseStringLookup.java	/^	public int reverse_builder(@Lookup("n") int n) {$/;"	m	class:ReverseStringLookup
+reverse_builder	src/test/java/net/cammann/selfbench/ReverseStringRange.java	/^	public int reverse_builder(@Range({ "42480" }) int n) {$/;"	m	class:ReverseStringRange
+reverse_recursion	src/test/java/net/cammann/selfbench/ReverseStringCallback.java	/^	public int reverse_recursion(@Callback("n") int n) {$/;"	m	class:ReverseStringCallback
+reverse_recursion	src/test/java/net/cammann/selfbench/ReverseStringFixed.java	/^	public int reverse_recursion(@Fixed("42480") int n) {$/;"	m	class:ReverseStringFixed
+reverse_recursion	src/test/java/net/cammann/selfbench/ReverseStringLookup.java	/^	public int reverse_recursion(@Lookup("n") int n) {$/;"	m	class:ReverseStringLookup
+reverse_recursion	src/test/java/net/cammann/selfbench/ReverseStringRange.java	/^	public int reverse_recursion(@Range({ "42480" }) int n) {$/;"	m	class:ReverseStringRange
+run	src/main/java/net/cammann/Benchmarker.java	/^	public static ClassResult run(Class<?> cls) {$/;"	m	class:Benchmarker
+run	src/main/java/net/cammann/Benchmarker.java	/^	public static ClassResult run(Class<?> cls, String... methodNames) {$/;"	m	class:Benchmarker
+run	src/main/java/net/cammann/Benchmarker.java	/^	public static PackageResult run(Class<?>... classes) {$/;"	m	class:Benchmarker
+run	src/main/java/net/cammann/Benchmarker.java	/^	public static PackageResult run(Package pkg) {$/;"	m	class:Benchmarker
+run	src/main/java/net/cammann/callback/CallbackEvent.java	/^	private int run;$/;"	f	class:CallbackEvent	file:
+runBenchmarkMethods	src/main/java/net/cammann/ClassBenchmarker.java	/^	private void runBenchmarkMethods() {$/;"	m	class:ClassBenchmarker	file:
+runtime	src/main/java/net/cammann/results/MethodResult.java	/^	private final long runtime;$/;"	f	class:MethodResult	file:
+save	src/main/java/net/cammann/export/CVSExport.java	/^	public void save(File file) {$/;"	m	class:CVSExport
+save	src/main/java/net/cammann/export/Saveable.java	/^	File save(Format format, File file);$/;"	m	interface:Saveable
+save	src/main/java/net/cammann/export/Saveable.java	/^	File save(Format format, String file);$/;"	m	interface:Saveable
+save	src/main/java/net/cammann/results/ClassResult.java	/^	public File save(Format format, File file) {$/;"	m	class:ClassResult
+save	src/main/java/net/cammann/results/ClassResult.java	/^	public File save(Format format, String filepath) {$/;"	m	class:ClassResult
+save	src/main/java/net/cammann/results/PackageResult.java	/^	public File save(Format format, File file) {$/;"	m	class:PackageResult
+save	src/main/java/net/cammann/results/PackageResult.java	/^	public File save(Format format, String filepath) {$/;"	m	class:PackageResult
+saveResult	src/main/java/net/cammann/results/MethodRangeResult.java	/^	private void saveResult(MethodResult r) {$/;"	m	class:MethodRangeResult	file:
+sec$	.tags	/^Failures	target\/surefire-reports\/net.cammann.BenchmarkWithoutSetParamTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+sec$	.tags	/^Failures	target\/surefire-reports\/net.cammann.working.TestNumberedBenchmark.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+sec$	.tags	/^Skipped	target\/surefire-reports\/net.cammann.BenchmarkWithoutSetParamTest.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+sec$	.tags	/^Skipped	target\/surefire-reports\/net.cammann.working.TestNumberedBenchmark.txt	\/^Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec$\/;"	typedefs$/;"	typedefs
+second	README.md	/^will be set to 5 for for the first execution, 10 for the second, all the way up to $/;"	typedefs
+set	src/main/java/net/cammann/Optional.java	/^	private boolean set = false;$/;"	f	class:Optional	file:
+set	src/main/java/net/cammann/Optional.java	/^	public void set(T obj) {$/;"	m	class:Optional
+setCallbackHandler	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public void setCallbackHandler(CallbackHandler callbackHandler) {$/;"	m	class:BenchmarkMethodInstance
+setCallbackHandler	src/main/java/net/cammann/ClassBenchmarker.java	/^	public void setCallbackHandler(CallbackHandler callbackHandler) {$/;"	m	class:ClassBenchmarker
+setConstructorArgs	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	private void setConstructorArgs(Constructor<?> c) {$/;"	m	class:BenchmarkObjectInstance	file:
+setField	src/main/java/net/cammann/callback/CallbackEvent.java	/^	public void setField(Field field) {$/;"	m	class:CallbackEvent
+setFields	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	public void setFields(int runNumber) {$/;"	m	class:BenchmarkObjectInstance
+setHandler	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	public void setHandler(CallbackHandler handler) {$/;"	m	class:BenchmarkObjectInstance
+setLookup	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public void setLookup(Map<String, Object> lookup) {$/;"	m	class:BenchmarkMethodInstance
+setLookup	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	public void setLookup(Map<String, Object> lookup) {$/;"	m	class:BenchmarkObjectInstance
+setLookupTable	src/main/java/net/cammann/ClassBenchmarker.java	/^	public void setLookupTable(Map<String, Object> lookup) {$/;"	m	class:ClassBenchmarker
+setMethod	src/main/java/net/cammann/ParameterisedMethod.java	/^	public void setMethod(Method method) {$/;"	m	class:ParameterisedMethod
+setMethod	src/main/java/net/cammann/results/MethodResult.java	/^	public void setMethod(Method method) {$/;"	m	class:MethodResult
+setMethodArguments	src/main/java/net/cammann/BenchmarkMethodInstance.java	/^	public void setMethodArguments(int rangeSpec, int runNumber) {$/;"	m	class:BenchmarkMethodInstance
+setMethodTesting	src/main/java/net/cammann/callback/CallbackEvent.java	/^	public void setMethodTesting(Method method) {$/;"	m	class:CallbackEvent
+setParameterisedMethod	src/main/java/net/cammann/results/MethodResult.java	/^	public void setParameterisedMethod(Method method, Object[] args) {$/;"	m	class:MethodResult
+setParameterisedMethod	src/main/java/net/cammann/results/MethodResult.java	/^	public void setParameterisedMethod(ParameterisedMethod pm) {$/;"	m	class:MethodResult
+setParameters	src/main/java/net/cammann/ParameterisedMethod.java	/^	public void setParameters(Object[] arguments) {$/;"	m	class:ParameterisedMethod
+setResult	src/main/java/net/cammann/export/CVSExport.java	/^	public void setResult(Result result) {$/;"	m	class:CVSExport
+setReturned	src/main/java/net/cammann/results/MethodResult.java	/^	public void setReturned(Object returned) {$/;"	m	class:MethodResult
+setRun	src/main/java/net/cammann/callback/CallbackEvent.java	/^	public void setRun(int run) {$/;"	m	class:CallbackEvent
+startTime	src/main/java/net/cammann/results/MethodResult.java	/^	private final long startTime;$/;"	f	class:MethodResult	file:
+string	src/test/java/net/cammann/working/WithFieldsTest.java	/^	public String string;$/;"	f	class:WithFieldsTest
+stringBufferJoinList	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^	public String stringBufferJoinList() {$/;"	m	class:StringJoinExample
+stringBuildJoinList	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^	public String stringBuildJoinList() {$/;"	m	class:StringJoinExample
+stringList	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^	private final List<String> stringList;$/;"	f	class:StringJoinExample	file:
+stringMethod	src/test/java/net/cammann/working/WithFieldsTest.java	/^	public String stringMethod() {$/;"	m	class:WithFieldsTest
+stringSet	src/test/java/net/cammann/classesToTest/StringJoinExample.java	/^	private final Set<String> stringSet;$/;"	f	class:StringJoinExample	file:
+test	src/test/java/net/cammann/CallbackTest.java	/^	public void test() {$/;"	m	class:CallbackTest
+test	src/test/java/net/cammann/GoDeeper.java	/^	public void test() {$/;"	m	class:GoDeeper
+test	src/test/java/net/cammann/RangeTest.java	/^	public void test() {$/;"	m	class:RangeTest
+test	src/test/java/net/cammann/working/ChooserTest.java	/^	public void test() {$/;"	m	class:ChooserTest
+test	src/test/java/net/cammann/working/LookupParameterTest.java	/^	public void test() {$/;"	m	class:LookupParameterTest
+test	src/test/java/net/cammann/working/TestNumberedBenchmark.java	/^	public void test() {$/;"	m	class:TestNumberedBenchmark
+test	src/test/java/net/cammann/working/TestSaveCSV.java	/^	public void test() {$/;"	m	class:TestSaveCSV
+test	src/test/java/net/cammann/working/WithFieldsTest.java	/^	public void test() {$/;"	m	class:WithFieldsTest
+testFailWithNoParameterSet	src/test/java/net/cammann/working/ChooserTest.java	/^	public void testFailWithNoParameterSet() {$/;"	m	class:ChooserTest
+testOne	src/test/java/net/cammann/working/WorkingBaseCaseTest.java	/^	public void testOne() {$/;"	m	class:WorkingBaseCaseTest
+testSetField	src/test/java/net/cammann/working/LookupFieldTest.java	/^	public void testSetField() {$/;"	m	class:LookupFieldTest
+testUnsetParam	src/test/java/net/cammann/BenchmarkWithoutSetParamTest.java	/^	public void testUnsetParam() {$/;"	m	class:BenchmarkWithoutSetParamTest
+toString	src/main/java/net/cammann/ParameterisedMethod.java	/^	public String toString() {$/;"	m	class:ParameterisedMethod
+toString	src/main/java/net/cammann/results/MethodResult.java	/^	public String toString() {$/;"	m	class:MethodResult
+took	README.md	/^	your.package.YourClass.method took: 1,200 ns, Arguments: { 6 }, returned: 30$/;"	typedefs
+took	README.md	/^	your.package.YourClass.method took: 1,200 ns, Arguments: { 7 }, returned: 35$/;"	typedefs
+took	README.md	/^	your.package.YourClass.yourMethod took: 12,000 ns, Arguments: { 10.0 }, returned: 6930.0$/;"	typedefs
+type	src/main/java/net/cammann/BenchmarkObjectInstance.java	/^	private final Class<?> type;$/;"	f	class:BenchmarkObjectInstance	file:
+value	README.md	/^	private int value;$/;"	typedefs
+value	src/main/java/net/cammann/annotations/Callback.java	/^	String value();$/;"	m	interface:Callback
+value	src/main/java/net/cammann/annotations/Fixed.java	/^	String value();$/;"	m	interface:Fixed
+value	src/main/java/net/cammann/annotations/Lookup.java	/^	String value();$/;"	m	interface:Lookup
+value	src/main/java/net/cammann/annotations/Range.java	/^	String[] value();$/;"	m	interface:Range
+valueOne	src/test/java/net/cammann/working/LookupFieldTest.java	/^	private float valueOne;$/;"	f	class:LookupFieldTest	file:
+valueTwo	src/test/java/net/cammann/working/LookupFieldTest.java	/^	private String valueTwo;$/;"	f	class:LookupFieldTest	file:
+writeHeader	src/main/java/net/cammann/export/CVSExport.java	/^	private void writeHeader() throws IOException {$/;"	m	class:CVSExport	file:
+yourMethod	README.md	/^	public double yourMethod(@Fixed("10") double mult) {$/;"	m
+yourMethod	src/test/java/net/cammann/working/WorkingBaseCaseTest.java	/^	public double yourMethod(@Fixed("100") double mult) {$/;"	m	class:WorkingBaseCaseTest
+~Ñ	target/jbenchmarx-0.3.jar	/^/;"	typedefs
+ÀKN	target/test-classes/net/cammann/working/LookupFieldTest.class	/^/;"	typedefs
+Â	target/jbenchmarx-0.3.jar	/^/;"	typedefs
+Ã	target/classes/net/cammann/results/ClassResult.class	/^/;"	typedefs
+Êþ	.tags	/^CallbackHandler	target\/classes\/net\/cammann\/Benchmarker.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Class	target\/classes\/net\/cammann\/BenchmarkObjectInstance.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Class	target\/classes\/net\/cammann\/ClassBenchmarker.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^ClassResult	target\/classes\/net\/cammann\/ClassBenchmarker.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^List	target\/classes\/net\/cammann\/ClassBenchmarker.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^List	target\/classes\/net\/cammann\/results\/MethodResult$2.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^List	target\/classes\/net\/cammann\/results\/Result.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Map	target\/classes\/net\/cammann\/BenchmarkUtil.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Map	target\/classes\/net\/cammann\/Benchmarker.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Map	target\/classes\/net\/cammann\/ClassBenchmarker.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Map	target\/classes\/net\/cammann\/callback\/CallbackHandler.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Map	target\/classes\/net\/cammann\/results\/MethodRangeResult.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Map	target\/classes\/net\/cammann\/results\/PackageResult.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Map	target\/classes\/net\/cammann\/results\/Result.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Method	target\/classes\/net\/cammann\/BenchmarkMethodInstance.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Method	target\/classes\/net\/cammann\/ParameterisedMethod.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Method	target\/classes\/net\/cammann\/results\/MethodRangeResult.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Method	target\/classes\/net\/cammann\/results\/Result.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^MethodResult	target\/classes\/net\/cammann\/results\/MethodResult$1.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^MethodResult	target\/classes\/net\/cammann\/results\/MethodResult$2.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Object	target\/classes\/net\/cammann\/results\/MethodResult.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Optional	target\/classes\/net\/cammann\/results\/MethodResult.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^ParameterisedMethod	target\/classes\/net\/cammann\/results\/MethodResult.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^Result	target\/classes\/net\/cammann\/export\/CVSExport.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^String	target\/classes\/net\/cammann\/annotations\/Callback.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^String	target\/classes\/net\/cammann\/annotations\/Fixed.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^String	target\/classes\/net\/cammann\/annotations\/Lookup.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs
+Êþ	.tags	/^TT	target\/classes\/net\/cammann\/Optional.class	\/^Êþº¾\/;"	typedefs$/;"	typedefs

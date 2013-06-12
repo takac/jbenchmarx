@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import net.cammann.ParameterisedMethod;
 
@@ -40,7 +41,7 @@ public class ClassResult extends SaveableResult {
 	}
 
 	@Override
-	public List<MethodResultStore> getMethodResults(Method m) {
+	public List<MethodResultStore> getMethodResult(Method m) {
 		List<MethodResultStore> methods = new ArrayList<MethodResultStore>();
 		for (MethodResultStore r : methodToResultMap.values()) {
 			if (r.getMethod().equals(m)) {
@@ -66,7 +67,9 @@ public class ClassResult extends SaveableResult {
 				String out = getParamMethodInfoString(paramMethod);
 				System.out.println(out);
 			}
+
 		}
+
 		for (MethodResultStore range : methodToResultMap.values()) {
 			String out = getTotalMethodInfoString(range.getMethodAverage(), range.getMethod());
 			System.out.println(out);
@@ -74,13 +77,13 @@ public class ClassResult extends SaveableResult {
 	}
 
 	private String getTotalMethodInfoString(AveragedResult result, Method method) {
-		String avg = NumberFormat.getInstance().format(result.getAverageTime()) + " ns";
+		String avg = NumberFormat.getInstance().format(result.getAverageTimeInNanoSeconds()) + " ns";
 		return method.getDeclaringClass().getName()
 				+ "."
 				+ method.getName()
 				+ " - average time: "
 				+ avg
-				+ "called with "
+				+ " called with "
 				+ result.getNumberParamCombinations()
 				+ " different combination of arguments over "
 				+ result.getNumIterations()
@@ -118,17 +121,17 @@ public class ClassResult extends SaveableResult {
 		return results;
 	}
 
-	public void setClassTested(Class<?> cls) {
-		this.classTested = cls;
-	}
-
-	@Override
 	public List<MethodResult> getMethodResults() {
 		List<MethodResult> all = new ArrayList<MethodResult>();
 		for (MethodResultStore m : methodToResultMap.values()) {
 			all.addAll(m.getMethodResults());
 		}
 		return all;
+	}
+
+	@Override
+	public Set<Method> getMethodsTested() {
+		return methodToResultMap.keySet();
 	}
 
 }

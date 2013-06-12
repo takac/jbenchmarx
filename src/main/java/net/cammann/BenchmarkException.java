@@ -6,6 +6,10 @@ public class BenchmarkException extends RuntimeException {
 		super(t);
 	}
 
+	public BenchmarkException(String msg, Throwable t) {
+		super(msg, t);
+	}
+
 	public BenchmarkException() {
 	}
 

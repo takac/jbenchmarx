@@ -55,7 +55,7 @@ public class Benchmarker {
 			ClassBenchmarker bm = new ClassBenchmarker(cls);
 			bm.setLookupTable(lookupTable);
 			bm.setCallbackHandler(callbackHandler);
-			bm.execute();
+			bm.run();
 			pkg.add(bm.getResult());
 		}
 		pkg.printResult();
@@ -91,7 +91,7 @@ public class Benchmarker {
 			realMethods.add(lookupMethod(cls, name));
 		}
 		bm.overwriteMethodsToBenchmark(realMethods);
-		bm.execute();
+		bm.run();
 		return bm.getResult();
 	}
 
@@ -99,7 +99,7 @@ public class Benchmarker {
 		ClassBenchmarker bm = new ClassBenchmarker(cls);
 		bm.setLookupTable(lookupTable);
 		bm.setCallbackHandler(callbackHandler);
-		bm.execute();
+		bm.run();
 		PackageResult pkg = new PackageResult();
 		pkg.add(bm.getResult());
 		pkg.printResult();
@@ -127,7 +127,7 @@ public class Benchmarker {
 			System.out.println(cls.getName());
 			ClassBenchmarker bm = new ClassBenchmarker(cls);
 			bm.setCallbackHandler(callbackHandler);
-			bm.execute();
+			bm.run();
 			packResult.add(bm.getResult());
 		}
 		packResult.printResult();

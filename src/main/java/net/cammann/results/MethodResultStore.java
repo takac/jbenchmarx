@@ -4,11 +4,17 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import net.cammann.ParameterisedMethod;
 
+/**
+ * Stores all benchmarks for one method, includes all parameterised methods used
+ * 
+ */
 public class MethodResultStore extends SaveableResult {
 
 	private final Map<ParameterisedMethod, ParameterisedMethodResult> results;
@@ -28,11 +34,6 @@ public class MethodResultStore extends SaveableResult {
 		return method;
 	}
 
-	public void setMethod(Method method) {
-		this.method = method;
-	}
-
-	@Override
 	public List<MethodResult> getMethodResults() {
 		List<MethodResult> all = new ArrayList<MethodResult>();
 		for (ParameterisedMethodResult i : results.values()) {
@@ -106,7 +107,7 @@ public class MethodResultStore extends SaveableResult {
 	}
 
 	@Override
-	public List<MethodResultStore> getMethodResults(Method m) {
+	public List<MethodResultStore> getMethodResult(Method m) {
 		List<MethodResultStore> single = new ArrayList<MethodResultStore>();
 		single.add(this);
 		return single;
@@ -124,6 +125,22 @@ public class MethodResultStore extends SaveableResult {
 	@Override
 	public List<ParameterisedMethod> getParameterisedMethodsTested() {
 		return new ArrayList<ParameterisedMethod>(results.keySet());
+	}
+
+	@Override
+	public String toString() {
+		return method.getDeclaringClass().getName() + "." + method.getName() + " avg: "
+				+ getMethodAverage().getAverageTimeInNanoSeconds()
+				+ "ns " + " over " + getMethodResults().size() + " iterations";
+	}
+
+	@Override
+	public Set<Method> getMethodsTested() {
+		Set<Method> methods = new HashSet<Method>();
+		for (ParameterisedMethod m : results.keySet()) {
+			methods.add(m.getMethod());
+		}
+		return methods;
 	}
 
 }

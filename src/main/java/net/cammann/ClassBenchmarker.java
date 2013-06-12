@@ -25,7 +25,7 @@ public class ClassBenchmarker {
 		instance = new BenchmarkObjectInstance(clazz);
 	}
 
-	public void execute() {
+	public void run() {
 		instance.setLookup(lookup);
 		instance.setHandler(callbackHandler);
 		if (methodsToTest == null) {
